@@ -6,6 +6,7 @@
 
 #include "core/IniEntity.hpp"
 #include "core/Key.hpp"
+#include "return_types/ReadResult.hpp"
 #include <string>
 #include <vector>
 
@@ -25,9 +26,7 @@ namespace IniRW
 		bool IsLoaded();
 		bool Save();
 
-		Key* FindKey(const std::string& sectionName, const std::string& keyName);
-
-		std::string GetKeyValue(const std::string& sectionName, const std::string& keyName);
+		ReadResult<std::string> GetKeyValue(const std::string& sectionName, const std::string& keyName);
 
 		void WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue);
 

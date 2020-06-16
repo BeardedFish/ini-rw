@@ -145,6 +145,7 @@
     <ClInclude Include="core\Section.hpp" />
     <ClInclude Include="enums\IniEntityType.hpp" />
     <ClInclude Include="IniSettings.hpp" />
+    <ClInclude Include="return_types\ReadResult.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\Comment.cpp" />

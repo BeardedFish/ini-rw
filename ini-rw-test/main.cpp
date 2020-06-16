@@ -3,8 +3,7 @@
 // Date:          Saturday, June 13, 2020
 
 #include "cmdfns.hpp"
-#include "IniSettings.hpp"
-#include <iostream>
+#include "ini-rw/IniSettings.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -36,28 +35,36 @@ int main(int argc, char* argv[])
 			{
 				break;
 			}
-			
-			std::vector<std::string> cmdTokens = getStrTokens(cmd);
-
-			if (cmdTokens[0] == "rs")
+			else if (cmd == "contents")
 			{
-				if (cmdTokens.size() == 3)
-				{
-					if (cmdTokens[0] == "rs")
-					{
-						std::string strResult = settings.GetKeyValue(cmdTokens[1], cmdTokens[2]);
+				std::cout << "=== INI FILE CONTENTS =====================" << std::endl;
+				std::cout << settings.ToString();
+				std::cout << "===========================================" << std::endl << std::endl;
+			}
+			else
+			{
+				std::vector<std::string> cmdTokens = getStrTokens(cmd);
 
-						std::cout << strResult << std::endl;
+				if (cmdTokens[0] == "rs")
+				{
+					if (cmdTokens.size() == 3)
+					{
+						if (cmdTokens[0] == "rs")
+						{
+							IniRW::ReadResult<std::string> strResult = settings.GetKeyValue(cmdTokens[1], cmdTokens[2]);
+
+							printResult(strResult, cmdTokens[1], cmdTokens[2]);
+						}
+					}
+					else
+					{
+						std::cout << ">> Insufficient amount of parameters for command!" << std::endl << std::endl;
 					}
 				}
 				else
 				{
-					std::cout << "Insufficient amount of parameters for command!" << std::endl;
+					std::cout << ">> Invalid command!" << std::endl << std::endl;
 				}
-			}
-			else
-			{
-				std::cout << "Invalid command!" << std::endl << std::endl;
 			}
 		}
 	}

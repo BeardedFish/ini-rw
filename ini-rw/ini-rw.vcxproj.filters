@@ -33,6 +33,9 @@
     <ClInclude Include="core\Comment.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="return_types\ReadResult.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\Key.cpp">

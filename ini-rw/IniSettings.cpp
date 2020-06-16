@@ -33,6 +33,8 @@ namespace IniRW
 				delete static_cast<std::string*>(iniContents[i].GetData());
 			}
 		}
+
+		loaded = false;
 	}
 
 	bool IniSettings::IsLoaded()
@@ -54,42 +56,23 @@ namespace IniRW
 		return true;
 	}
 
-
-	Key* IniSettings::FindKey(const std::string& sectionName, const std::string& keyName)
+	ReadResult<std::string> IniSettings::GetKeyValue(const std::string& sectionName, const std::string& keyName)
 	{
-		for (size_t i = 0; i < iniContents.size(); i++)
-		{
-			if (iniContents[i].GetType() == IniEntityType::Key)
-			{
-				Key* key = static_cast<Key*>(iniContents[i].GetData());
-
-				if (key->GetSection() == sectionName && key->GetName() == keyName)
-				{
-					return key;
-				}
-			}
-		}
-
-		return nullptr;
-	}
-
-	std::string IniSettings::GetKeyValue(const std::string& sectionName, const std::string& keyName)
-	{
-		Key* key = FindKey(sectionName, keyName);
+		ReadResult<std::string> result;
+		Key* key = Key::FindKey(iniContents, sectionName, keyName);
 
 		if (key != nullptr)
 		{
-			std::string* valueCopy = &key->GetValue();
-
-			return valueCopy;
+			result.ConvertedValue = key->GetValue();
+			result.Success = true;
 		}
 
-		return nullptr;
+		return result;
 	}
 
 	void IniSettings::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
 	{
-		Key* key = FindKey(sectionName, keyName);
+		Key* key = Key::FindKey(iniContents, sectionName, keyName);
 
 		if (key != nullptr)
 		{
@@ -128,16 +111,20 @@ namespace IniRW
 					}
 					break;
 				case IniEntityType::Comment:
-				case IniEntityType::Section:
 				case IniEntityType::UnknownValue:
 					{
 						contents += *static_cast<std::string*>(iniContents[i].GetData()) + "\n";
 					}
 					break;
+				case IniEntityType::Section:
+					{
+						contents += Section::GetFormatted(*static_cast<std::string*>(iniContents[i].GetData())) + "\n";
+					}
+					break;
 				case IniEntityType::Key:
 					{
 						Key* key = static_cast<Key*>(iniContents[i].GetData());
-						contents += key->GetName() + "=" + key->GetValue() + "\n";
+						contents += key->GetName() + "=" + key->GetValue() + key->GetComment() + "\n";
 					}
 					break;
 			}
@@ -170,8 +157,9 @@ namespace IniRW
 					{
 						std::string keyName = line.substr(0, equalSignIndex);
 						std::string keyValue = line.substr(equalSignIndex + 1, line.length() - 1);
+						std::string keyComment = Comment::ExtractAndRemoveComment(keyValue);
 
-						Key* key = new Key(currentSection, keyName, keyValue);
+						Key* key = new Key(currentSection, keyName, keyValue, keyComment);
 						iniContents.push_back(IniEntity(IniEntityType::Key, key));
 					}
 				}
@@ -187,7 +175,7 @@ namespace IniRW
 					else if (Section::IsSection(line))
 					{
 						sectionEncountered = true;
-						currentSection = Section::ExtractSectionName(*entityValue);
+						*entityValue = currentSection = Section::ExtractSectionName(*entityValue); // Killing two birds with one stone ;-)
 						type = IniEntityType::Section;
 					}
 					else

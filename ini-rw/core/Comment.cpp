@@ -9,13 +9,11 @@ namespace IniRW
 {
 	bool Comment::IsComment(const std::string& str)
 	{
-		const std::vector<char> COMMENT_PREFIXES = { '#', ';' };
-
 		if (str.length() >= 1)
 		{
-			for (size_t i = 0; i < COMMENT_PREFIXES.size(); i++)
+			for (size_t i = 0; i < INI_COMMENT_PREFIXES.size(); i++)
 			{
-				if (str[0] == COMMENT_PREFIXES[i])
+				if (str[0] == INI_COMMENT_PREFIXES[i])
 				{
 					return true;
 				}
@@ -23,5 +21,30 @@ namespace IniRW
 		}
 
 		return false;
+	}
+
+	std::string Comment::ExtractAndRemoveComment(std::string& value)
+	{
+		std::string comment;
+
+		for (size_t i = 0; i < value.length() - 1; i++)
+		{
+			for (size_t j = 0; j < INI_COMMENT_PREFIXES.size(); j++)
+			{
+				if (value[i] != '\\' && value[i + 1] == INI_COMMENT_PREFIXES[j]) // Found the comment
+				{
+					// Extract the comment
+					comment = value.substr(i, value.length() - 1);
+
+					// Remove the comment from the original value
+					value = value.substr(0, i);
+
+					// Break out of the nested for loop
+					i = j = value.length();
+				}
+			}
+		}
+	
+		return comment;
 	}
 }
