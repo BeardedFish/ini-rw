@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 	if (argc <= 1)
 	{
 		std::cerr << "Invalid amount of parameters." << std::endl;
-		std::cerr << "Usage: " << (argc == 0 ? "[EXECUTABLE_NAME]" : argv[1]) << " [INI_FILE_PATH]" << std::endl;
+		std::cerr << "Usage: " << (argc == 0 ? "[EXECUTABLE_NAME]" : argv[0]) << " [INI_FILE_PATH]" << std::endl;
 
 		return EXIT_FAILURE;
 	}
@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 
 	if (settings.IsLoaded())
 	{
-		std::cout << "Ini File \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
+		std::cout << "Ini File \"" << argv[0] << "\" was loaded succesfully!" << std::endl << std::endl;
 
 		std::string cmd;
 		while (true)
