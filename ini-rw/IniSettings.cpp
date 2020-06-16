@@ -3,8 +3,9 @@
 // Date:          Sunday, June 14, 2020
 
 #include "IniSettings.hpp"
-#include "core/Comment.hpp"
-#include "core/Section.hpp"
+#include "core/algorithms/CommentAlgorithms.hpp"
+#include "core/algorithms/KeyAlgorithms.hpp"
+#include "core/algorithms/SectionAlgorithms.hpp"
 #include <fstream>
 
 namespace IniRW
@@ -19,6 +20,7 @@ namespace IniRW
 
 	IniSettings::~IniSettings()
 	{
+		// Delete every object that the IniSettings allocated to the heap
 		for (size_t i = 0; i < iniContents.size(); i++)
 		{
 			if (iniContents[i].GetType() == IniEntityType::Key)
@@ -56,23 +58,14 @@ namespace IniRW
 		return true;
 	}
 
-	ReadResult<std::string> IniSettings::GetKeyValue(const std::string& sectionName, const std::string& keyName)
+	Key* IniSettings::GetKeyValue(const std::string& sectionName, const std::string& keyName)
 	{
-		ReadResult<std::string> result;
-		Key* key = Key::FindKey(iniContents, sectionName, keyName);
-
-		if (key != nullptr)
-		{
-			result.ConvertedValue = key->GetValue();
-			result.Success = true;
-		}
-
-		return result;
+		return FindKey(iniContents, sectionName, keyName);
 	}
 
 	void IniSettings::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
 	{
-		Key* key = Key::FindKey(iniContents, sectionName, keyName);
+		Key* key = FindKey(iniContents, sectionName, keyName);
 
 		if (key != nullptr)
 		{
@@ -80,18 +73,24 @@ namespace IniRW
 		}
 		else
 		{
-			for (size_t i = 0; i < iniContents.size(); i++)
-			{
-				if (iniContents[i].GetType() == IniEntityType::Section)
-				{
-					if (*static_cast<std::string*>(iniContents[i].GetData()) == sectionName)
-					{
-						std::vector<IniEntity>::iterator insertPos = iniContents.begin() + i;
-						Key* key = new Key(sectionName, keyName, keyValue);
+			Key* key = new Key(sectionName, keyName, keyValue);
+			size_t sectionLoc = GetSectionLocation(iniContents, sectionName);
 
-						iniContents.insert(insertPos, IniEntity(IniEntityType::Key, key));
-					}
+			if (sectionLoc != SECTION_NOT_FOUND)
+			{
+				std::vector<IniEntity>::iterator insertPos = iniContents.begin() + sectionLoc;
+
+				iniContents.insert(insertPos, IniEntity(IniEntityType::Key, key));
+			}
+			else
+			{
+				if (!iniContents.empty())
+				{
+					iniContents.insert(iniContents.end(), IniEntity(IniEntityType::BlankLine));
 				}
+
+				iniContents.insert(iniContents.end(), IniEntity(IniEntityType::Section, new std::string(sectionName)));
+				iniContents.insert(iniContents.end(), IniEntity(IniEntityType::Key, key));
 			}
 		}
 	}
@@ -113,20 +112,25 @@ namespace IniRW
 				case IniEntityType::Comment:
 				case IniEntityType::UnknownValue:
 					{
-						contents += *static_cast<std::string*>(iniContents[i].GetData()) + "\n";
+						contents += *static_cast<std::string*>(iniContents[i].GetData());
 					}
 					break;
 				case IniEntityType::Section:
 					{
-						contents += Section::GetFormatted(*static_cast<std::string*>(iniContents[i].GetData())) + "\n";
+						contents += GetFormatted(*static_cast<std::string*>(iniContents[i].GetData()));
 					}
 					break;
 				case IniEntityType::Key:
 					{
 						Key* key = static_cast<Key*>(iniContents[i].GetData());
-						contents += key->GetName() + "=" + key->GetValue() + key->GetComment() + "\n";
+						contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
 					}
 					break;
+			}
+
+			if (i < iniContents.size() - 1 && iniContents[i].GetType() != IniEntityType::BlankLine)
+			{
+				contents += "\n";
 			}
 		}
 
@@ -149,7 +153,7 @@ namespace IniRW
 				{
 					iniContents.push_back(IniEntity(IniEntityType::BlankLine));
 				}
-				else if (sectionEncountered && Key::IsKey(line))
+				else if (sectionEncountered && IsKey(line))
 				{
 					size_t equalSignIndex = line.find_first_of('=');
 
@@ -157,7 +161,7 @@ namespace IniRW
 					{
 						std::string keyName = line.substr(0, equalSignIndex);
 						std::string keyValue = line.substr(equalSignIndex + 1, line.length() - 1);
-						std::string keyComment = Comment::ExtractAndRemoveComment(keyValue);
+						std::string keyComment = ExtractAndRemoveComment(keyValue);
 
 						Key* key = new Key(currentSection, keyName, keyValue, keyComment);
 						iniContents.push_back(IniEntity(IniEntityType::Key, key));
@@ -168,14 +172,14 @@ namespace IniRW
 					std::string* entityValue = new std::string(line);
 					IniEntityType type;
 
-					if (Comment::IsComment(line))
+					if (IsComment(line))
 					{
 						type = IniEntityType::Comment;
 					}
-					else if (Section::IsSection(line))
+					else if (IsSection(line))
 					{
 						sectionEncountered = true;
-						*entityValue = currentSection = Section::ExtractSectionName(*entityValue); // Killing two birds with one stone ;-)
+						*entityValue = currentSection = ExtractSectionName(*entityValue); // Killing two birds with one stone ;-)
 						type = IniEntityType::Section;
 					}
 					else
@@ -190,4 +194,4 @@ namespace IniRW
 			loaded = true;
 		}
 	}
-}
+} // End IniRW namespace

@@ -23,4 +23,4 @@ namespace IniRW
 
 		IniEntityType GetType();
 	};
-}
+} // End IniRW namespace

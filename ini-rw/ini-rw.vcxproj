@@ -139,19 +139,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="core\Comment.hpp" />
+    <ClInclude Include="core\algorithms\CommentAlgorithms.hpp" />
     <ClInclude Include="core\IniEntity.hpp" />
     <ClInclude Include="core\Key.hpp" />
-    <ClInclude Include="core\Section.hpp" />
+    <ClInclude Include="core\algorithms\KeyAlgorithms.hpp" />
+    <ClInclude Include="core\algorithms\SectionAlgorithms.hpp" />
     <ClInclude Include="enums\IniEntityType.hpp" />
     <ClInclude Include="IniSettings.hpp" />
-    <ClInclude Include="return_types\ReadResult.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\Comment.cpp" />
+    <ClCompile Include="core\algorithms\CommentAlgorithms.cpp" />
     <ClCompile Include="core\IniEntity.cpp" />
     <ClCompile Include="core\Key.cpp" />
-    <ClCompile Include="core\Section.cpp" />
+    <ClCompile Include="core\algorithms\KeyAlgorithms.cpp" />
+    <ClCompile Include="core\algorithms\SectionAlgorithms.cpp" />
     <ClCompile Include="IniSettings.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

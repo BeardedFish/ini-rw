@@ -18,3 +18,15 @@ std::vector<std::string> getStrTokens(const std::string& str)
 
 	return result;
 }
+
+void printResult(IniRW::Key* key, std::string sectionName, std::string keyName)
+{
+	if (key != nullptr)
+	{
+		std::cout << "The extracted value is: " << key->GetValue();
+	}
+	else
+	{
+		std::cout << "Unable to extract the key \"" << keyName << "\" value from the section \"" << sectionName << "\".";
+	}
+}

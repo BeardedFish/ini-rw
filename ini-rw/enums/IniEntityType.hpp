@@ -14,4 +14,4 @@ namespace IniRW
 		Section,
 		UnknownValue
 	};
-}
+} // End IniRW namespace

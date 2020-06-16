@@ -1,4 +1,4 @@
-// File Name:     Comment.hpp
+// File Name:     CommentAlgorithms.hpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Tuesday, June 16, 2020
 
@@ -11,13 +11,7 @@ namespace IniRW
 {
 	const std::vector<char> INI_COMMENT_PREFIXES = { '#', ';' };
 
-	class Comment
-	{
-	public:
-		Comment() = delete;
+	bool IsComment(const std::string& str);
 
-		static bool IsComment(const std::string& str);
-
-		static std::string ExtractAndRemoveComment(std::string& value);
-	};
-}
+	std::string ExtractAndRemoveComment(std::string& value);
+} // End IniRW namespace

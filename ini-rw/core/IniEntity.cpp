@@ -38,4 +38,4 @@ namespace IniRW
 	{
 		return type;
 	}
-}
+} // End IniRW namespace

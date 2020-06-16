@@ -1,13 +1,13 @@
-// File Name:     Comment.cpp
+// File Name:     CommentAlgorithms.cpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Tuesday, June 16, 2020
 
-#include "Comment.hpp"
+#include "CommentAlgorithms.hpp"
 #include <vector>
 
 namespace IniRW
 {
-	bool Comment::IsComment(const std::string& str)
+	bool IsComment(const std::string& str)
 	{
 		if (str.length() >= 1)
 		{
@@ -23,7 +23,7 @@ namespace IniRW
 		return false;
 	}
 
-	std::string Comment::ExtractAndRemoveComment(std::string& value)
+	std::string ExtractAndRemoveComment(std::string& value)
 	{
 		std::string comment;
 
@@ -44,7 +44,7 @@ namespace IniRW
 				}
 			}
 		}
-	
+
 		return comment;
 	}
-}
+} // End IniRW namespace

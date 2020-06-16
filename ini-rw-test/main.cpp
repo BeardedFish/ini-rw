@@ -3,6 +3,7 @@
 // Date:          Saturday, June 13, 2020
 
 #include "cmdfns.hpp"
+#include "ini-rw/core/algorithms/KeyAlgorithms.hpp"
 #include "ini-rw/IniSettings.hpp"
 
 int main(int argc, char* argv[])
@@ -31,41 +32,67 @@ int main(int argc, char* argv[])
 			std::cout << "Enter a command: ";
 			std::getline(std::cin, cmd);
 
-			if (cmd == "quit")
+			std::vector<std::string> cmdTokens = getStrTokens(cmd);
+
+			cmdTokens[0] = IniRW::LowercaseValue(cmdTokens[0]);
+
+			if (cmdTokens[0] == "quit")
 			{
 				break;
 			}
-			else if (cmd == "contents")
+			else if (cmdTokens[0] == "contents")
 			{
+				std::string iniContents = settings.ToString();
+
 				std::cout << "=== INI FILE CONTENTS =====================" << std::endl;
-				std::cout << settings.ToString();
-				std::cout << "===========================================" << std::endl << std::endl;
+				std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents) << std::endl;
+				std::cout << "===========================================";
+			}
+			else if (cmdTokens[0] == "save")
+			{
+				bool success = settings.Save();
+
+				std::cout << (success ? "The INI file was saved succesfully!" : "An error occured while trying to save the INI file.");
 			}
 			else
 			{
-				std::vector<std::string> cmdTokens = getStrTokens(cmd);
-
-				if (cmdTokens[0] == "rs")
+				if (cmdTokens[0] == "rs" || cmdTokens[0] == "iv")
 				{
-					if (cmdTokens.size() == 3)
+					if (cmdTokens.size() >= 3)
 					{
 						if (cmdTokens[0] == "rs")
 						{
-							IniRW::ReadResult<std::string> strResult = settings.GetKeyValue(cmdTokens[1], cmdTokens[2]);
+							IniRW::Key* strResult = settings.GetKeyValue(cmdTokens[1], cmdTokens[2]);
 
 							printResult(strResult, cmdTokens[1], cmdTokens[2]);
+						}
+
+						if (cmdTokens[0] == "iv")
+						{
+							if (cmdTokens.size() == 4)
+							{
+								settings.WriteKeyValue(cmdTokens[1], cmdTokens[2], cmdTokens[3]);
+
+								std::cout << "Value written succesfully!";
+							}
+							else
+							{
+								std::cout << ">> Insufficient amount of parameters for command!";
+							}
 						}
 					}
 					else
 					{
-						std::cout << ">> Insufficient amount of parameters for command!" << std::endl << std::endl;
+						std::cout << ">> Insufficient amount of parameters for command!";
 					}
 				}
 				else
 				{
-					std::cout << ">> Invalid command!" << std::endl << std::endl;
+					std::cout << ">> Invalid command!";
 				}
 			}
+
+			std::cout << std::endl << std::endl;
 		}
 	}
 	else

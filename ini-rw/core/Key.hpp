@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include "IniEntity.hpp"
 #include <string>
 #include <vector>
 
@@ -28,12 +27,5 @@ namespace IniRW
 		std::string GetComment();
 		
 		void SetValue(const std::string& newValue);
-
-		static bool IsKey(const std::string& str);
-		static Key* FindKey(std::vector<IniEntity>& iniContents, const std::string& sectionName, const std::string& keyName);
-
-	private:
-		static std::string getLowercaseStr(const std::string& str);
-
 	};
-}
+} // End IniRW namespace

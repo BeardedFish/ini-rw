@@ -27,13 +27,13 @@
     <ClInclude Include="IniSettings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\Section.hpp">
+    <ClInclude Include="core\algorithms\KeyAlgorithms.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\Comment.hpp">
+    <ClInclude Include="core\algorithms\CommentAlgorithms.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="return_types\ReadResult.hpp">
+    <ClInclude Include="core\algorithms\SectionAlgorithms.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +47,13 @@
     <ClCompile Include="IniSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\Section.cpp">
+    <ClCompile Include="core\algorithms\KeyAlgorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="core\Comment.cpp">
+    <ClCompile Include="core\algorithms\CommentAlgorithms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core\algorithms\SectionAlgorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
