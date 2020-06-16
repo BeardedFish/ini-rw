@@ -1,11 +1,11 @@
 // File Name:     cmdfns.cpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
-// Date:          Saturday, June 6, 2020
+// Date:          Monday, June 15, 2020
 
 #include "cmdfns.hpp"
 #include <sstream>
 
-std::vector<std::string> getStrTokens(std::string& str)
+std::vector<std::string> getStrTokens(const std::string& str)
 {
 	std::istringstream strStream(str);
 	std::vector<std::string> result;

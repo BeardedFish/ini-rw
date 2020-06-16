@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{dc5fcdb6-6527-435b-8170-724c28b123dd}</ProjectGuid>
+    <ProjectGuid>{9e873a61-621b-4377-a809-a5982d7c11e9}</ProjectGuid>
     <RootNamespace>inirw</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -139,13 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Writer.cpp" />
-    <ClCompile Include="Reader.cpp" />
+    <ClInclude Include="core\IniEntity.hpp" />
+    <ClInclude Include="core\IniFileContents.hpp" />
+    <ClInclude Include="core\Key.hpp" />
+    <ClInclude Include="core\Section.hpp" />
+    <ClInclude Include="enums\IniEntityType.hpp" />
+    <ClInclude Include="IniSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Writer.hpp" />
-    <ClInclude Include="ReadResult.hpp" />
-    <ClInclude Include="Reader.hpp" />
+    <ClCompile Include="core\IniEntity.cpp" />
+    <ClCompile Include="core\IniFileContents.cpp" />
+    <ClCompile Include="core\Key.cpp" />
+    <ClCompile Include="core\Section.cpp" />
+    <ClCompile Include="IniSettings.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
