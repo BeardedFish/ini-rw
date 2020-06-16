@@ -8,7 +8,7 @@ namespace IniRW
 {
 	bool Section::IsSection(const std::string& str)
 	{
-		return str.length() >= 2 && str[0] == '[' && str[str.length() - 1] == ']';
+		return str.length() >= 2 && str[0] == SECTION_BEGINNING && str[str.length() - 1] == SECTION_ENDING;
 	}
 
 	std::string Section::ExtractSectionName(const std::string& section)

@@ -10,6 +10,10 @@ namespace IniRW
 {
 	class Section
 	{
+	private:
+		constexpr static char SECTION_BEGINNING = '[';
+		constexpr static char SECTION_ENDING = ']';
+
 	public:
 		Section() = delete;
 		

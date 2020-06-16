@@ -18,9 +18,6 @@
     <ClInclude Include="core\Key.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="core\IniFileContents.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="core\IniEntity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,12 +30,12 @@
     <ClInclude Include="core\Section.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="core\Comment.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\Key.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\IniFileContents.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="core\IniEntity.cpp">
@@ -48,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="core\Section.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core\Comment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

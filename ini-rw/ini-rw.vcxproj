@@ -139,16 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="core\Comment.hpp" />
     <ClInclude Include="core\IniEntity.hpp" />
-    <ClInclude Include="core\IniFileContents.hpp" />
     <ClInclude Include="core\Key.hpp" />
     <ClInclude Include="core\Section.hpp" />
     <ClInclude Include="enums\IniEntityType.hpp" />
     <ClInclude Include="IniSettings.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\Comment.cpp" />
     <ClCompile Include="core\IniEntity.cpp" />
-    <ClCompile Include="core\IniFileContents.cpp" />
     <ClCompile Include="core\Key.cpp" />
     <ClCompile Include="core\Section.cpp" />
     <ClCompile Include="IniSettings.cpp" />

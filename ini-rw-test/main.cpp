@@ -37,7 +37,28 @@ int main(int argc, char* argv[])
 				break;
 			}
 			
-			std::vector<std::string> tokens = getStrTokens(cmd);
+			std::vector<std::string> cmdTokens = getStrTokens(cmd);
+
+			if (cmdTokens[0] == "rs")
+			{
+				if (cmdTokens.size() == 3)
+				{
+					if (cmdTokens[0] == "rs")
+					{
+						std::string strResult = settings.GetKeyValue(cmdTokens[1], cmdTokens[2]);
+
+						std::cout << strResult << std::endl;
+					}
+				}
+				else
+				{
+					std::cout << "Insufficient amount of parameters for command!" << std::endl;
+				}
+			}
+			else
+			{
+				std::cout << "Invalid command!" << std::endl << std::endl;
+			}
 		}
 	}
 	else
