@@ -15,7 +15,7 @@ namespace IniRW
 		this->loaded = false;
 		this->iniFilePath = iniFilePath;
 
-		loadIniFile(iniFilePath);
+		loadIniFile();
 	}
 
 	IniSettings::~IniSettings()
@@ -58,7 +58,7 @@ namespace IniRW
 		return true;
 	}
 
-	Key* IniSettings::GetKeyValue(const std::string& sectionName, const std::string& keyName)
+	Key* IniSettings::GetKey(const std::string& sectionName, const std::string& keyName)
 	{
 		return FindKey(iniContents, sectionName, keyName);
 	}
@@ -137,7 +137,7 @@ namespace IniRW
 		return contents;
 	}
 
-	void IniSettings::loadIniFile(const std::string& iniFilePath)
+	void IniSettings::loadIniFile()
 	{
 		std::ifstream fileStream(iniFilePath);
 
