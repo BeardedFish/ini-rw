@@ -113,6 +113,5 @@ namespace IniRW
 		 * Return:            Nothing.
 		 */
 		void loadIniFile();
-
 	};
 } // End IniRW namespace

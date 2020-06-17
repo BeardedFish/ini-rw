@@ -86,7 +86,7 @@ namespace IniRW
 			{
 				if (!iniContents.empty())
 				{
-					iniContents.insert(iniContents.end(), IniEntity(IniEntityType::BlankLine));
+					iniContents.insert(iniContents.end(), IniEntity()); // Default constructor of IniEntity is for blank lines
 				}
 
 				iniContents.insert(iniContents.end(), IniEntity(IniEntityType::Section, new std::string(sectionName)));
@@ -151,7 +151,7 @@ namespace IniRW
 			{
 				if (line.empty() || line == "\n")
 				{
-					iniContents.push_back(IniEntity(IniEntityType::BlankLine));
+					iniContents.push_back(IniEntity()); // Default constructor of IniEntity is for blank lines
 				}
 				else if (sectionEncountered && IsKey(line))
 				{

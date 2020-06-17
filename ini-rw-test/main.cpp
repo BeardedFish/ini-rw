@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 					{
 						if (cmdTokens[0] == "rs")
 						{
-							IniRW::Key* strResult = settings.GetKeyValue(cmdTokens[1], cmdTokens[2]);
+							IniRW::Key* strResult = settings.GetKey(cmdTokens[1], cmdTokens[2]);
 
 							printResult(strResult, cmdTokens[1], cmdTokens[2]);
 						}

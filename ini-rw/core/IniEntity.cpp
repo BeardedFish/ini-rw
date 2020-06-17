@@ -7,15 +7,9 @@
 
 namespace IniRW
 {
-	IniEntity::IniEntity()
+	IniEntity::IniEntity() : IniEntity(IniEntityType::BlankLine, nullptr)
 	{
-		this->type = IniEntityType::UnknownValue;
-		this->data = nullptr;
-	}
 
-	IniEntity::IniEntity(IniEntityType type) : IniEntity()
-	{
-		this->type = type;
 	}
 
 	IniEntity::IniEntity(IniEntityType type, void* data)
