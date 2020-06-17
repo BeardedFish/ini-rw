@@ -10,10 +10,9 @@
 
 namespace IniRW
 {
-	constexpr static char SECTION_BEGINNING = '[';
-	constexpr static char SECTION_ENDING = ']';
-
-	static const size_t SECTION_NOT_FOUND = -1;
+	constexpr char SECTION_BEGINNING = '[';
+	constexpr char SECTION_ENDING = ']';
+	constexpr size_t SECTION_NOT_FOUND = -1;
 
 	bool IsSection(const std::string& str);
 	size_t GetSectionLocation(std::vector<IniEntity>& iniContents, const std::string& sectionName);
