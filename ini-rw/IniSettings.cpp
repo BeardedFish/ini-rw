@@ -23,16 +23,12 @@ namespace IniRW
 		// Delete every object that the IniSettings allocated to the heap
 		for (size_t i = 0; i < iniContents.size(); i++)
 		{
-			if (iniContents[i].GetType() == IniEntityType::Key)
-			{
-				delete static_cast<Key*>(iniContents[i].GetData());
-			}
-
-			if (iniContents[i].GetType() == IniEntityType::Comment
+			if (iniContents[i].GetType() == IniEntityType::Key
+				|| iniContents[i].GetType() == IniEntityType::Comment
 				|| iniContents[i].GetType() == IniEntityType::Section
 				|| iniContents[i].GetType() == IniEntityType::UnknownValue)
 			{
-				delete static_cast<std::string*>(iniContents[i].GetData());
+				delete iniContents[i].GetData();
 			}
 		}
 
@@ -117,7 +113,7 @@ namespace IniRW
 					break;
 				case IniEntityType::Section:
 					{
-						contents += GetFormatted(*static_cast<std::string*>(iniContents[i].GetData()));
+						contents += GetFormattedSectionName(*static_cast<std::string*>(iniContents[i].GetData()));
 					}
 					break;
 				case IniEntityType::Key:

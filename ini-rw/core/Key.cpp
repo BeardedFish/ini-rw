@@ -6,12 +6,9 @@
 
 namespace IniRW
 {
-	Key::Key(const std::string& section, const std::string& name, const std::string& value)
+	Key::Key(const std::string& section, const std::string& name, const std::string& value) : Key(section, name, value, "")
 	{
-		this->section = section;
-		this->name = name;
-		this->value = value;
-		this->comment = "";
+
 	}
 
 	Key::Key(const std::string& section, const std::string& name, const std::string& value, const std::string& comment)

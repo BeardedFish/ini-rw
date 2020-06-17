@@ -3,7 +3,6 @@
 // Date:          Tuesday, June 16, 2020
 
 #include "CommentAlgorithms.hpp"
-#include <vector>
 
 namespace IniRW
 {
