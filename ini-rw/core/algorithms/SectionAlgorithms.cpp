@@ -30,10 +30,15 @@ namespace IniRW
 
 	std::string ExtractSectionName(const std::string& section)
 	{
+		if (!IsSection(section))
+		{
+			return section;
+		}
+
 		return section.substr(1, section.length() - 2);
 	}
 
-	std::string GetFormatted(const std::string& name)
+	std::string GetFormattedSectionName(const std::string& name)
 	{
 		return SECTION_BEGINNING + name + SECTION_ENDING;
 	}
