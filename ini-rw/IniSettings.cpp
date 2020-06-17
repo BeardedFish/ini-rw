@@ -23,10 +23,7 @@ namespace IniRW
 		// Delete every object that the IniSettings allocated to the heap
 		for (size_t i = 0; i < iniContents.size(); i++)
 		{
-			if (iniContents[i].GetType() == IniEntityType::Key
-				|| iniContents[i].GetType() == IniEntityType::Comment
-				|| iniContents[i].GetType() == IniEntityType::Section
-				|| iniContents[i].GetType() == IniEntityType::UnknownValue)
+			if (iniContents[i].GetData() != nullptr) // Comment, Key, Section, and UnknownValue
 			{
 				delete iniContents[i].GetData();
 			}
