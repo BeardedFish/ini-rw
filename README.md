@@ -3,8 +3,8 @@ This is an INI reader/writer library programmed in C++.
 
 ## Current Features
 * Ability to open INI files for either:
-  * Reading
-  * Writing
+    * Reading
+    * Writing
 * Ability to save changes to INI file if modified
 
 ## How To Use
@@ -32,7 +32,7 @@ else
 ```
 
 ### Reading An INI File
-After opening an INI file succesfully, reading a key value under a section is quite easy. In order to get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name and the second parameter is the key name. If the key is found in the INI file, an `IniRW::Key` pointer is returned. If the key is not found, a null pointer is returned.
+After opening an INI file succesfully, reading a key value under a section is very simple. In order to get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the INI file under that specified section, an `IniRW::Key` pointer is returned. In order to read the value of the key, you must dereference the pointer and use the `GetValue()` function which returns a string. If the key is not found, a null pointer is returned.
 ```cpp
 IniRW::Key* key = settings.GetKey(SECTION_NAME, KEY_NAME);
 
@@ -47,7 +47,10 @@ else
 ```
 
 ### Writing An INI File
-Coming soon!
+After opening an INI file succesfully, in order to write a value to the INI file you must use the `WriteKeyValue()` function. This function takes three string parameters. The first parameter is the section name where the key is stored, the second parameter is the name of the key, and the third parameter is the value of the key.
+```cpp
+settings.WriteKeyValue(SECTION_NAME, KEY_NAME, KEY_VALUE);
+```
 
 ## Screenshots
 Coming soon!
