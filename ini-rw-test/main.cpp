@@ -6,9 +6,21 @@
 #include "ini-rw/core/algorithms/KeyAlgorithms.hpp"
 #include "ini-rw/IniSettings.hpp"
 
+const char* INI_RW_ACSII_ART = " _            _                              \n"
+                               "|_|          |_|                             \n"
+                               " _   ______   _           ______   _       _ \n"
+                               "| | |  __  | | |         |  __  | | |     | |\n"
+                               "| | | |  | | | |  _____  | |  |_| | |  _  | |\n"
+                               "| | | |  | | | | |_____| | |      | | | | | |\n"
+                               "| | | |  | | | |         | |      | |_| |_| |\n"
+                               "|_| |_|  |_| |_|         |_|      |_________|\n\n"
+	                           "=============================================";
+
 int main(int argc, char* argv[])
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
+	std::cout << INI_RW_ACSII_ART << std::endl << std::endl;
 
 	if (argc <= 1)
 	{
@@ -17,8 +29,6 @@ int main(int argc, char* argv[])
 
 		return EXIT_FAILURE;
 	}
-
-	std::cout << "Ini-RW Test" << std::endl << std::endl;
 
 	IniRW::IniSettings settings(argv[1]);
 
