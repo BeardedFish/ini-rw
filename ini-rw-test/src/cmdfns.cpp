@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Monday, June 15, 2020
 
-#include "cmdfns.hpp"
+#include "../includes/cmdfns.hpp"
 #include <sstream>
 
 std::vector<std::string> getStrTokens(const std::string& str)

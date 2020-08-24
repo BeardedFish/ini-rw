@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Saturday, June 13, 2020
 
-#include "cmdfns.hpp"
+#include "../includes/cmdfns.hpp"
 #include "ini-rw/core/algorithms/KeyAlgorithms.hpp"
 #include "ini-rw/IniSettings.hpp"
 
