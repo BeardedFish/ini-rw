@@ -36,7 +36,6 @@ namespace IniRW
 				case IniEntityType::Key:
 				{
 					delete static_cast<IniKey*>(entity);
-
 				}
 				break;
 			}
@@ -46,6 +45,20 @@ namespace IniRW
 	bool IniSetting::IsLoaded() const
 	{
 		return loaded;
+	}
+
+	bool IniSetting::SaveChanges()
+	{
+		std::ofstream fileStream(iniFilePath);
+
+		if (!fileStream)
+		{
+			return false;
+		}
+
+		fileStream << ToString();
+
+		return true;
 	}
 
 	std::string IniSetting::ToString()

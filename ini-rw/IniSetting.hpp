@@ -37,6 +37,12 @@ namespace IniRW
 		bool IsLoaded() const;
 
 		/// <summary>
+		/// Saves the contents of the INI file to the same path that it was loaded from.
+		/// </summary>
+		/// <returns>True if the INI file was saved succesfully, if not, false.</returns>
+		bool SaveChanges();
+
+		/// <summary>
 		/// Gets the file contents of the loaded INI file as a string.
 		/// </summary>
 		/// <returns>A string which contains the contents of the loaded INI file.</returns>
