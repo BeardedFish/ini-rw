@@ -77,7 +77,7 @@ namespace IniRW
 				{
 					if (iniContents[i]->GetType() == IniEntityType::Section)
 					{
-						contents += "[ " + static_cast<IniString*>(iniContents[i])->GetText() + "]";
+						contents += "[" + static_cast<IniString*>(iniContents[i])->GetText() + "]";
 					}
 					else
 					{
