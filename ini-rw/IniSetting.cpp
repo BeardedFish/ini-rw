@@ -18,6 +18,31 @@ namespace IniRW
 		LoadIniFile(iniFilePath);
 	}
 
+	IniSetting::~IniSetting()
+	{
+		// Delete all INI entities allocated to the heap
+		for (IniEntity*& entity : iniContents)
+		{
+			switch (entity->GetType())
+			{
+				case IniEntityType::Comment:
+				case IniEntityType::NewLine:
+				case IniEntityType::Section:
+				case IniEntityType::UnknownValue:
+				{
+					delete static_cast<IniString*>(entity);
+				}
+				break;
+				case IniEntityType::Key:
+				{
+					delete static_cast<IniKey*>(entity);
+
+				}
+				break;
+			}
+		}
+	}
+
 	bool IniSetting::IsLoaded() const
 	{
 		return loaded;

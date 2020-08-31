@@ -23,8 +23,12 @@ namespace IniRW
 		/// Constructor for creating the IniSetting class. By calling this constructor, the INI file passed in the parameters is loaded in the class.
 		/// </summary>
 		/// <param name="iniFilePath">The path to the INI file to be loaded in the IniSetting class.</param>
-		/// <returns>Nothing. To make sure that the INI file was loaded succesfully check the IsLoaded() function.</returns>
 		IniSetting(const std::string& iniFilePath);
+
+		/// <summary>
+		/// Deconstructor for the IniSetting class.
+		/// </summary>
+		~IniSetting();
 
 		/// <summary>
 		/// Returns a boolean that states whether the INI file was loaded succesfully or not.
