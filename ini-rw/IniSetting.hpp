@@ -4,7 +4,10 @@
 
 #pragma once
 
+#include "entities/IniEntity.hpp"
+#include "entities/IniString.hpp"
 #include <string>
+#include <vector>
 
 namespace IniRW
 {
@@ -13,11 +16,13 @@ namespace IniRW
 	private:
 		bool loaded;
 		std::string iniFilePath;
+		std::vector<IniEntity*> iniContents;
 
 	public:
 		IniSetting(const std::string& iniFilePath);
 
 		bool IsLoaded() const;
+		std::string ToString();
 
 	private:
 		void LoadIniFile(const std::string& iniFilePath);

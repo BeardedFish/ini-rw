@@ -23,5 +23,14 @@ int main()
 {
 	std::cout << INI_RW_ACSII_ART << std::endl;
 
-	// IniRW::IniSetting iniSettings("");
+	IniRW::IniSetting iniSettings("..\\example-ini-files\\example1.ini");
+    
+    if (iniSettings.IsLoaded())
+    {
+        std::cout << iniSettings.ToString() << std::endl;
+    }
+    else
+    {
+        std::cout << "Fail";
+    }
 }

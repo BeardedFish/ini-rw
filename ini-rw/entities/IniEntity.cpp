@@ -10,4 +10,9 @@ namespace IniRW
 	{
 		this->type = type;
 	}
+
+	IniEntityType IniEntity::GetType() const
+	{
+		return type;
+	}
 }

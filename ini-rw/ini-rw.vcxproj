@@ -139,11 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="entities\algorithms\IniCommentAlgorithms.cpp" />
+    <ClCompile Include="entities\algorithms\IniKeyAlgorithms.cpp" />
+    <ClCompile Include="entities\algorithms\IniSectionAlgorithms.cpp" />
     <ClCompile Include="entities\IniEntity.cpp" />
+    <ClCompile Include="entities\IniKey.cpp" />
+    <ClCompile Include="entities\IniString.cpp" />
     <ClCompile Include="IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="entities\algorithms\IniCommentAlgorithms.hpp" />
+    <ClInclude Include="entities\algorithms\IniKeyAlgorithms.hpp" />
+    <ClInclude Include="entities\algorithms\IniSectionAlgorithms.hpp" />
     <ClInclude Include="entities\IniEntity.hpp" />
+    <ClInclude Include="entities\IniKey.hpp" />
+    <ClInclude Include="entities\IniString.hpp" />
     <ClInclude Include="enums\IniEntityType.hpp" />
     <ClInclude Include="IniSetting.hpp" />
   </ItemGroup>

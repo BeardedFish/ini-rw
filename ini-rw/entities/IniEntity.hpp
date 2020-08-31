@@ -15,5 +15,7 @@ namespace IniRW
 
 	public:
 		IniEntity(const IniEntityType& type);
+
+		IniEntityType GetType() const;
 	};
 }
