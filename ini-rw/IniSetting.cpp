@@ -61,6 +61,11 @@ namespace IniRW
 		return true;
 	}
 
+	IniKey* IniSetting::GetKey(const std::string& sectionName, const std::string& keyName)
+	{
+		return FindKey(iniContents, sectionName, keyName);
+	}
+
 	std::string IniSetting::ToString()
 	{
 		std::string contents;

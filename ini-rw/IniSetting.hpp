@@ -5,6 +5,7 @@
 #pragma once
 
 #include "entities/IniEntity.hpp"
+#include "entities/IniKey.hpp"
 #include "entities/IniString.hpp"
 #include <string>
 #include <vector>
@@ -41,6 +42,14 @@ namespace IniRW
 		/// </summary>
 		/// <returns>True if the INI file was saved succesfully, if not, false.</returns>
 		bool SaveChanges();
+
+		/// <summary>
+		/// Searches for a key under a specific section in the loaded INI file.
+		/// </summary>
+		/// <param name="sectionName">The name of the section which contains the key.</param>
+		/// <param name="keyName">The name of the key to be searched for in the section.</param>
+		/// <returns>If the key is found in the INI file, then a pointer to that Key is returned. If the key was not found, then a null pointer is returned.</returns>
+		IniKey* GetKey(const std::string& sectionName, const std::string& keyName);
 
 		/// <summary>
 		/// Gets the file contents of the loaded INI file as a string.

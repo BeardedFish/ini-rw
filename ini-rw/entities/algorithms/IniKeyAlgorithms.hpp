@@ -12,6 +12,7 @@ namespace IniRW
 {
 	bool IsValidIniKey(const std::string& str);
 
-	// IniKey* FindKey(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName);
+	IniKey* FindKey(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName);
 
+	std::string LowercaseValue(const std::string& str);
 }
