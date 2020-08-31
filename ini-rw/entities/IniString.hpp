@@ -5,7 +5,7 @@
 #pragma once
 
 #include "IniEntity.hpp"
-#include "../enums/IniEntityType.hpp"
+#include "../enums/IniStringType.hpp"
 #include <string>
 
 namespace IniRW
@@ -16,7 +16,7 @@ namespace IniRW
 		std::string text;
 
 	public:
-		IniString(IniEntityType type, const std::string& text);
+		IniString(IniStringType type, const std::string& text);
 
 		std::string GetText() const;
 

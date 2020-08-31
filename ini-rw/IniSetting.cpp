@@ -77,11 +77,7 @@ namespace IniRW
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				if (currentLine.empty() || currentLine == "\n")
-				{
-					iniContents.push_back(new IniString(IniEntityType::NewLine, "\n"));
-				}
-				else if (sectionEncountered && IsValidIniKey(currentLine))
+				if (sectionEncountered && IsValidIniKey(currentLine))
 				{
 					size_t equalSignIndex = currentLine.find_first_of('=');
 					std::string keyName = currentLine.substr(0, equalSignIndex);
@@ -92,22 +88,27 @@ namespace IniRW
 				}
 				else
 				{
-					IniEntityType type;
+					IniStringType type;
 					std::string entityValue = currentLine;
 
 					if (IsValidIniComment(currentLine))
 					{
-						type = IniEntityType::Comment;
+						type = IniStringType::Comment;
 					}
 					else if (IsValidIniSection(currentLine))
 					{
 						sectionEncountered = true;
 						currentSectionName = entityValue = ExtractSectionName(currentLine);
-						type = IniEntityType::Section;
+						type = IniStringType::Section;
+					}
+					else if (currentLine.empty() || currentLine == "\n")
+					{
+						type = IniStringType::NewLine;
+						entityValue = "\n";
 					}
 					else // Unknown/garbage value
 					{
-						type = IniEntityType::UnknownValue;
+						type = IniStringType::UnknownValue;
 					}
 
 					iniContents.push_back(new IniString(type, entityValue));

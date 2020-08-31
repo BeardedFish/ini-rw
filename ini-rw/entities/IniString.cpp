@@ -6,7 +6,7 @@
 
 namespace IniRW
 {
-	IniString::IniString(IniEntityType type, const const std::string& text) : IniEntity(type)
+	IniString::IniString(IniStringType type, const const std::string& text) : IniEntity(type)
 	{
 		this->text = text;
 	}

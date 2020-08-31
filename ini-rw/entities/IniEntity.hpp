@@ -5,6 +5,7 @@
 #pragma once
 
 #include "../enums/IniEntityType.hpp"
+#include "../enums/IniStringType.hpp"
 
 namespace IniRW
 {
@@ -15,6 +16,8 @@ namespace IniRW
 
 	public:
 		IniEntity(const IniEntityType& type);
+
+		IniEntity(const IniStringType& type);
 
 		IniEntityType GetType() const;
 	};

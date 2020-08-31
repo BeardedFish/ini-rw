@@ -155,6 +155,7 @@
     <ClInclude Include="entities\IniKey.hpp" />
     <ClInclude Include="entities\IniString.hpp" />
     <ClInclude Include="enums\IniEntityType.hpp" />
+    <ClInclude Include="enums\IniStringType.hpp" />
     <ClInclude Include="IniSetting.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
