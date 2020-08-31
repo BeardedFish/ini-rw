@@ -33,4 +33,9 @@ namespace IniRW
 	{
 		return comment;
 	}
+
+	void IniKey::SetValue(const std::string& newValue)
+	{
+		value = newValue;
+	}
 }

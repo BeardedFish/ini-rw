@@ -51,5 +51,11 @@ namespace IniRW
 		/// </summary>
 		/// <returns>A string which contains the comment attached to this key. If the string returned is empty, then that means that this key doesn't have a comment.</returns>
 		std::string GetComment() const;
+
+		/// <summary>
+		/// Sets the value for this key to the one specified in the function parameter.
+		/// </summary>
+		/// <param name="newValue">The new value this key should have.</param>
+		void SetValue(const std::string& newValue);
 	};
 }
