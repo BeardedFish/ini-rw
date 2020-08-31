@@ -29,15 +29,15 @@ namespace IniRW
 				case IniEntityType::NewLine:
 				case IniEntityType::Section:
 				case IniEntityType::UnknownValue:
-				{
-					delete static_cast<IniString*>(entity);
-				}
-				break;
+					{
+						delete static_cast<IniString*>(entity);
+					}
+					break;
 				case IniEntityType::Key:
-				{
-					delete static_cast<IniKey*>(entity);
-				}
-				break;
+					{
+						delete static_cast<IniKey*>(entity);
+					}
+					break;
 			}
 		}
 	}
