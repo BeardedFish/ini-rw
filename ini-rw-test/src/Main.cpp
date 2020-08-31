@@ -2,6 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
+#include "../includes/InputFns.hpp"
 #include "ini-rw/IniSetting.hpp"
 #include <iostream>
 #include <string>
@@ -43,38 +44,69 @@ int main(int argc, char* argv[])
         std::cout << "The INI file \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
 
         bool exitLoopFlag = false;
-        std::string userInput;
+        std::vector<std::string> userInputTokens;
 
         do
         {
             std::cout << ">> ";
-            std::getline(std::cin, userInput);
+            userInputTokens = GetTokenizedInput();
 
-            exitLoopFlag = userInput == "quit";
-
-            // TODO: Make user input case insensitive...
-
-            if (userInput != "quit")
+            if (userInputTokens.size() > 0)
             {
-                if (userInput == "contents")
-                {
-                    std::string iniContents = iniSettings.ToString();
+                exitLoopFlag = userInputTokens[0] == "quit";
 
-                    std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
-                }
-                else if (userInput == "save")
-                {
-                    bool success = iniSettings.SaveChanges();
+                // TODO: Make user input case insensitive...
 
-                    std::cout << (success ? "The INI file was saved succesfully!" : "An error occured while trying to save the INI file.");
-                }
-                else
+                if (userInputTokens[0] != "quit")
                 {
-                    std::cout << "Invalid command!";
-                }
+                    if (userInputTokens[0] == "contents")
+                    {
+                        std::string iniContents = iniSettings.ToString();
 
+                        std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
+                    }
+                    else if (userInputTokens[0] == "rs")
+                    {
+                        if (userInputTokens.size() >= 3)
+                        {
+                            IniRW::IniKey* key = iniSettings.GetKey(userInputTokens[1], userInputTokens[2]);
+
+                            if (key)
+                            {
+                                std::cout << "The extracted value is: \"" << key->GetValue() << "\".";
+                            }
+                            else
+                            {
+                                std::cout << "The key was not found in the INI file!";
+                            }
+                        }
+                        else
+                        {
+                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!";
+                        }
+                    }
+                    else if (userInputTokens[0] == "save")
+                    {
+                        bool success = iniSettings.SaveChanges();
+
+                        std::cout << (success ? "The INI file was saved succesfully!" : "An error occured while trying to save the INI file.");
+                    }
+                    else
+                    {
+                        std::cout << "Invalid command!";
+                    }
+                }
+            }
+            else
+            {
+                std::cout << "Input cannot be empty!";
+            }
+
+            if (userInputTokens[0] != "quit")
+            {
                 std::cout << std::endl << std::endl;
             }
+
         } while (!exitLoopFlag);
     }
     else
