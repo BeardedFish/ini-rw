@@ -61,6 +61,38 @@ namespace IniRW
 		return true;
 	}
 
+	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
+	{
+		IniKey* key = FindKey(iniContents, sectionName, keyName);
+
+		if (key != nullptr)
+		{
+			key->SetValue(keyValue);
+		}
+		else
+		{
+			IniKey* key = new IniKey(sectionName, keyName, keyValue, "");
+			size_t sectionIndex = GetSectionLocation(iniContents, sectionName);
+
+			if (sectionIndex != SECTION_NOT_FOUND)
+			{
+				std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + sectionIndex;
+
+				iniContents.insert(insertPos, key);
+			}
+			else
+			{
+				if (!iniContents.empty())
+				{
+					iniContents.insert(iniContents.end(), new IniString(IniStringType::NewLine, "\n"));
+				}
+
+				iniContents.insert(iniContents.end(), new IniString(IniStringType::Section, sectionName));
+				iniContents.insert(iniContents.end(), key);
+			}
+		}
+	}
+
 	IniKey* IniSetting::GetKey(const std::string& sectionName, const std::string& keyName)
 	{
 		return FindKey(iniContents, sectionName, keyName);

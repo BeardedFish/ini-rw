@@ -4,7 +4,9 @@
 
 #pragma once
 
+#include "../IniEntity.hpp"
 #include <string>
+#include <vector>
 
 namespace IniRW
 {
@@ -13,6 +15,8 @@ namespace IniRW
 	constexpr size_t SECTION_NOT_FOUND = -1;
 
 	bool IsValidIniSection(const std::string& str);
+
+	size_t GetSectionLocation(std::vector<IniEntity*>& iniContents, const std::string& sectionName);
 
 	std::string ExtractSectionName(const std::string& section);
 

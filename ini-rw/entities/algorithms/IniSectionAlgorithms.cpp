@@ -3,6 +3,7 @@
 // Date:          Monday, August 31, 2020
 
 #include "IniSectionAlgorithms.hpp"
+#include "../IniString.hpp"
 
 namespace IniRW
 {
@@ -10,6 +11,23 @@ namespace IniRW
 	{
 		return str.length() >= 2 && str[0] == SECTION_BEGINNING && str[str.length() - 1] == SECTION_ENDING;
 	}
+
+	size_t GetSectionLocation(std::vector<IniEntity*>& iniContents, const std::string& sectionName)
+	{
+		for (size_t i = 0; i < iniContents.size(); i++)
+		{
+			if (iniContents[i]->GetType() == IniEntityType::Section)
+			{
+				if (static_cast<IniString*>(iniContents[i])->GetText() == sectionName)
+				{
+					return i;
+				}
+			}
+		}
+
+		return SECTION_NOT_FOUND;
+	}
+
 
 	std::string ExtractSectionName(const std::string& section)
 	{

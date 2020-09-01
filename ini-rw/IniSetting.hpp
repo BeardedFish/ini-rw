@@ -44,6 +44,14 @@ namespace IniRW
 		bool SaveChanges();
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sectionName"></param>
+		/// <param name="keyName"></param>
+		/// <param name="keyValue"></param>
+		void WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue);
+
+		/// <summary>
 		/// Searches for a key under a specific section in the loaded INI file.
 		/// </summary>
 		/// <param name="sectionName">The name of the section which contains the key.</param>
