@@ -42,6 +42,7 @@ int main(int argc, char* argv[])
     if (iniSettings.IsLoaded())
     {
         std::cout << "The INI file \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
+        std::cout << "Type \"help\" for a list of commands." << std::endl << std::endl;
 
         bool exitLoopFlag = false;
         std::vector<std::string> userInputTokens;
@@ -64,6 +65,13 @@ int main(int argc, char* argv[])
                         std::string iniContents = iniSettings.ToString();
 
                         std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
+                    }
+                    else if (userInputTokens[0] == "help")
+                    {
+                        std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
+                        std::cout << "help - Prints a list of valid commands for this program." << std::endl;
+                        std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
+                        std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
                     else if (userInputTokens[0] == "rs")
                     {
