@@ -63,6 +63,5 @@ namespace IniRW
 		/// </summary>
 		/// <param name="iniFilePath">The path to the INI file.</param>
 		void LoadIniFile(const std::string& iniFilePath);
-
 	};
 }
