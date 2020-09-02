@@ -110,7 +110,7 @@ int main(int argc, char* argv[])
                 std::cout << "Input cannot be empty!";
             }
 
-            if (userInputTokens[0] != "quit")
+            if (exitLoopFlag)
             {
                 std::cout << std::endl << std::endl;
             }
