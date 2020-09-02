@@ -12,7 +12,7 @@ namespace IniRW
 	class IniNewLine : public IniEntity
 	{
 	public:
-		virtual IniEntityType GetType();
+		IniEntityType GetType() override;
 
 		char GetValue() const;
 	};

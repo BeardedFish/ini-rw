@@ -20,7 +20,7 @@ namespace IniRW
 
 		IniComment(const char prefix, const std::string& text);
 
-		virtual IniEntityType GetType();
+		IniEntityType GetType() override;
 
 		std::string GetText() const;
 	};

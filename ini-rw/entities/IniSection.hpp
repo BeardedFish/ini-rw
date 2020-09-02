@@ -17,7 +17,7 @@ namespace IniRW
 	public:
 		IniSection(const std::string& name);
 
-		virtual IniEntityType GetType();
+		IniEntityType GetType() override;
 
 		std::string GetName();
 	};

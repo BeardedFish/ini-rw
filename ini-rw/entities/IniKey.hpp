@@ -33,7 +33,7 @@ namespace IniRW
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		virtual IniEntityType GetType();
+		IniEntityType GetType() override;
 
 		/// <summary>
 		/// Gets the section name that this key belongs too.
