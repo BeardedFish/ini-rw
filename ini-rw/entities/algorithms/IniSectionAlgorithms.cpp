@@ -4,12 +4,13 @@
 
 #include "IniSectionAlgorithms.hpp"
 #include "../IniComment.hpp"
+#include "../IniSection.hpp"
 
 namespace IniRW
 {
 	bool IsValidIniSection(const std::string& str)
 	{
-		return str.length() >= 2 && str[0] == SECTION_BEGINNING && str[str.length() - 1] == SECTION_ENDING;
+		return str.length() >= 2 && str[0] == SECTION_BEGINNING_CHAR && str[str.length() - 1] == SECTION_ENDING_CHAR;
 	}
 
 	size_t GetSectionLocation(std::vector<IniEntity*>& iniContents, const std::string& sectionName)

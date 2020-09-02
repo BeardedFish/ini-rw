@@ -3,6 +3,7 @@
 // Date:          Wednesday, September 2, 2020
 
 #include "IniSection.hpp"
+#include "algorithms/IniSectionAlgorithms.hpp"
 
 namespace IniRW
 {
@@ -13,9 +14,7 @@ namespace IniRW
 
 	std::string IniSection::GetName()
 	{
-		// TODO: Replace [ and ] with constant variables...
-
-		return "[" + name + "]";
+		return SECTION_BEGINNING_CHAR + name + SECTION_ENDING_CHAR;
 	}
 
 	IniEntityType IniSection::GetType()

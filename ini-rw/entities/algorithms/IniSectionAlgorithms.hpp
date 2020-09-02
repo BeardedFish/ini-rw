@@ -10,8 +10,8 @@
 
 namespace IniRW
 {
-	constexpr char SECTION_BEGINNING = '[';
-	constexpr char SECTION_ENDING = ']';
+	constexpr const char SECTION_BEGINNING_CHAR = '[';
+	constexpr const char SECTION_ENDING_CHAR = ']';
 	constexpr size_t SECTION_NOT_FOUND = -1;
 
 	bool IsValidIniSection(const std::string& str);
