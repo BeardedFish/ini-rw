@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
 
                 // TODO: Make user input case insensitive...
 
-                if (userInputTokens[0] != "quit")
+                if (exitLoopFlag)
                 {
                     if (userInputTokens[0] == "contents")
                     {
