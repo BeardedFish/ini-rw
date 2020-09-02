@@ -65,7 +65,7 @@ namespace IniRW
 	{
 		IniKey* key = FindKey(iniContents, sectionName, keyName);
 
-		if (key != nullptr)
+		if (key)
 		{
 			key->SetValue(keyValue);
 		}
