@@ -27,15 +27,6 @@
     <ClInclude Include="entities\IniKey.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="entities\algorithms\IniKeyAlgorithms.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="entities\algorithms\IniSectionAlgorithms.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="entities\algorithms\IniCommentAlgorithms.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="entities\IniSection.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -43,6 +34,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="entities\IniComment.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithms\IniCommentAlgorithms.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithms\IniKeyAlgorithms.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithms\IniSectionAlgorithms.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,15 +53,6 @@
     <ClCompile Include="entities\IniKey.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="entities\algorithms\IniKeyAlgorithms.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="entities\algorithms\IniSectionAlgorithms.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="entities\algorithms\IniCommentAlgorithms.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="entities\IniSection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,6 +60,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="entities\IniComment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithms\IniCommentAlgorithms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithms\IniKeyAlgorithms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithms\IniSectionAlgorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

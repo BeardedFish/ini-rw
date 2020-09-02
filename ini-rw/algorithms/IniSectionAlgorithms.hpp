@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "../IniEntity.hpp"
+#include "../entities/IniEntity.hpp"
 #include <string>
 #include <vector>
 

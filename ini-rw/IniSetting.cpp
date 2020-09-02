@@ -3,9 +3,9 @@
 // Date:          Sunday, August 30, 2020
 
 #include "IniSetting.hpp"
-#include "entities/algorithms/IniCommentAlgorithms.hpp"
-#include "entities/algorithms/IniKeyAlgorithms.hpp"
-#include "entities/algorithms/IniSectionAlgorithms.hpp"
+#include "algorithms/IniCommentAlgorithms.hpp"
+#include "algorithms/IniKeyAlgorithms.hpp"
+#include "algorithms/IniSectionAlgorithms.hpp"
 #include "entities/IniNewLine.hpp"
 #include "entities/IniSection.hpp"
 #include <fstream>

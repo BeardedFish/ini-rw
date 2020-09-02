@@ -139,9 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="entities\algorithms\IniCommentAlgorithms.cpp" />
-    <ClCompile Include="entities\algorithms\IniKeyAlgorithms.cpp" />
-    <ClCompile Include="entities\algorithms\IniSectionAlgorithms.cpp" />
+    <ClCompile Include="algorithms\IniCommentAlgorithms.cpp" />
+    <ClCompile Include="algorithms\IniKeyAlgorithms.cpp" />
+    <ClCompile Include="algorithms\IniSectionAlgorithms.cpp" />
     <ClCompile Include="entities\IniKey.cpp" />
     <ClCompile Include="entities\IniNewLine.cpp" />
     <ClCompile Include="entities\IniSection.cpp" />
@@ -149,9 +149,9 @@
     <ClCompile Include="IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="entities\algorithms\IniCommentAlgorithms.hpp" />
-    <ClInclude Include="entities\algorithms\IniKeyAlgorithms.hpp" />
-    <ClInclude Include="entities\algorithms\IniSectionAlgorithms.hpp" />
+    <ClInclude Include="algorithms\IniCommentAlgorithms.hpp" />
+    <ClInclude Include="algorithms\IniKeyAlgorithms.hpp" />
+    <ClInclude Include="algorithms\IniSectionAlgorithms.hpp" />
     <ClInclude Include="entities\IniEntity.hpp" />
     <ClInclude Include="entities\IniKey.hpp" />
     <ClInclude Include="entities\IniNewLine.hpp" />

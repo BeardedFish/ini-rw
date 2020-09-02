@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include "../IniKey.hpp"
+#include "../entities/IniKey.hpp"
 #include <string>
-#include <VECTOR>
+#include <vector>
 
 namespace IniRW
 {

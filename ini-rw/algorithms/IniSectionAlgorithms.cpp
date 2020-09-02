@@ -3,8 +3,8 @@
 // Date:          Monday, August 31, 2020
 
 #include "IniSectionAlgorithms.hpp"
-#include "../IniComment.hpp"
-#include "../IniSection.hpp"
+#include "../entities/IniComment.hpp"
+#include "../entities/IniSection.hpp"
 
 namespace IniRW
 {
