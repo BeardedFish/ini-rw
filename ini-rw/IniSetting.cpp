@@ -180,12 +180,9 @@ namespace IniRW
 
 					iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, keyComment));
 				}
-				else // It's either an INI comment or a garbage value
+				else if (IsValidIniComment(currentLine))
 				{
-					if (IsValidIniComment(currentLine))
-					{
-						iniContents.push_back(new IniComment(';', currentLine));
-					}
+					iniContents.push_back(new IniComment(';', currentLine));
 				}
 			}
 
