@@ -9,14 +9,14 @@ This is an INI reader/writer library programmed entirely in C++.
 
 ## How To Use
 ### Opening An INI File
-First, you will need to import the `IniSettings.hpp` file:
+First, you will need to import the `IniSetting.hpp` file:
 ```cpp
-#include "ini-rw/IniSettings.hpp"
+#include "ini-rw/IniSetting.hpp"
 ```
 
-Once that is imported, you will then have access to the `IniRW::IniSettings` class. To open an INI file, you must pass a string containing the INI file path to the constructor of the `IniRW::IniSettings` class instance that you want to create.
+Once that is imported, you will then have access to the `IniRW::IniSetting` class. To open an INI file, you must pass a string containing the INI file path to the constructor of the `IniRW::IniSetting` class instance that you want to create.
 ```cpp
-IniRW::IniSettings settings(INI_FILE_PATH);
+IniRW::IniSetting settings(INI_FILE_PATH);
 ```
 
 To make sure the INI file was opened successfully, check to see if the `IsLoaded()` function returns true.
@@ -32,11 +32,11 @@ else
 ```
 
 ### Reading An INI File
-To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the INI file under that specified section, an `IniRW::Key` pointer is returned. To read the value of the key, you must dereference the pointer and use the `GetValue()` function which returns a string. If the key is not found, a null pointer is returned.
+To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the INI file under that specified section, an `IniRW::IniKey` pointer is returned. To read the value of the key, you must dereference the pointer and use the `GetValue()` function which returns a string. If the key is not found, a null pointer is returned.
 ```cpp
-IniRW::Key* key = settings.GetKey(SECTION_NAME, KEY_NAME);
+IniRW::IniKey* key = settings.GetKey(SECTION_NAME, KEY_NAME);
 
-if (key != nullptr)
+if (key)
 {
     std::cout << "The value of the key is: " << key->GetValue() << std::endl;
 }
