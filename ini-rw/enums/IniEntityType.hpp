@@ -12,6 +12,5 @@ namespace IniRW
 		Key,
 		NewLine,
 		Section,
-		UnknownValue
 	};
 }

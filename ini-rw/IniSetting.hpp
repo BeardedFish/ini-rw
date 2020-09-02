@@ -5,8 +5,8 @@
 #pragma once
 
 #include "entities/IniEntity.hpp"
+#include "entities/IniComment.hpp"
 #include "entities/IniKey.hpp"
-#include "entities/IniString.hpp"
 #include <string>
 #include <vector>
 

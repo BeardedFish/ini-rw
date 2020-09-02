@@ -5,6 +5,7 @@
 #pragma once
 
 #include "IniEntity.hpp"
+#include "IniComment.hpp"
 #include <string>
 
 namespace IniRW
@@ -27,6 +28,12 @@ namespace IniRW
 		/// <param name="value">The value of this key.</param>
 		/// <param name="comment">The comment attached to this key.</param>
 		IniKey(const std::string& section, const std::string& name, const std::string& value, const std::string& comment);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		virtual IniEntityType GetType();
 
 		/// <summary>
 		/// Gets the section name that this key belongs too.

@@ -142,9 +142,10 @@
     <ClCompile Include="entities\algorithms\IniCommentAlgorithms.cpp" />
     <ClCompile Include="entities\algorithms\IniKeyAlgorithms.cpp" />
     <ClCompile Include="entities\algorithms\IniSectionAlgorithms.cpp" />
-    <ClCompile Include="entities\IniEntity.cpp" />
     <ClCompile Include="entities\IniKey.cpp" />
-    <ClCompile Include="entities\IniString.cpp" />
+    <ClCompile Include="entities\IniNewLine.cpp" />
+    <ClCompile Include="entities\IniSection.cpp" />
+    <ClCompile Include="entities\IniComment.cpp" />
     <ClCompile Include="IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +154,10 @@
     <ClInclude Include="entities\algorithms\IniSectionAlgorithms.hpp" />
     <ClInclude Include="entities\IniEntity.hpp" />
     <ClInclude Include="entities\IniKey.hpp" />
-    <ClInclude Include="entities\IniString.hpp" />
+    <ClInclude Include="entities\IniNewLine.hpp" />
+    <ClInclude Include="entities\IniSection.hpp" />
+    <ClInclude Include="entities\IniComment.hpp" />
     <ClInclude Include="enums\IniEntityType.hpp" />
-    <ClInclude Include="enums\IniStringType.hpp" />
     <ClInclude Include="IniSetting.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

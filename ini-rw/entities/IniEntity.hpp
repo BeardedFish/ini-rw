@@ -5,20 +5,12 @@
 #pragma once
 
 #include "../enums/IniEntityType.hpp"
-#include "../enums/IniStringType.hpp"
 
 namespace IniRW
 {
 	class IniEntity
 	{
-	private:
-		IniEntityType type;
-
 	public:
-		IniEntity(const IniEntityType& type);
-
-		IniEntity(const IniStringType& type);
-
-		IniEntityType GetType() const;
+		virtual IniEntityType GetType() = 0;
 	};
 }

@@ -6,12 +6,17 @@
 
 namespace IniRW
 {
-	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value, const std::string& comment) : IniEntity(IniEntityType::Key)
+	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value, const std::string& comment) : IniEntity()
 	{
 		this->section = section;
 		this->name = name;
 		this->value = value;
 		this->comment = comment;
+	}
+
+	IniEntityType IniKey::GetType()
+	{
+		return IniEntityType::Key;
 	}
 
 	std::string IniKey::GetSection() const

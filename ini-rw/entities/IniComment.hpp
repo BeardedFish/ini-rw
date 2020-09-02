@@ -5,20 +5,23 @@
 #pragma once
 
 #include "IniEntity.hpp"
-#include "../enums/IniStringType.hpp"
 #include <string>
 
 namespace IniRW
 {
-	class IniString : public IniEntity
+	class IniComment : public IniEntity
 	{
 	private:
+		char prefix;
 		std::string text;
 
 	public:
-		IniString(IniStringType type, const std::string& text);
+		IniComment();
+
+		IniComment(const char prefix, const std::string& text);
+
+		virtual IniEntityType GetType();
 
 		std::string GetText() const;
-
 	};
 }

@@ -3,9 +3,11 @@
 // Date:          Sunday, August 30, 2020
 
 #include "IniSetting.hpp"
-#include "entities//algorithms/IniCommentAlgorithms.hpp"
+#include "entities/algorithms/IniCommentAlgorithms.hpp"
 #include "entities/algorithms/IniKeyAlgorithms.hpp"
 #include "entities/algorithms/IniSectionAlgorithms.hpp"
+#include "entities/IniNewLine.hpp"
+#include "entities/IniSection.hpp"
 #include <fstream>
 
 namespace IniRW
@@ -26,16 +28,23 @@ namespace IniRW
 			switch (entity->GetType())
 			{
 				case IniEntityType::Comment:
-				case IniEntityType::NewLine:
-				case IniEntityType::Section:
-				case IniEntityType::UnknownValue:
 					{
-						delete static_cast<IniString*>(entity);
+						delete static_cast<IniComment*>(entity);
 					}
 					break;
 				case IniEntityType::Key:
 					{
 						delete static_cast<IniKey*>(entity);
+					}
+					break;
+				case IniEntityType::NewLine:
+					{
+						delete static_cast<IniNewLine*>(entity);
+					}
+					break;
+				case IniEntityType::Section:
+					{
+						delete static_cast<IniSection*>(entity);
 					}
 					break;
 			}
@@ -84,10 +93,10 @@ namespace IniRW
 			{
 				if (!iniContents.empty())
 				{
-					iniContents.insert(iniContents.end(), new IniString(IniStringType::NewLine, "\n"));
+					iniContents.insert(iniContents.end(), new IniNewLine());
 				}
 
-				iniContents.insert(iniContents.end(), new IniString(IniStringType::Section, sectionName));
+				iniContents.insert(iniContents.end(), new IniSection(sectionName));
 				iniContents.insert(iniContents.end(), key);
 			}
 		}
@@ -106,28 +115,27 @@ namespace IniRW
 		{
 			switch (iniContents[i]->GetType())
 			{
-				default:
 				case IniEntityType::Comment:
+				{
+					contents += static_cast<IniComment*>(iniContents[i])->GetText();
+				}
+				break;
 				case IniEntityType::NewLine:
+					{
+						contents += static_cast<IniNewLine*>(iniContents[i])->GetValue();
+					}
+					break;
 				case IniEntityType::Section:
-				case IniEntityType::UnknownValue:
-				{
-					if (iniContents[i]->GetType() == IniEntityType::Section)
 					{
-						contents += "[" + static_cast<IniString*>(iniContents[i])->GetText() + "]";
+						contents += static_cast<IniSection*>(iniContents[i])->GetName();
 					}
-					else
-					{
-						contents += static_cast<IniString*>(iniContents[i])->GetText();
-					}
-				}
-				break;
+					break;
 				case IniEntityType::Key:
-				{
-					IniKey* key = static_cast<IniKey*>(iniContents[i]);
-					contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
-				}
-				break;
+					{
+						IniKey* key = static_cast<IniKey*>(iniContents[i]);
+						contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
+					}
+					break;
 			}
 
 			if (i < iniContents.size() - 1 && iniContents[i]->GetType() != IniEntityType::NewLine)
@@ -152,7 +160,18 @@ namespace IniRW
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				if (sectionEncountered && IsValidIniKey(currentLine))
+				if (currentLine.empty() || currentLine == "\n")
+				{
+					iniContents.push_back(new IniNewLine());
+				}
+				else if (IsValidIniSection(currentLine))
+				{
+					sectionEncountered = true;
+					currentSectionName = ExtractSectionName(currentLine);
+
+					iniContents.push_back(new IniSection(currentSectionName));
+				}
+				else if (sectionEncountered && IsValidIniKey(currentLine))
 				{
 					size_t equalSignIndex = currentLine.find_first_of('=');
 					std::string keyName = currentLine.substr(0, equalSignIndex);
@@ -161,32 +180,12 @@ namespace IniRW
 
 					iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, keyComment));
 				}
-				else
+				else // It's either an INI comment or a garbage value
 				{
-					IniStringType type;
-					std::string entityValue = currentLine;
-
 					if (IsValidIniComment(currentLine))
 					{
-						type = IniStringType::Comment;
+						iniContents.push_back(new IniComment(';', currentLine));
 					}
-					else if (IsValidIniSection(currentLine))
-					{
-						sectionEncountered = true;
-						currentSectionName = entityValue = ExtractSectionName(currentLine);
-						type = IniStringType::Section;
-					}
-					else if (currentLine.empty() || currentLine == "\n")
-					{
-						type = IniStringType::NewLine;
-						entityValue = "\n";
-					}
-					else // Unknown/garbage value
-					{
-						type = IniStringType::UnknownValue;
-					}
-
-					iniContents.push_back(new IniString(type, entityValue));
 				}
 			}
 

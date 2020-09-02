@@ -3,7 +3,7 @@
 // Date:          Monday, August 31, 2020
 
 #include "IniSectionAlgorithms.hpp"
-#include "../IniString.hpp"
+#include "../IniComment.hpp"
 
 namespace IniRW
 {
@@ -18,7 +18,7 @@ namespace IniRW
 		{
 			if (iniContents[i]->GetType() == IniEntityType::Section)
 			{
-				if (static_cast<IniString*>(iniContents[i])->GetText() == sectionName)
+				if (static_cast<IniComment*>(iniContents[i])->GetText() == sectionName)
 				{
 					return i;
 				}
