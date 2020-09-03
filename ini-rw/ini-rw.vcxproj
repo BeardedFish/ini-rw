@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9e873a61-621b-4377-a809-a5982d7c11e9}</ProjectGuid>
+    <ProjectGuid>{7a60d843-9cac-4d30-9678-681cdc3fbd9c}</ProjectGuid>
     <RootNamespace>inirw</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -139,21 +139,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="core\algorithms\CommentAlgorithms.hpp" />
-    <ClInclude Include="core\IniEntity.hpp" />
-    <ClInclude Include="core\Key.hpp" />
-    <ClInclude Include="core\algorithms\KeyAlgorithms.hpp" />
-    <ClInclude Include="core\algorithms\SectionAlgorithms.hpp" />
-    <ClInclude Include="enums\IniEntityType.hpp" />
-    <ClInclude Include="IniSettings.hpp" />
+    <ClCompile Include="src\algorithms\Parse.cpp" />
+    <ClCompile Include="src\algorithms\Search.cpp" />
+    <ClCompile Include="src\algorithms\Validation.cpp" />
+    <ClCompile Include="src\entities\IniKey.cpp" />
+    <ClCompile Include="src\entities\IniNewLine.cpp" />
+    <ClCompile Include="src\entities\IniSection.cpp" />
+    <ClCompile Include="src\entities\IniComment.cpp" />
+    <ClCompile Include="src\IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\algorithms\CommentAlgorithms.cpp" />
-    <ClCompile Include="core\IniEntity.cpp" />
-    <ClCompile Include="core\Key.cpp" />
-    <ClCompile Include="core\algorithms\KeyAlgorithms.cpp" />
-    <ClCompile Include="core\algorithms\SectionAlgorithms.cpp" />
-    <ClCompile Include="IniSettings.cpp" />
+    <ClInclude Include="inc\algorithms\Parse.hpp" />
+    <ClInclude Include="inc\algorithms\Search.hpp" />
+    <ClInclude Include="inc\algorithms\Validation.hpp" />
+    <ClInclude Include="inc\entities\IniEntity.hpp" />
+    <ClInclude Include="inc\entities\IniKey.hpp" />
+    <ClInclude Include="inc\entities\IniNewLine.hpp" />
+    <ClInclude Include="inc\entities\IniSection.hpp" />
+    <ClInclude Include="inc\entities\IniComment.hpp" />
+    <ClInclude Include="inc\enums\IniCommentPrefix.hpp" />
+    <ClInclude Include="inc\enums\IniEntityType.hpp" />
+    <ClInclude Include="inc\IniSetting.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

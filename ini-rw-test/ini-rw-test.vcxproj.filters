@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\cmdfns.cpp">
+    <ClCompile Include="src\InputFns.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="includes\cmdfns.hpp">
+    <ClInclude Include="inc\InputFns.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
