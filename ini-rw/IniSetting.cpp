@@ -116,10 +116,10 @@ namespace IniRW
 			switch (iniContents[i]->GetType())
 			{
 				case IniEntityType::Comment:
-				{
-					contents += static_cast<IniComment*>(iniContents[i])->GetText();
-				}
-				break;
+					{
+						contents += static_cast<IniComment*>(iniContents[i])->GetText();
+					}
+					break;
 				case IniEntityType::NewLine:
 					{
 						contents += static_cast<IniNewLine*>(iniContents[i])->GetValue();
