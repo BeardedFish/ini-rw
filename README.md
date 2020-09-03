@@ -11,7 +11,7 @@ This is an INI reader/writer library programmed entirely in C++.
 ### Opening An INI File
 First, you will need to import the `IniSetting.hpp` file:
 ```cpp
-#include "ini-rw/IniSetting.hpp"
+#include "IniSetting.hpp"
 ```
 
 Once that is imported, you will then have access to the `IniRW::IniSetting` class. To open an INI file, you must pass a string containing the INI file path to the constructor of the `IniRW::IniSetting` class instance that you want to create.
