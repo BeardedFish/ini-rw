@@ -149,11 +149,11 @@ namespace IniRW
 
 	void IniSetting::LoadIniFile(const std::string& iniFilePath)
 	{
-		const std::vector<char> INI_COMMENT_PREFIXES = { '#', ';' };
 		std::ifstream fileStream(iniFilePath);
 
 		if (fileStream)
 		{
+			const std::vector<char> INI_COMMENT_PREFIXES = { '#', ';' };
 			bool sectionEncountered = false;
 			std::string currentSectionName;
 			std::string currentLine;
