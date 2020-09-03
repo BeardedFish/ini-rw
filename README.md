@@ -1,5 +1,5 @@
 # ⚙️ Ini-Rw
-This is an INI reader/writer library programmed entirely in C++.
+This is an INI reader/writer library programmed entirely in C++. This project is currently work in progress.
 
 ## Current Features
 * Ability to open INI files for either:
