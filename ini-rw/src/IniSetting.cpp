@@ -186,7 +186,7 @@ namespace IniRW
 				}
 				else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
 				{
-					char prefix = currentLine[0];
+					IniCommentPrefix prefix = currentLine[0] == '#' ? IniCommentPrefix::Pound : IniCommentPrefix::Semicolon;
 					std::string text = currentLine.substr(1, currentLine.length() - 1); // TODO: Probably trim white space...
 
 					iniContents.push_back(new IniComment(prefix, text));

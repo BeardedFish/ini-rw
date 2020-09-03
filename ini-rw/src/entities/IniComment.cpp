@@ -6,12 +6,12 @@
 
 namespace IniRW
 {
-	IniComment::IniComment() : IniComment('\0', "")
+	IniComment::IniComment() : IniComment(IniCommentPrefix::Pound, "")
 	{
 
 	}
 
-	IniComment::IniComment(const char prefix, const std::string& text) : IniEntity()
+	IniComment::IniComment(IniCommentPrefix prefix, const std::string& text) : IniEntity()
 	{
 		this->prefix = prefix;
 		this->text = text;
@@ -24,7 +24,7 @@ namespace IniRW
 
 	char IniComment::GetPrefix() const
 	{
-		return prefix;
+		return prefix == IniCommentPrefix::Pound ? '#' : ';';
 	}
 
 	std::string IniComment::GetText() const

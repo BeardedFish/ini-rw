@@ -157,6 +157,7 @@
     <ClInclude Include="inc\entities\IniNewLine.hpp" />
     <ClInclude Include="inc\entities\IniSection.hpp" />
     <ClInclude Include="inc\entities\IniComment.hpp" />
+    <ClInclude Include="inc\enums\IniCommentPrefix.hpp" />
     <ClInclude Include="inc\enums\IniEntityType.hpp" />
     <ClInclude Include="inc\IniSetting.hpp" />
   </ItemGroup>

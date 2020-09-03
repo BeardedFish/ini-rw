@@ -5,6 +5,7 @@
 #pragma once
 
 #include "IniEntity.hpp"
+#include "../enums/IniCommentPrefix.hpp"
 #include <string>
 
 namespace IniRW
@@ -12,7 +13,7 @@ namespace IniRW
 	class IniComment : public IniEntity
 	{
 	private:
-		char prefix;
+		IniCommentPrefix prefix;
 		std::string text;
 
 	public:
@@ -26,7 +27,7 @@ namespace IniRW
 		/// </summary>
 		/// <param name="prefix">The prefix of the INI comment.</param>
 		/// <param name="text">The text of the INI comment.</param>
-		IniComment(const char prefix, const std::string& text);
+		IniComment(IniCommentPrefix prefix, const std::string& text);
 
 		/// <summary>
 		/// Gets the INI entity type of this class.
