@@ -117,7 +117,10 @@ namespace IniRW
 			{
 				case IniEntityType::Comment:
 					{
-						contents += static_cast<IniComment*>(iniContents[i])->GetText();
+						const IniComment* INI_COMMENT = static_cast<IniComment*>(iniContents[i]);
+
+						contents += INI_COMMENT->GetPrefix();
+						contents += INI_COMMENT->GetText(); // NOTE: Reason I'm doing this on another line is because a char + a string don't append to each other...
 					}
 					break;
 				case IniEntityType::NewLine:
@@ -183,7 +186,10 @@ namespace IniRW
 				}
 				else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
 				{
-					iniContents.push_back(new IniComment(';', currentLine));
+					char prefix = currentLine[0];
+					std::string text = currentLine.substr(1, currentLine.length() - 1); // TODO: Probably trim white space...
+
+					iniContents.push_back(new IniComment(prefix, text));
 				}
 			}
 
