@@ -80,8 +80,8 @@ namespace IniRW
 		}
 		else
 		{
-			IniKey* key = new IniKey(sectionName, keyName, keyValue, "");
 			size_t sectionIndex = GetSectionLocation(iniContents, sectionName);
+			key = new IniKey(sectionName, keyName, keyValue, "");
 
 			if (sectionIndex != SECTION_NOT_FOUND)
 			{
