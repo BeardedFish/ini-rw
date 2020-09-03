@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Monday, August 31, 2020
 
-#include "IniKey.hpp"
+#include "../../inc/entities/IniKey.hpp"
 
 namespace IniRW
 {
