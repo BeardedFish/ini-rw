@@ -3,6 +3,7 @@
 // Date:          Wednesday, September 2, 2020
 
 #include "../../inc/algorithms/Parse.hpp"
+#include "../../inc/algorithms/Validation.hpp"
 
 namespace IniRW
 {
@@ -33,6 +34,11 @@ namespace IniRW
 
 	std::string ExtractSectionName(const std::string& section)
 	{
+		if (!IsValidIniSection(section))
+		{
+			return section;
+		}
+
 		return section.substr(1, section.length() - 2);
 	}
 }
