@@ -22,3 +22,15 @@ std::vector<std::string> GetTokenizedInput()
 
 	return tokens;
 }
+
+std::string VectorToString(std::vector<std::string> vector, size_t startIndex)
+{
+	std::string result = "";
+
+	for (size_t i = startIndex; i < vector.size(); i++)
+	{
+		result += vector[i] + (i == vector.size() - 1 ? "" : " ");
+	}
+
+	return result;
+}

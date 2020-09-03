@@ -70,10 +70,26 @@ int main(int argc, char* argv[])
                     {
                         std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
                         std::cout << "help - Prints a list of valid commands for this program." << std::endl;
+                        std::cout << "iv - Inserts a value to the INI file." << std::endl;
                         std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
                         std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
-                    else if (userInputTokens[0] == "rs")
+                    else if (userInputTokens[0] == "iv") // Insert value into INI file
+                    {
+                        if (userInputTokens.size() >= 4)
+                        {
+                            std::string keyValue = VectorToString(userInputTokens, 3);
+                            iniSettings.WriteKeyValue(userInputTokens[1], userInputTokens[2], keyValue);
+
+                            std::cout << "Value written succesfully!";
+                        }
+                        else
+                        {
+                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!";
+                            std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME] [KEY_VALUE]";
+                        }
+                    }
+                    else if ( userInputTokens[0] == "rs") // Read string from INI file
                     {
                         if (userInputTokens.size() >= 3)
                         {
@@ -91,6 +107,7 @@ int main(int argc, char* argv[])
                         else
                         {
                             std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!";
+                            std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME]";
                         }
                     }
                     else if (userInputTokens[0] == "save")
