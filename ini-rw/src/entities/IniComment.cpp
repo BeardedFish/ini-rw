@@ -6,7 +6,7 @@
 
 namespace IniRW
 {
-	IniComment::IniComment() : IniComment(IniCommentPrefix::Pound, "")
+	IniComment::IniComment() : IniComment(IniCommentPrefix::Semicolon, "")
 	{
 
 	}

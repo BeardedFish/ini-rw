@@ -18,7 +18,7 @@ namespace IniRW
 
 	public:
 		/// <summary>
-		/// Constructor for creating an INI comment. This constructor sets the prefix to "\0" and the text to an empty value.
+		/// Constructor for creating an INI comment. This constructor sets the prefix to IniCommentPrefix::Semicolon and the text to an empty value.
 		/// </summary>
 		IniComment();
 
