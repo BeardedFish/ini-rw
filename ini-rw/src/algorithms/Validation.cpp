@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Wednesday, September 2, 2020
 
-#include "Validation.hpp"
+#include "../../inc/algorithms/Validation.hpp"
 
 namespace IniRW
 {

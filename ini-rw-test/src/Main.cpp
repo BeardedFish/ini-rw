@@ -3,7 +3,7 @@
 // Date:          Sunday, August 30, 2020
 
 #include "../includes/InputFns.hpp"
-#include "ini-rw/IniSetting.hpp"
+#include "ini-rw/inc/IniSetting.hpp"
 #include <iostream>
 #include <string>
 

@@ -1,8 +1,8 @@
-// File Name:     IniEntity.cpp
+// File Name:     IniComment.cpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
-#include "IniComment.hpp"
+#include "../../inc/entities/IniComment.hpp"
 
 namespace IniRW
 {

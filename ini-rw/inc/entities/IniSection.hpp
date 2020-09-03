@@ -17,8 +17,16 @@ namespace IniRW
 	public:
 		IniSection(const std::string& name);
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns>The return value will always be IniEntityType::Section.</returns>
 		IniEntityType GetType() override;
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		std::string GetName();
 	};
 }

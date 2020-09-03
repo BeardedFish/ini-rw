@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Wednesday, September 2, 2020
 
-#include "Parse.hpp"
+#include "../../inc/algorithms/Parse.hpp"
 
 namespace IniRW
 {

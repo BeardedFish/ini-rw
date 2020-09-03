@@ -2,12 +2,12 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
-#include "IniSetting.hpp"
-#include "algorithms/Parse.hpp"
-#include "algorithms/Search.hpp"
-#include "algorithms/Validation.hpp"
-#include "entities/IniNewLine.hpp"
-#include "entities/IniSection.hpp"
+#include "../inc/IniSetting.hpp"
+#include "../inc/algorithms/Parse.hpp"
+#include "../inc/algorithms/Search.hpp"
+#include "../inc/algorithms/Validation.hpp"
+#include "../inc/entities/IniNewLine.hpp"
+#include "../inc/entities/IniSection.hpp"
 #include <fstream>
 
 namespace IniRW

@@ -139,26 +139,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algorithms\Parse.cpp" />
-    <ClCompile Include="algorithms\Search.cpp" />
-    <ClCompile Include="algorithms\Validation.cpp" />
-    <ClCompile Include="entities\IniKey.cpp" />
-    <ClCompile Include="entities\IniNewLine.cpp" />
-    <ClCompile Include="entities\IniSection.cpp" />
-    <ClCompile Include="entities\IniComment.cpp" />
-    <ClCompile Include="IniSetting.cpp" />
+    <ClCompile Include="src\algorithms\Parse.cpp" />
+    <ClCompile Include="src\algorithms\Search.cpp" />
+    <ClCompile Include="src\algorithms\Validation.cpp" />
+    <ClCompile Include="src\entities\IniKey.cpp" />
+    <ClCompile Include="src\entities\IniNewLine.cpp" />
+    <ClCompile Include="src\entities\IniSection.cpp" />
+    <ClCompile Include="src\entities\IniComment.cpp" />
+    <ClCompile Include="src\IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithms\Parse.hpp" />
-    <ClInclude Include="algorithms\Search.hpp" />
-    <ClInclude Include="algorithms\Validation.hpp" />
-    <ClInclude Include="entities\IniEntity.hpp" />
-    <ClInclude Include="entities\IniKey.hpp" />
-    <ClInclude Include="entities\IniNewLine.hpp" />
-    <ClInclude Include="entities\IniSection.hpp" />
-    <ClInclude Include="entities\IniComment.hpp" />
-    <ClInclude Include="enums\IniEntityType.hpp" />
-    <ClInclude Include="IniSetting.hpp" />
+    <ClInclude Include="inc\algorithms\Parse.hpp" />
+    <ClInclude Include="inc\algorithms\Search.hpp" />
+    <ClInclude Include="inc\algorithms\Validation.hpp" />
+    <ClInclude Include="inc\entities\IniEntity.hpp" />
+    <ClInclude Include="inc\entities\IniKey.hpp" />
+    <ClInclude Include="inc\entities\IniNewLine.hpp" />
+    <ClInclude Include="inc\entities\IniSection.hpp" />
+    <ClInclude Include="inc\entities\IniComment.hpp" />
+    <ClInclude Include="inc\enums\IniEntityType.hpp" />
+    <ClInclude Include="inc\IniSetting.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

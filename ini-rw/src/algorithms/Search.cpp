@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Wednesday, September 2, 2020
 
-#include "Search.hpp"
+#include "../../inc/algorithms/Search.hpp"
 
 namespace IniRW
 {

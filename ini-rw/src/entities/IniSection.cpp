@@ -2,8 +2,8 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Wednesday, September 2, 2020
 
-#include "IniSection.hpp"
-#include "../algorithms/Validation.hpp"
+#include "../../inc/entities/IniSection.hpp"
+#include "../../inc/algorithms/Validation.hpp"
 
 namespace IniRW
 {
