@@ -27,7 +27,7 @@ namespace IniRW
 		IniSetting(const std::string& iniFilePath);
 
 		/// <summary>
-		/// Deconstructor for the IniSetting class.
+		/// Deconstructor for the IniSetting class. When this deconstructor is called, all IniEntity* objects stored in this class are deallocated from the heap.
 		/// </summary>
 		~IniSetting();
 
