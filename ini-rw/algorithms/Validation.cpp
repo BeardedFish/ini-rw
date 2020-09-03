@@ -10,9 +10,9 @@ namespace IniRW
 	{
 		if (str.length() >= 1)
 		{
-			for (size_t i = 0; i < commentPrefixes.size(); i++)
+			for (const char& prefix : commentPrefixes)
 			{
-				if (str[0] == commentPrefixes[i])
+				if (str[0] == prefix)
 				{
 					return true;
 				}
