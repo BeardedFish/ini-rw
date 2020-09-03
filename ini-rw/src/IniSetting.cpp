@@ -22,6 +22,30 @@ namespace IniRW
 
 	IniSetting::~IniSetting()
 	{
+		Clear();
+	}
+
+	bool IniSetting::IsLoaded() const
+	{
+		return loaded;
+	}
+
+	bool IniSetting::SaveChanges()
+	{
+		std::ofstream fileStream(iniFilePath);
+
+		if (!fileStream)
+		{
+			return false;
+		}
+
+		fileStream << ToString();
+
+		return true;
+	}
+
+	void IniSetting::Clear()
+	{
 		// Delete all INI entities allocated to the heap
 		for (IniEntity*& entity : iniContents)
 		{
@@ -49,25 +73,8 @@ namespace IniRW
 					break;
 			}
 		}
-	}
 
-	bool IniSetting::IsLoaded() const
-	{
-		return loaded;
-	}
-
-	bool IniSetting::SaveChanges()
-	{
-		std::ofstream fileStream(iniFilePath);
-
-		if (!fileStream)
-		{
-			return false;
-		}
-
-		fileStream << ToString();
-
-		return true;
+		iniContents.clear();
 	}
 
 	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)

@@ -44,6 +44,11 @@ namespace IniRW
 		bool SaveChanges();
 
 		/// <summary>
+		/// Clears all the INI contents for this IniSetting instance.
+		/// </summary>
+		void Clear();
+
+		/// <summary>
 		/// Updates a key under a specific section in the loaded INI file. If the key exists under the specified section then its value is updated. If the key does not exist under that
 		/// section then the key is inserted under that section.
 		/// </summary>

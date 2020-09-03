@@ -60,7 +60,13 @@ int main(int argc, char* argv[])
 
                 if (!exitLoopFlag)
                 {
-                    if (userInputTokens[0] == "contents")
+                    if (userInputTokens[0] == "clrini")
+                    {
+                        iniSettings.Clear();
+
+                        std::cout << "The INI file contents were cleared succesfully!";
+                    }
+                    else if (userInputTokens[0] == "contents")
                     {
                         std::string iniContents = iniSettings.ToString();
 
@@ -68,6 +74,7 @@ int main(int argc, char* argv[])
                     }
                     else if (userInputTokens[0] == "help")
                     {
+                        std::cout << "clrini - Clears the loaded INI file contents." << std::endl;
                         std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
                         std::cout << "help - Prints a list of valid commands for this program." << std::endl;
                         std::cout << "iv - Inserts a value to the INI file." << std::endl;
