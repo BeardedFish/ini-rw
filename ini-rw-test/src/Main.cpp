@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
                             std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME] [KEY_VALUE]";
                         }
                     }
-                    else if ( userInputTokens[0] == "rs") // Read string from INI file
+                    else if (userInputTokens[0] == "rs") // Read string from INI file
                     {
                         if (userInputTokens.size() >= 3)
                         {
