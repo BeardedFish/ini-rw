@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
-#include "../includes/InputFns.hpp"
+#include "../inc/InputFns.hpp"
 #include "ini-rw/inc/IniSetting.hpp"
 #include <iostream>
 #include <string>

@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Monday, August 31, 2020
 
-#include "../includes/InputFns.hpp"
+#include "../inc/InputFns.hpp"
 #include <iostream>
 #include <sstream>
 

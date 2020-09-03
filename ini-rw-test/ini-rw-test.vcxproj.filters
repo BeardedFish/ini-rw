@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="includes\InputFns.hpp">
+    <ClInclude Include="inc\InputFns.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
