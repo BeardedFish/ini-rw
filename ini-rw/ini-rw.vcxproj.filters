@@ -36,13 +36,13 @@
     <ClInclude Include="entities\IniComment.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="algorithms\IniCommentAlgorithms.hpp">
+    <ClInclude Include="algorithms\Search.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="algorithms\IniKeyAlgorithms.hpp">
+    <ClInclude Include="algorithms\Validation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="algorithms\IniSectionAlgorithms.hpp">
+    <ClInclude Include="algorithms\Parse.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,13 +62,13 @@
     <ClCompile Include="entities\IniComment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="algorithms\IniCommentAlgorithms.cpp">
+    <ClCompile Include="algorithms\Validation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="algorithms\IniKeyAlgorithms.cpp">
+    <ClCompile Include="algorithms\Search.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="algorithms\IniSectionAlgorithms.cpp">
+    <ClCompile Include="algorithms\Parse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

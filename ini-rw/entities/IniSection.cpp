@@ -3,7 +3,7 @@
 // Date:          Wednesday, September 2, 2020
 
 #include "IniSection.hpp"
-#include "../algorithms/IniSectionAlgorithms.hpp"
+#include "../algorithms/Validation.hpp"
 
 namespace IniRW
 {

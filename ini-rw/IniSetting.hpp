@@ -44,11 +44,12 @@ namespace IniRW
 		bool SaveChanges();
 
 		/// <summary>
-		/// 
+		/// Updates a key under a specific section in the loaded INI file. If the key exists under the specified section then its value is updated. If the key does not exist under that
+		/// section then the key is inserted under that section.
 		/// </summary>
-		/// <param name="sectionName"></param>
-		/// <param name="keyName"></param>
-		/// <param name="keyValue"></param>
+		/// <param name="sectionName">The name of the section where the key will be modified or inserted.</param>
+		/// <param name="keyName">The name of the key to be added or updated.</param>
+		/// <param name="keyValue">The value of the key that will be updated or added.</param>
 		void WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue);
 
 		/// <summary>

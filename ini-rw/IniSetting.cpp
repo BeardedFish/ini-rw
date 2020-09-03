@@ -3,9 +3,9 @@
 // Date:          Sunday, August 30, 2020
 
 #include "IniSetting.hpp"
-#include "algorithms/IniCommentAlgorithms.hpp"
-#include "algorithms/IniKeyAlgorithms.hpp"
-#include "algorithms/IniSectionAlgorithms.hpp"
+#include "algorithms/Parse.hpp"
+#include "algorithms/Search.hpp"
+#include "algorithms/Validation.hpp"
 #include "entities/IniNewLine.hpp"
 #include "entities/IniSection.hpp"
 #include <fstream>
@@ -149,6 +149,7 @@ namespace IniRW
 
 	void IniSetting::LoadIniFile(const std::string& iniFilePath)
 	{
+		const std::vector<char> INI_COMMENT_PREFIXES = { '#', ';' };
 		std::ifstream fileStream(iniFilePath);
 
 		if (fileStream)
@@ -176,11 +177,11 @@ namespace IniRW
 					size_t equalSignIndex = currentLine.find_first_of('=');
 					std::string keyName = currentLine.substr(0, equalSignIndex);
 					std::string keyValue = currentLine.substr(equalSignIndex + 1, currentLine.length() - 1);
-					std::string keyComment = ExtractAndRemoveComment(keyValue);
+					std::string keyComment = ExtractAndRemoveComment(INI_COMMENT_PREFIXES, keyValue);
 
 					iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, keyComment));
 				}
-				else if (IsValidIniComment(currentLine))
+				else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
 				{
 					iniContents.push_back(new IniComment(';', currentLine));
 				}

@@ -139,9 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algorithms\IniCommentAlgorithms.cpp" />
-    <ClCompile Include="algorithms\IniKeyAlgorithms.cpp" />
-    <ClCompile Include="algorithms\IniSectionAlgorithms.cpp" />
+    <ClCompile Include="algorithms\Parse.cpp" />
+    <ClCompile Include="algorithms\Search.cpp" />
+    <ClCompile Include="algorithms\Validation.cpp" />
     <ClCompile Include="entities\IniKey.cpp" />
     <ClCompile Include="entities\IniNewLine.cpp" />
     <ClCompile Include="entities\IniSection.cpp" />
@@ -149,9 +149,9 @@
     <ClCompile Include="IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithms\IniCommentAlgorithms.hpp" />
-    <ClInclude Include="algorithms\IniKeyAlgorithms.hpp" />
-    <ClInclude Include="algorithms\IniSectionAlgorithms.hpp" />
+    <ClInclude Include="algorithms\Parse.hpp" />
+    <ClInclude Include="algorithms\Search.hpp" />
+    <ClInclude Include="algorithms\Validation.hpp" />
     <ClInclude Include="entities\IniEntity.hpp" />
     <ClInclude Include="entities\IniKey.hpp" />
     <ClInclude Include="entities\IniNewLine.hpp" />

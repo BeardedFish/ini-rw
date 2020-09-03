@@ -20,8 +20,8 @@ const char* INI_RW_ACSII_ART = " _            _                              \n"
 /// <summary>
 /// Main entry point of the program.
 /// </summary>
-/// <param name="argc"></param>
-/// <param name="argv"></param>
+/// <param name="argc">Argument count, the amount of arguments available that were passed into the program on execution.</param>
+/// <param name="argv">Argument vector, a pointer to a char array that contains the actual arguments passed into the program.</param>
 /// <returns>An integer that represents the exit code status of the program.</returns>
 int main(int argc, char* argv[])
 {

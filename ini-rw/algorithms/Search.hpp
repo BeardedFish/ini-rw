@@ -1,23 +1,19 @@
-// File Name:     IniSectionAlgorithms.cpp
+// File Name:     Search.hpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
-// Date:          Monday, August 31, 2020
+// Date:          Wednesday, September 2, 2020
 
 #pragma once
 
 #include "../entities/IniEntity.hpp"
+#include "../entities/IniKey.hpp"
 #include <string>
 #include <vector>
 
 namespace IniRW
 {
-	constexpr const char SECTION_BEGINNING_CHAR = '[';
-	constexpr const char SECTION_ENDING_CHAR = ']';
 	constexpr size_t SECTION_NOT_FOUND = -1;
-
-	bool IsValidIniSection(const std::string& str);
 
 	size_t GetSectionLocation(std::vector<IniEntity*>& iniContents, const std::string& sectionName);
 
-	std::string ExtractSectionName(const std::string& section);
-
+	IniKey* FindKey(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName);
 }
