@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
                         }
                         else
                         {
-                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!";
+                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!" << std::endl;
                             std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME] [KEY_VALUE]";
                         }
                     }
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
                         }
                         else
                         {
-                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!";
+                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!" << std::endl;
                             std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME]";
                         }
                     }
