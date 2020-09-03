@@ -16,12 +16,28 @@ namespace IniRW
 		std::string text;
 
 	public:
+		/// <summary>
+		/// Constructor for creating an INI comment. This constructor sets the prefix to "\0" and the text to an empty value.
+		/// </summary>
 		IniComment();
 
+		/// <summary>
+		/// Constructor for creating an INI comment. This constructor allows you to specify the prefix and text of the INI comment.
+		/// </summary>
+		/// <param name="prefix">The prefix of the INI comment.</param>
+		/// <param name="text">The text of the INI comment.</param>
 		IniComment(const char prefix, const std::string& text);
 
+		/// <summary>
+		/// Gets the INI entity type of this class.
+		/// </summary>
+		/// <returns>The return value will always be IniEnityType::Comment.</returns>
 		IniEntityType GetType() override;
 
+		/// <summary>
+		/// Gets the text of this INI comment.
+		/// </summary>
+		/// <returns>The text of this INI comment.</returns>
 		std::string GetText() const;
 	};
 }

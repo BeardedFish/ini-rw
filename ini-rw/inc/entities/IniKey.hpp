@@ -30,9 +30,9 @@ namespace IniRW
 		IniKey(const std::string& section, const std::string& name, const std::string& value, const std::string& comment);
 
 		/// <summary>
-		/// 
+		/// Gets the INI entity type of this class.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>The return value will always be IniEnityType::Key.</returns>
 		IniEntityType GetType() override;
 
 		/// <summary>
