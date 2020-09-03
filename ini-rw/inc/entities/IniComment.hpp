@@ -35,6 +35,12 @@ namespace IniRW
 		IniEntityType GetType() override;
 
 		/// <summary>
+		/// Gets the prefix character of this INI comment.
+		/// </summary>
+		/// <returns>A character of this INI comment.</returns>
+		char GetPrefix() const;
+
+		/// <summary>
 		/// Gets the text of this INI comment.
 		/// </summary>
 		/// <returns>The text of this INI comment.</returns>

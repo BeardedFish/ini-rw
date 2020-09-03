@@ -22,6 +22,11 @@ namespace IniRW
 		return IniEntityType::Comment;
 	}
 
+	char IniComment::GetPrefix() const
+	{
+		return prefix;
+	}
+
 	std::string IniComment::GetText() const
 	{
 		return text;
