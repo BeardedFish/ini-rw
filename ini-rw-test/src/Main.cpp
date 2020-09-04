@@ -2,7 +2,6 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
-#include "../inc/InputFns.hpp"
 #include "ini-rw/inc/IniSetting.hpp"
 #include "ini-rw/inc/algorithms/Validation.hpp"
 #include <iostream>
@@ -48,32 +47,32 @@ int main(int argc, char* argv[])
         std::cout << "Type \"help\" for a list of commands." << std::endl << std::endl;
 
         bool exitLoopFlag = false;
-        std::vector<std::string> userInputTokens;
+        std::string userInput;
 
         do
         {
             std::cout << ">> ";
-            userInputTokens = GetTokenizedInput();
+            std::getline(std::cin, userInput);
 
-            if (userInputTokens.size() > 0)
+            if (userInput.length() > 0)
             {
-                exitLoopFlag = IniRW::EqualsIgnoreCase(userInputTokens[0], "quit");
+                exitLoopFlag = IniRW::EqualsIgnoreCase(userInput, "quit");
 
                 if (!exitLoopFlag)
                 {
-                    if (IniRW::EqualsIgnoreCase(userInputTokens[0], "clrini"))
+                    if (IniRW::EqualsIgnoreCase(userInput, "clrini"))
                     {
                         iniSettings.Clear();
 
                         std::cout << "The INI file contents were cleared succesfully!";
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "contents"))
+                    else if (IniRW::EqualsIgnoreCase(userInput, "contents"))
                     {
                         std::string iniContents = iniSettings.ToString();
 
                         std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "help"))
+                    else if (IniRW::EqualsIgnoreCase(userInput, "help"))
                     {
                         std::cout << "clrini - Clears the loaded INI file contents." << std::endl;
                         std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
@@ -82,43 +81,41 @@ int main(int argc, char* argv[])
                         std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
                         std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "iv")) // Insert value into INI file
+                    else if (IniRW::EqualsIgnoreCase(userInput, "iv") || IniRW::EqualsIgnoreCase(userInput, "rs")) // Insert value into INI file
                     {
-                        if (userInputTokens.size() >= 4)
+                        std::cout << "Section Name: ";
+                        std::string sectionName;
+                        std::getline(std::cin, sectionName);
+
+                        std::cout << "Key Name: ";
+                        std::string keyName;
+                        std::getline(std::cin, keyName);
+
+                        if (IniRW::EqualsIgnoreCase(userInput, "iv"))
                         {
-                            std::string keyValue = VectorToString(userInputTokens, 3);
-                            iniSettings.WriteKeyValue(userInputTokens[1], userInputTokens[2], keyValue);
+                            std::cout << "Key Value: ";
+                            std::string keyValue;
+                            std::getline(std::cin, keyValue);
+
+                            iniSettings.WriteKeyValue(sectionName, keyName, keyValue);
 
                             std::cout << "Value written succesfully!";
                         }
                         else
                         {
-                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!" << std::endl;
-                            std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME] [KEY_VALUE]";
-                        }
-                    }
-                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "rs")) // Read string from INI file
-                    {
-                        if (userInputTokens.size() >= 3)
-                        {
-                            IniRW::IniKey* key = iniSettings.GetKey(userInputTokens[1], userInputTokens[2]); // Alternatively, you could do: "iniSettings[{userInputTokens[1], userInputTokens[2]}]"
+                            IniRW::IniKey* key = iniSettings.GetKey(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
 
                             if (key)
                             {
-                                std::cout << "The extracted value is: \"" << key->GetValue() << "\".";
+                                std::cout << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << key->GetValue() << "\".";
                             }
                             else
                             {
-                                std::cout << "The key was not found in the INI file!";
+                                std::cout << "The key \"" << keyName << "\" under the section \"" << sectionName << "\" was not found in the INI file!";
                             }
                         }
-                        else
-                        {
-                            std::cout << "Insufficient amount of parameters for the \"" << userInputTokens[0] << "\" command!" << std::endl;
-                            std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME]";
-                        }
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "save"))
+                    else if (IniRW::EqualsIgnoreCase(userInput, "save"))
                     {
                         bool success = iniSettings.SaveChanges();
 
