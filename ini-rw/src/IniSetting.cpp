@@ -6,8 +6,8 @@
 #include "../inc/algorithms/Parse.hpp"
 #include "../inc/algorithms/Search.hpp"
 #include "../inc/algorithms/Validation.hpp"
-#include "../inc/entities/IniNewLine.hpp"
 #include "../inc/entities/IniSection.hpp"
+#include "../inc/entities/IniString.hpp"
 #include <fstream>
 
 namespace IniRW
@@ -39,9 +39,9 @@ namespace IniRW
 							iniContents.push_back(new IniComment(*static_cast<IniComment*>(entity)));
 						}
 						break;
-					case IniEntityType::NewLine:
+					case IniEntityType::Key:
 						{
-							iniContents.push_back(new IniNewLine(*static_cast<IniNewLine*>(entity)));
+							iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
 						}
 						break;
 					case IniEntityType::Section:
@@ -49,9 +49,9 @@ namespace IniRW
 							iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
 						}
 						break;
-					case IniEntityType::Key:
+					case IniEntityType::String:
 						{
-							iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
+							iniContents.push_back(new IniString(*static_cast<IniString*>(entity)));
 						}
 						break;
 				}
@@ -94,7 +94,7 @@ namespace IniRW
 		{
 			contents += iniContents[i]->ToString();
 
-			if (i < iniContents.size() - 1 && iniContents[i]->GetType() != IniEntityType::NewLine)
+			if (i < iniContents.size() - 1 && iniContents[i]->ToString() != "\n")
 			{
 				contents += "\n";
 			}
@@ -139,14 +139,14 @@ namespace IniRW
 						delete static_cast<IniKey*>(entity);
 					}
 					break;
-				case IniEntityType::NewLine:
-					{
-						delete static_cast<IniNewLine*>(entity);
-					}
-					break;
 				case IniEntityType::Section:
 					{
 						delete static_cast<IniSection*>(entity);
+					}
+					break;
+				case IniEntityType::String:
+					{
+						delete static_cast<IniString*>(entity);
 					}
 					break;
 			}
@@ -178,7 +178,7 @@ namespace IniRW
 			{
 				if (!iniContents.empty())
 				{
-					iniContents.insert(iniContents.end(), new IniNewLine());
+					iniContents.insert(iniContents.end(), new IniString("\n"));
 				}
 
 				iniContents.insert(iniContents.end(), new IniSection(sectionName));
@@ -205,11 +205,7 @@ namespace IniRW
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				if (currentLine.empty() || currentLine == "\n")
-				{
-					iniContents.push_back(new IniNewLine());
-				}
-				else if (IsValidIniSection(currentLine))
+				if (IsValidIniSection(currentLine))
 				{
 					sectionEncountered = true;
 					currentSectionName = ExtractSectionName(currentLine);
@@ -241,6 +237,10 @@ namespace IniRW
 					std::string text = currentLine.substr(1, currentLine.length() - 1);
 
 					iniContents.push_back(new IniComment(prefix, text));
+				}
+				else // It's either a new line or some garbage string value
+				{
+					iniContents.push_back(new IniString(currentLine));
 				}
 			}
 

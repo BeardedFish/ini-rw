@@ -10,7 +10,7 @@ namespace IniRW
 	{
 		Comment,
 		Key,
-		NewLine,
-		Section
+		Section,
+		String
 	};
 }
