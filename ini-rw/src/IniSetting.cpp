@@ -105,7 +105,12 @@ namespace IniRW
 
 	bool IniSetting::SaveChanges()
 	{
-		std::ofstream fileStream(iniFilePath);
+		return SaveChanges(iniFilePath);
+	}
+
+	bool IniSetting::SaveChanges(const std::string& savePath)
+	{
+		std::ofstream fileStream(savePath);
 
 		if (!fileStream)
 		{

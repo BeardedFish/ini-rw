@@ -90,6 +90,13 @@ namespace IniRW
 		bool SaveChanges();
 
 		/// <summary>
+		/// Saves the contents of the INI file to a specified path.
+		/// </summary>
+		/// <param name="savePath">The path to save the INI file.</param>
+		/// <returns>True if the INI file was saved succesfully, if not, false.</returns>
+		bool SaveChanges(const std::string& savePath);
+
+		/// <summary>
 		/// Clears all the INI contents for this IniSetting instance.
 		/// </summary>
 		void Clear();
