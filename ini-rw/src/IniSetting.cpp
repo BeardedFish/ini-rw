@@ -45,30 +45,30 @@ namespace IniRW
 		{
 			switch (iniContents[i]->GetType())
 			{
-			case IniEntityType::Comment:
-			{
-				const IniComment* INI_COMMENT = static_cast<IniComment*>(iniContents[i]);
+				case IniEntityType::Comment:
+					{
+						const IniComment* INI_COMMENT = static_cast<IniComment*>(iniContents[i]);
 
-				contents += INI_COMMENT->GetPrefix();
-				contents += INI_COMMENT->GetText(); // NOTE: Reason I'm doing this on another line is because a char + a string don't append to each other...
-			}
-			break;
-			case IniEntityType::NewLine:
-			{
-				contents += static_cast<IniNewLine*>(iniContents[i])->GetValue();
-			}
-			break;
-			case IniEntityType::Section:
-			{
-				contents += static_cast<IniSection*>(iniContents[i])->GetName();
-			}
-			break;
-			case IniEntityType::Key:
-			{
-				IniKey* key = static_cast<IniKey*>(iniContents[i]);
-				contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
-			}
-			break;
+						contents += INI_COMMENT->GetPrefix();
+						contents += INI_COMMENT->GetText(); // NOTE: Reason I'm doing this on another line is because a char + a string don't append to each other...
+					}
+					break;
+				case IniEntityType::NewLine:
+					{
+						contents += static_cast<IniNewLine*>(iniContents[i])->GetValue();
+					}
+					break;
+				case IniEntityType::Section:
+					{
+						contents += static_cast<IniSection*>(iniContents[i])->GetName();
+					}
+					break;
+				case IniEntityType::Key:
+					{
+						IniKey* key = static_cast<IniKey*>(iniContents[i]);
+						contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
+					}
+					break;
 			}
 
 			if (i < iniContents.size() - 1 && iniContents[i]->GetType() != IniEntityType::NewLine)
