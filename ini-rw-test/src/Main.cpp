@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
                         std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
                         std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInput, "iv") || IniRW::EqualsIgnoreCase(userInput, "rs")) // Insert value into INI file
+                    else if (IniRW::EqualsIgnoreCase(userInput, "iv") || IniRW::EqualsIgnoreCase(userInput, "rs"))
                     {
                         std::cout << "Section Name: ";
                         std::string sectionName;
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
                         std::string keyName;
                         std::getline(std::cin, keyName);
 
-                        if (IniRW::EqualsIgnoreCase(userInput, "iv"))
+                        if (IniRW::EqualsIgnoreCase(userInput, "iv")) // Insert value into INI file
                         {
                             std::cout << "Key Value: ";
                             std::string keyValue;
@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
 
                             std::cout << std::endl << "Value written succesfully!";
                         }
-                        else
+                        else // Read string value from INI file
                         {
                             IniRW::IniKey* key = iniSettings.GetKey(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
 
