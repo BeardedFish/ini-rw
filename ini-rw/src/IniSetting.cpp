@@ -64,6 +64,11 @@ namespace IniRW
 		}
 	}
 
+	IniSetting::operator bool() const
+	{
+		return IsLoaded();
+	}
+
 	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
 	{
 		outputStream << iniSettings.ToString();

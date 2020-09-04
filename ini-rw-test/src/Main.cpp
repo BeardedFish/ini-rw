@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 
     IniRW::IniSetting iniSettings(argv[1]);
 
-    if (iniSettings.IsLoaded())
+    if (iniSettings) // Alternatively, you could do "iniSettings.IsLoaded()"
     {
         std::cout << "The INI file \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
         std::cout << "Type \"help\" for a list of commands." << std::endl << std::endl;
