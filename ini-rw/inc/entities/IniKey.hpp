@@ -16,24 +16,44 @@ namespace IniRW
 		std::string section;
 		std::string name;
 		std::string value;
-		std::string comment;
+		IniComment* comment;
 
 	public:
 		/// <summary>
-		/// Constructor for creating the Key class. By calling this constructor, the section, name, and value of this key will be set to those specified in the parameter of
-		/// the function.The comment of this key will be set to empty.
+		/// Creates an INI key with a specified section name, key name, and key value.
 		/// </summary>
 		/// <param name="section">The name of the section that this key belongs too.</param>
 		/// <param name="name">The name of this key.</param>
 		/// <param name="value">The value of this key.</param>
-		/// <param name="comment">The comment attached to this key.</param>
-		IniKey(const std::string& section, const std::string& name, const std::string& value, const std::string& comment);
+		IniKey(const std::string& section, const std::string& name, const std::string& value);
+
+		/// <summary>
+		/// Creates an INI key with a specified section name, key name, key value, and a comment.
+		/// </summary>
+		/// <param name="section">The name of the section that this key belongs too.</param>
+		/// <param name="name">The name of this key.</param>
+		/// <param name="value">The value of this key.</param>
+		/// <param name="commentPrefix">The prefix of the comment attached to this key.</param>
+		/// <param name="commentText">The text of the comment attached to this key.</param>
+		IniKey(const std::string& section, const std::string& name, const std::string& value, const IniCommentPrefix& commentPrefix, const std::string& commentText);
+
+		/// <summary>
+		/// If an INI comment is attached to this key, then it is deallocated from the heap via this deconstructor. If no comment is attached then this deconstructor does
+		/// nothing.
+		/// </summary>
+		~IniKey();
 
 		/// <summary>
 		/// Gets the INI entity type of this class.
 		/// </summary>
 		/// <returns>The return value will always be IniEnityType::Key.</returns>
 		IniEntityType GetType() override;
+
+		/// <summary>
+		/// States whether this INI key has a comment attached to it or not.
+		/// </summary>
+		/// <returns>True if this key has a comment attached to it, if not, false.</returns>
+		bool HasComment() const;
 
 		/// <summary>
 		/// Gets the section name that this key belongs too.
@@ -57,7 +77,7 @@ namespace IniRW
 		/// Gets the comment attached to this key.
 		/// </summary>
 		/// <returns>A string which contains the comment attached to this key. If the string returned is empty, then that means that this key doesn't have a comment.</returns>
-		std::string GetComment() const;
+		IniComment* GetComment() const;
 
 		/// <summary>
 		/// Sets the value for this key to the one specified in the function parameter.

@@ -46,5 +46,12 @@ namespace IniRW
 		/// </summary>
 		/// <returns>The text of this INI comment.</returns>
 		std::string GetText() const;
+		/// <summary>
+
+		/// <summary>
+		/// Gets the string representation of this INI comment instance.
+		/// </summary>
+		/// <returns>A string which consists of the prefix and the text of this INI comment.</returns>
+		std::string ToString() const;
 	};
 }

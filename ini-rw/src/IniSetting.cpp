@@ -98,8 +98,7 @@ namespace IniRW
 					{
 						const IniComment* INI_COMMENT = static_cast<IniComment*>(iniContents[i]);
 
-						contents += INI_COMMENT->GetPrefix();
-						contents += INI_COMMENT->GetText(); // NOTE: Reason I'm doing this on another line is because a char + a string don't append to each other...
+						contents += INI_COMMENT->ToString();
 					}
 					break;
 				case IniEntityType::NewLine:
@@ -115,7 +114,13 @@ namespace IniRW
 				case IniEntityType::Key:
 					{
 						IniKey* key = static_cast<IniKey*>(iniContents[i]);
-						contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
+
+						contents += key->GetName() + "=" + key->GetValue();
+
+						if (key->HasComment())
+						{
+							contents += " " + key->GetComment()->ToString();
+						}
 					}
 					break;
 			}
@@ -187,7 +192,7 @@ namespace IniRW
 		else
 		{
 			size_t sectionIndex = GetSectionLocation(iniContents, sectionName);
-			key = new IniKey(sectionName, keyName, keyValue, "");
+			key = new IniKey(sectionName, keyName, keyValue);
 
 			if (sectionIndex != SECTION_NOT_FOUND)
 			{
@@ -244,7 +249,17 @@ namespace IniRW
 					std::string keyValue = currentLine.substr(equalSignIndex + 1, currentLine.length() - 1);
 					std::string keyComment = ExtractAndRemoveComment(INI_COMMENT_PREFIXES, keyValue);
 
-					iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, keyComment));
+					if (!keyComment.empty())
+					{
+						IniCommentPrefix commentPrefix = keyComment[0] == '#' ? IniCommentPrefix::Pound : IniCommentPrefix::Semicolon;
+						std::string commentText = keyComment.substr(2, keyComment.length() - 1);
+
+						iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, commentPrefix, commentText));
+					}
+					else
+					{
+						iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue));
+					}
 				}
 				else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
 				{

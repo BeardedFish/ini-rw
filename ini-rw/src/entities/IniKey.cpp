@@ -6,17 +6,35 @@
 
 namespace IniRW
 {
-	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value, const std::string& comment) : IniEntity()
+	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value) : IniEntity()
 	{
 		this->section = section;
 		this->name = name;
 		this->value = value;
-		this->comment = comment;
+		this->comment = nullptr;
+	}
+
+	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value, const IniCommentPrefix& commentPrefix, const std::string& commentText) : IniKey(section, name, value)
+	{
+		this->comment = new IniComment(commentPrefix, commentText);
+	}
+
+	IniKey::~IniKey()
+	{
+		if (HasComment())
+		{
+			delete comment;
+		}
 	}
 
 	IniEntityType IniKey::GetType()
 	{
 		return IniEntityType::Key;
+	}
+
+	bool IniKey::HasComment() const
+	{
+		return comment != nullptr;
 	}
 
 	std::string IniKey::GetSection() const
@@ -34,7 +52,7 @@ namespace IniRW
 		return value;
 	}
 
-	std::string IniKey::GetComment() const
+	IniComment* IniKey::GetComment() const
 	{
 		return comment;
 	}

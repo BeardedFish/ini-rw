@@ -31,4 +31,14 @@ namespace IniRW
 	{
 		return text;
 	}
+
+	std::string IniComment::ToString() const
+	{
+		std::string result;
+
+		result += GetPrefix();
+		result += GetText();
+
+		return result;
+	}
 }
