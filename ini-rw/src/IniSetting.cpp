@@ -12,24 +12,19 @@
 
 namespace IniRW
 {
-	IniSetting::IniSetting(const std::string& iniFilePath)
+	IniSetting::IniSetting(const std::string& iniFilePath) : IniSetting(false, iniFilePath)
 	{
-		this->loaded = false;
-		this->iniFilePath = iniFilePath;
-
 		LoadIniFile(iniFilePath);
 	}
 
-	IniSetting::~IniSetting()
+	IniSetting::IniSetting(const bool loaded, const std::string& iniFilePath)
 	{
-		Clear();
+		this->loaded = loaded;
+		this->iniFilePath = iniFilePath;
 	}
 
-	IniSetting::IniSetting(const IniSetting& iniSettings)
+	IniSetting::IniSetting(const IniSetting& iniSettings) : IniSetting(iniSettings.loaded, iniSettings.iniFilePath)
 	{
-		this->loaded = iniSettings.loaded;
-		this->iniFilePath = iniSettings.iniFilePath;
-
 		// Copy all values that are allocated to the heap
 		for (size_t i = 0; i < iniSettings.iniContents.size(); i++)
 		{
@@ -62,6 +57,11 @@ namespace IniRW
 				}
 			}
 		}
+	}
+
+	IniSetting::~IniSetting()
+	{
+		Clear();
 	}
 
 	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
