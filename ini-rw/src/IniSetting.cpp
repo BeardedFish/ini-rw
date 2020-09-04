@@ -76,6 +76,11 @@ namespace IniRW
 		return IsLoaded();
 	}
 
+	IniKey* IniSetting::operator[](const std::pair<std::string, std::string>& keyPair)
+	{
+		return GetKey(keyPair.first, keyPair.second);
+	}
+
 	bool IniSetting::IsLoaded() const
 	{
 		return loaded;

@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
                     {
                         if (userInputTokens.size() >= 3)
                         {
-                            IniRW::IniKey* key = iniSettings.GetKey(userInputTokens[1], userInputTokens[2]);
+                            IniRW::IniKey* key = iniSettings.GetKey(userInputTokens[1], userInputTokens[2]); // Alternatively, you could do: "iniSettings[{userInputTokens[1], userInputTokens[2]}]"
 
                             if (key)
                             {

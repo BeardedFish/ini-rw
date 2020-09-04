@@ -62,6 +62,16 @@ namespace IniRW
 		operator bool() const;
 
 		/// <summary>
+		/// Overloaded operator which searches for a key under a specific section in the loaded INI file.
+		/// </summary>
+		/// <param name="keyPair">
+		/// The std::pair object which contains information about the key to be looked up in this INI settings instance. The first value in the pair is the section name and
+		/// the second value is the key name.
+		/// </param>
+		/// <returns>If the key exists in the INI file, then the IniKey* is returned. If the key was not found, then a null pointer is returned.</returns>
+		IniKey* operator[](const std::pair<std::string, std::string>& keyPair);
+
+		/// <summary>
 		/// Returns a boolean that states whether the INI file was loaded succesfully or not.
 		/// </summary>
 		/// <returns>True if the INI file was loaded succesfully, if not, false.</returns>
