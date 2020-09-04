@@ -30,7 +30,7 @@ namespace IniRW
 		/// <summary>
 		/// Gets the name of this INI section in a formatted manner.
 		/// </summary>
-		/// <returns>A string in the format: "[INI_SECTION_NAME]" (excluding quotes),</returns>
+		/// <returns>A string in the format: "[INI_SECTION_NAME]" (excluding quotes).</returns>
 		std::string GetName();
 	};
 }
