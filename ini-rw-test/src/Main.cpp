@@ -26,7 +26,9 @@ const char* INI_RW_ACSII_ART = " _            _                              \n"
 /// <returns>An integer that represents the exit code status of the program.</returns>
 int main(int argc, char* argv[])
 {
+#if _DEBUG
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
 
     std::cout << INI_RW_ACSII_ART << std::endl << std::endl;
 
