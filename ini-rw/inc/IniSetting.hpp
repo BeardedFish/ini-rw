@@ -32,6 +32,12 @@ namespace IniRW
 		~IniSetting();
 
 		/// <summary>
+		/// Copy constructor which performs a deep copy of an INI setting instance.
+		/// </summary>
+		/// <param name="iniSettings">The INI settings instance to be copied.</param>
+		IniSetting(const IniSetting& iniSettings);
+
+		/// <summary>
 		/// Overloaded operator which prints the INI contents to an output stream. This function prints the INI contents via the ToString() method.
 		/// </summary>
 		/// <param name="outputStream">The stream to print the INI contents to.</param>

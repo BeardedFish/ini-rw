@@ -25,6 +25,45 @@ namespace IniRW
 		Clear();
 	}
 
+	IniSetting::IniSetting(const IniSetting& iniSettings)
+	{
+		this->loaded = iniSettings.loaded;
+		this->iniFilePath = iniSettings.iniFilePath;
+
+		// Copy all values that are allocated to the heap
+		for (size_t i = 0; i < iniSettings.iniContents.size(); i++)
+		{
+			IniEntity* entity = iniSettings.iniContents[i];
+
+			if (entity)
+			{
+				switch (entity->GetType())
+				{
+					case IniEntityType::Comment:
+						{
+							iniContents.push_back(new IniComment(*static_cast<IniComment*>(entity)));
+						}
+						break;
+					case IniEntityType::NewLine:
+						{
+							iniContents.push_back(new IniNewLine(*static_cast<IniNewLine*>(entity)));
+						}
+						break;
+					case IniEntityType::Section:
+						{
+							iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
+						}
+						break;
+					case IniEntityType::Key:
+						{
+							iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
+						}
+						break;
+				}
+			}
+		}
+	}
+
 	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
 	{
 		outputStream << iniSettings.ToString();
