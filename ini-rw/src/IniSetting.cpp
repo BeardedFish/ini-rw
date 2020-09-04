@@ -221,8 +221,7 @@ namespace IniRW
 		{
 			const std::vector<char> INI_COMMENT_PREFIXES = { '#', ';' };
 			bool sectionEncountered = false;
-			std::string currentSectionName;
-			std::string currentLine;
+			std::string currentLine, currentSectionName;
 
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
