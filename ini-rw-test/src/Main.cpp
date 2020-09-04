@@ -4,6 +4,7 @@
 
 #include "../inc/InputFns.hpp"
 #include "ini-rw/inc/IniSetting.hpp"
+#include "ini-rw/inc/algorithms/Validation.hpp"
 #include <iostream>
 #include <string>
 
@@ -54,25 +55,23 @@ int main(int argc, char* argv[])
 
             if (userInputTokens.size() > 0)
             {
-                exitLoopFlag = userInputTokens[0] == "quit";
-
-                // TODO: Make user input case insensitive...
+                exitLoopFlag = IniRW::EqualsIgnoreCase(userInputTokens[0], "quit");
 
                 if (!exitLoopFlag)
                 {
-                    if (userInputTokens[0] == "clrini")
+                    if (IniRW::EqualsIgnoreCase(userInputTokens[0], "clrini"))
                     {
                         iniSettings.Clear();
 
                         std::cout << "The INI file contents were cleared succesfully!";
                     }
-                    else if (userInputTokens[0] == "contents")
+                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "contents"))
                     {
                         std::string iniContents = iniSettings.ToString();
 
                         std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
                     }
-                    else if (userInputTokens[0] == "help")
+                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "help"))
                     {
                         std::cout << "clrini - Clears the loaded INI file contents." << std::endl;
                         std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
@@ -81,7 +80,7 @@ int main(int argc, char* argv[])
                         std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
                         std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
-                    else if (userInputTokens[0] == "iv") // Insert value into INI file
+                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "iv")) // Insert value into INI file
                     {
                         if (userInputTokens.size() >= 4)
                         {
@@ -96,7 +95,7 @@ int main(int argc, char* argv[])
                             std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME] [KEY_VALUE]";
                         }
                     }
-                    else if (userInputTokens[0] == "rs") // Read string from INI file
+                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "rs")) // Read string from INI file
                     {
                         if (userInputTokens.size() >= 3)
                         {
@@ -117,7 +116,7 @@ int main(int argc, char* argv[])
                             std::cout << "Usage: iv [SECTION_NAME] [KEY_NAME]";
                         }
                     }
-                    else if (userInputTokens[0] == "save")
+                    else if (IniRW::EqualsIgnoreCase(userInputTokens[0], "save"))
                     {
                         bool success = iniSettings.SaveChanges();
 
