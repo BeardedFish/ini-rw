@@ -26,6 +26,12 @@ namespace IniRW
 		/// <param name="iniFilePath">The path to the INI file to be loaded in the IniSetting class.</param>
 		IniSetting(const std::string& iniFilePath);
 
+		/// <summary>
+		/// Copy constructor which performs a deep copy of an INI setting instance.
+		/// </summary>
+		/// <param name="iniSettings">The INI settings instance to be copied.</param>
+		IniSetting(const IniSetting& iniSettings);
+
 	private:
 		/// <summary>
 		/// Constructor for creating an IniSetting class. This constructor is private. In addition, it allows a programmer to set the "loaded" and "iniFilePath" variable
@@ -36,12 +42,6 @@ namespace IniRW
 		IniSetting(const bool loaded, const std::string& iniFilePath);
 
 	public:
-		/// <summary>
-		/// Copy constructor which performs a deep copy of an INI setting instance.
-		/// </summary>
-		/// <param name="iniSettings">The INI settings instance to be copied.</param>
-		IniSetting(const IniSetting& iniSettings);
-
 		/// <summary>
 		/// Deconstructor for the IniSetting class. When this deconstructor is called, all IniEntity* objects stored in this class are deallocated from the heap.
 		/// </summary>
