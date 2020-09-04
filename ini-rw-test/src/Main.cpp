@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
 
                             iniSettings.WriteKeyValue(sectionName, keyName, keyValue);
 
-                            std::cout << "Value written succesfully!";
+                            std::cout << std::endl << "Value written succesfully!";
                         }
                         else
                         {
@@ -107,11 +107,11 @@ int main(int argc, char* argv[])
 
                             if (key)
                             {
-                                std::cout << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << key->GetValue() << "\".";
+                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << key->GetValue() << "\".";
                             }
                             else
                             {
-                                std::cout << "The key \"" << keyName << "\" under the section \"" << sectionName << "\" was not found in the INI file!";
+                                std::cout << std::endl << "The key \"" << keyName << "\" under the section \"" << sectionName << "\" was not found in the INI file!";
                             }
                         }
                     }
