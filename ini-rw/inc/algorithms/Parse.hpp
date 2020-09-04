@@ -10,7 +10,7 @@
 namespace IniRW
 {
 	/// <summary>
-	/// Extracts the section name from an INI section by ignoring the leading [ and ending ] and extracting the string inbetween these two characters.
+	/// Extracts the section name from an INI section by ignoring the leading [ and ending ] and extracting the string in between these two characters.
 	/// </summary>
 	/// <param name="section">The string that contains the formatted INI section.</param>
 	/// <returns>
