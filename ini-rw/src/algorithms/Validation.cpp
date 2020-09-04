@@ -31,4 +31,22 @@ namespace IniRW
 	{
 		return str.length() >= 2 && str[0] == SECTION_BEGINNING_CHAR && str[str.length() - 1] == SECTION_ENDING_CHAR;
 	}
+
+	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2)
+	{
+		if (str1.length() == str2.length())
+		{
+			for (size_t i = 0; i < str1.length(); i++)
+			{
+				if (tolower(str1[i]) != tolower(str2[i]))
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		return false;
+	}
 }

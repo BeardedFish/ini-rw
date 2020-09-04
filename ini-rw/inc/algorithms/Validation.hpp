@@ -42,4 +42,13 @@ namespace IniRW
 	/// <param name="str">The string to be evaluated.</param>
 	/// <returns>True if the string is a valid INI section, if not, false.</returns>
 	bool IsValidIniSection(const std::string& str);
+
+	/// <summary>
+	/// Compares two strings to see if they are equal. This function ignores case. The strings are compared letter by letter, where each letter is lowercased before being
+	/// compared.
+	/// </summary>
+	/// <param name="str1">The string to be compared to the second string.</param>
+	/// <param name="str2">The string to be compared to the first string.</param>
+	/// <returns>True if the strings are equal (ignoring case), if not, false.</returns>
+	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2);
 }

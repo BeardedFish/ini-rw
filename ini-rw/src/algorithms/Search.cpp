@@ -3,6 +3,7 @@
 // Date:          Wednesday, September 2, 2020
 
 #include "../../inc/algorithms/Search.hpp"
+#include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/entities/IniSection.hpp"
 
 namespace IniRW
@@ -18,8 +19,7 @@ namespace IniRW
 
 			IniKey* key = static_cast<IniKey*>(iniContents[i]);
 
-			if (_strcmpi(key->GetSection().c_str(), sectionName.c_str()) == 0 
-				&& _strcmpi(key->GetName().c_str(), keyName.c_str()) == 0)
+			if (EqualsIgnoreCase(key->GetSection(), sectionName) && EqualsIgnoreCase(key->GetName(), keyName))
 			{
 				return key;
 			}
