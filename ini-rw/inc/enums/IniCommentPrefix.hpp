@@ -6,9 +6,9 @@
 
 namespace IniRW
 {
-	enum class IniCommentPrefix
+	enum class IniCommentPrefix : char
 	{
-		Pound,
-		Semicolon
+		Pound = '#',
+		Semicolon = ';'
 	};
 }

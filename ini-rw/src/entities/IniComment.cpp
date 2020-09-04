@@ -34,7 +34,7 @@ namespace IniRW
 
 	char IniComment::GetPrefix() const
 	{
-		return prefix == IniCommentPrefix::Pound ? '#' : ';';
+		return static_cast<char>(prefix);
 	}
 
 	std::string IniComment::GetText() const

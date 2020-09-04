@@ -40,7 +40,7 @@ namespace IniRW
 
 		if (HasComment())
 		{
-			result += " " + GetComment()->ToString();
+			result += GetComment()->ToString();
 		}
 
 		return result;

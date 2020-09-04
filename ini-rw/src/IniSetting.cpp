@@ -193,7 +193,7 @@ namespace IniRW
 
 		if (fileStream)
 		{
-			const std::vector<char> INI_COMMENT_PREFIXES = { '#', ';' };
+			const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound) , static_cast<char>(IniCommentPrefix::Semicolon) };
 			bool sectionEncountered = false;
 			std::string currentLine, currentSectionName;
 
@@ -220,8 +220,8 @@ namespace IniRW
 
 					if (!keyComment.empty())
 					{
-						IniCommentPrefix commentPrefix = keyComment[0] == '#' ? IniCommentPrefix::Pound : IniCommentPrefix::Semicolon;
-						std::string commentText = keyComment.substr(2, keyComment.length() - 1);
+						IniCommentPrefix commentPrefix = static_cast<IniCommentPrefix>(keyComment[0]);
+						std::string commentText = keyComment.substr(1, keyComment.length() - 1);
 
 						iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, commentPrefix, commentText));
 					}
@@ -232,7 +232,7 @@ namespace IniRW
 				}
 				else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
 				{
-					IniCommentPrefix prefix = currentLine[0] == '#' ? IniCommentPrefix::Pound : IniCommentPrefix::Semicolon;
+					IniCommentPrefix prefix = static_cast<IniCommentPrefix>(currentLine[0]);
 					std::string text = currentLine.substr(1, currentLine.length() - 1);
 
 					iniContents.push_back(new IniComment(prefix, text));

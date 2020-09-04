@@ -13,15 +13,18 @@ namespace IniRW
 
 		for (size_t i = 0; i < value.length() - 1; i++)
 		{
+			char currentChar = value[i];
+			char adjacentChar = value[i + 1];
+
 			for (size_t j = 0; j < commentPrefixes.size(); j++)
 			{
-				if (value[i] != '\\' && value[i + 1] == commentPrefixes[j]) // Found the comment
+				if (currentChar != '\\' && adjacentChar == commentPrefixes[j])
 				{
 					// Extract the comment
-					comment = value.substr(i, value.length() - 1);
+					comment = value.substr(i + 1, value.length() - 1);
 
 					// Remove the comment from the original value
-					value = value.substr(0, i);
+					value = value.substr(0, i + 1);
 
 					// Break out of the nested for loop
 					i = j = value.length();
