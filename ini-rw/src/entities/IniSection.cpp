@@ -12,13 +12,18 @@ namespace IniRW
 		this->name = name;
 	}
 
-	std::string IniSection::GetName()
-	{
-		return SECTION_BEGINNING_CHAR + name + SECTION_ENDING_CHAR;
-	}
-
 	IniEntityType IniSection::GetType()
 	{
 		return IniEntityType::Section;
+	}
+
+	std::string IniSection::ToString() const
+	{
+		return SECTION_BEGINNING_CHAR + GetName() + SECTION_ENDING_CHAR;
+	}
+
+	std::string IniSection::GetName() const
+	{
+		return name;
 	}
 }

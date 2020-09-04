@@ -36,6 +36,12 @@ namespace IniRW
 		IniEntityType GetType() override;
 
 		/// <summary>
+		/// Returns the string representation of this INI comment.
+		/// </summary>
+		/// <returns>A string in the format: "COMMENT_PREFIX COMMENT_TEXT" (excluding quotes).</returns>
+		std::string ToString() const override;
+
+		/// <summary>
 		/// Gets the prefix character of this INI comment.
 		/// </summary>
 		/// <returns>A character of this INI comment.</returns>
@@ -52,11 +58,5 @@ namespace IniRW
 		/// </summary>
 		/// <param name="newPrefix">The new prefix value.</param>
 		void SetPrefix(const IniCommentPrefix& newPrefix);
-
-		/// <summary>
-		/// Gets the string representation of this INI comment instance.
-		/// </summary>
-		/// <returns>A string which consists of the prefix and the text of this INI comment.</returns>
-		std::string ToString() const;
 	};
 }

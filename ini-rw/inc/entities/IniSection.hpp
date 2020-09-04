@@ -28,9 +28,15 @@ namespace IniRW
 		IniEntityType GetType() override;
 
 		/// <summary>
+		/// Returns the string representation of this INI section.
+		/// </summary>
+		/// <returns>A string in the format: "[INI_SECTION_NAME]" (excluding quotes).</returns>
+		std::string ToString() const override;
+
+		/// <summary>
 		/// Gets the name of this INI section in a formatted manner.
 		/// </summary>
 		/// <returns>A string in the format: "[INI_SECTION_NAME]" (excluding quotes).</returns>
-		std::string GetName();
+		std::string GetName() const;
 	};
 }

@@ -11,8 +11,8 @@ namespace IniRW
 		return IniEntityType::NewLine;
 	}
 
-	char IniNewLine::GetValue() const
+	std::string IniNewLine::ToString() const
 	{
-		return '\n';
+		return "\n";
 	}
 }

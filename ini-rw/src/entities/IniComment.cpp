@@ -22,6 +22,16 @@ namespace IniRW
 		return IniEntityType::Comment;
 	}
 
+	std::string IniComment::ToString() const
+	{
+		std::string result;
+
+		result += GetPrefix();
+		result += GetText();
+
+		return result;
+	}
+
 	char IniComment::GetPrefix() const
 	{
 		return prefix == IniCommentPrefix::Pound ? '#' : ';';
@@ -35,15 +45,5 @@ namespace IniRW
 	void IniComment::SetPrefix(const IniCommentPrefix& newPrefix)
 	{
 		prefix = newPrefix;
-	}
-
-	std::string IniComment::ToString() const
-	{
-		std::string result;
-
-		result += GetPrefix();
-		result += GetText();
-
-		return result;
 	}
 }

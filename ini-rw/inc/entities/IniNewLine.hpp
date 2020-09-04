@@ -19,9 +19,9 @@ namespace IniRW
 		IniEntityType GetType() override;
 
 		/// <summary>
-		/// Returns the new line character.
+		/// Returns the string representation of this INI new line entity.
 		/// </summary>
-		/// <returns>The new line character: "\n".</returns>
-		char GetValue() const;
+		/// <returns>A string that contains the newline character, "\n" (excluding quotes).</returns>
+		std::string ToString() const override;
 	};
 }

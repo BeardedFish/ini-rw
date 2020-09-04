@@ -32,6 +32,20 @@ namespace IniRW
 		return IniEntityType::Key;
 	}
 
+	std::string IniKey::ToString() const
+	{
+		std::string result;
+
+		result += GetName() + "=" + GetValue();
+
+		if (HasComment())
+		{
+			result += " " + GetComment()->ToString();
+		}
+
+		return result;
+	}
+
 	bool IniKey::HasComment() const
 	{
 		return comment != nullptr;

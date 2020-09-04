@@ -92,38 +92,7 @@ namespace IniRW
 
 		for (size_t i = 0; i < iniContents.size(); i++)
 		{
-			switch (iniContents[i]->GetType())
-			{
-				case IniEntityType::Comment:
-					{
-						const IniComment* INI_COMMENT = static_cast<IniComment*>(iniContents[i]);
-
-						contents += INI_COMMENT->ToString();
-					}
-					break;
-				case IniEntityType::NewLine:
-					{
-						contents += static_cast<IniNewLine*>(iniContents[i])->GetValue();
-					}
-					break;
-				case IniEntityType::Section:
-					{
-						contents += static_cast<IniSection*>(iniContents[i])->GetName();
-					}
-					break;
-				case IniEntityType::Key:
-					{
-						IniKey* key = static_cast<IniKey*>(iniContents[i]);
-
-						contents += key->GetName() + "=" + key->GetValue();
-
-						if (key->HasComment())
-						{
-							contents += " " + key->GetComment()->ToString();
-						}
-					}
-					break;
-			}
+			contents += iniContents[i]->ToString();
 
 			if (i < iniContents.size() - 1 && iniContents[i]->GetType() != IniEntityType::NewLine)
 			{

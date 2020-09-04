@@ -50,6 +50,12 @@ namespace IniRW
 		IniEntityType GetType() override;
 
 		/// <summary>
+		/// Returns the string representation of this INI key.
+		/// </summary>
+		/// <returns>A string in the format: "KEY_NAME=KEY_VALUE INI_COMMENT" (excluding quotes).</returns>
+		std::string ToString() const override;
+
+		/// <summary>
 		/// States whether this INI key has a comment attached to it or not.
 		/// </summary>
 		/// <returns>True if this key has a comment attached to it, if not, false.</returns>
