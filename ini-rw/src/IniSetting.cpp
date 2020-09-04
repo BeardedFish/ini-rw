@@ -25,9 +25,59 @@ namespace IniRW
 		Clear();
 	}
 
+	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
+	{
+		outputStream << iniSettings.ToString();
+
+		return outputStream;
+	}
+
 	bool IniSetting::IsLoaded() const
 	{
 		return loaded;
+	}
+
+	std::string IniSetting::ToString() const
+	{
+		std::string contents;
+
+		for (size_t i = 0; i < iniContents.size(); i++)
+		{
+			switch (iniContents[i]->GetType())
+			{
+			case IniEntityType::Comment:
+			{
+				const IniComment* INI_COMMENT = static_cast<IniComment*>(iniContents[i]);
+
+				contents += INI_COMMENT->GetPrefix();
+				contents += INI_COMMENT->GetText(); // NOTE: Reason I'm doing this on another line is because a char + a string don't append to each other...
+			}
+			break;
+			case IniEntityType::NewLine:
+			{
+				contents += static_cast<IniNewLine*>(iniContents[i])->GetValue();
+			}
+			break;
+			case IniEntityType::Section:
+			{
+				contents += static_cast<IniSection*>(iniContents[i])->GetName();
+			}
+			break;
+			case IniEntityType::Key:
+			{
+				IniKey* key = static_cast<IniKey*>(iniContents[i]);
+				contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
+			}
+			break;
+			}
+
+			if (i < iniContents.size() - 1 && iniContents[i]->GetType() != IniEntityType::NewLine)
+			{
+				contents += "\n";
+			}
+		}
+
+		return contents;
 	}
 
 	bool IniSetting::SaveChanges()
@@ -112,49 +162,6 @@ namespace IniRW
 	IniKey* IniSetting::GetKey(const std::string& sectionName, const std::string& keyName)
 	{
 		return FindKey(iniContents, sectionName, keyName);
-	}
-
-	std::string IniSetting::ToString()
-	{
-		std::string contents;
-
-		for (size_t i = 0; i < iniContents.size(); i++)
-		{
-			switch (iniContents[i]->GetType())
-			{
-				case IniEntityType::Comment:
-					{
-						const IniComment* INI_COMMENT = static_cast<IniComment*>(iniContents[i]);
-
-						contents += INI_COMMENT->GetPrefix();
-						contents += INI_COMMENT->GetText(); // NOTE: Reason I'm doing this on another line is because a char + a string don't append to each other...
-					}
-					break;
-				case IniEntityType::NewLine:
-					{
-						contents += static_cast<IniNewLine*>(iniContents[i])->GetValue();
-					}
-					break;
-				case IniEntityType::Section:
-					{
-						contents += static_cast<IniSection*>(iniContents[i])->GetName();
-					}
-					break;
-				case IniEntityType::Key:
-					{
-						IniKey* key = static_cast<IniKey*>(iniContents[i]);
-						contents += key->GetName() + "=" + key->GetValue() + key->GetComment();
-					}
-					break;
-			}
-
-			if (i < iniContents.size() - 1 && iniContents[i]->GetType() != IniEntityType::NewLine)
-			{
-				contents += "\n";
-			}
-		}
-
-		return contents;
 	}
 
 	void IniSetting::LoadIniFile(const std::string& iniFilePath)
