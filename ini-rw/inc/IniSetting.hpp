@@ -38,18 +38,18 @@ namespace IniRW
 		IniSetting(const IniSetting& iniSettings);
 
 		/// <summary>
-		/// Overloaded operator which returns a boolean that states whether an INI file is loaded in this INI settings instance or not.
-		/// </summary>
-		/// <returns>True if an INI file is loaded, if not, false.</returns>
-		operator bool() const;
-
-		/// <summary>
 		/// Overloaded operator which prints the INI contents to an output stream. This function prints the INI contents via the ToString() method.
 		/// </summary>
 		/// <param name="outputStream">The stream to print the INI contents to.</param>
 		/// <param name="iniSettings">The INI settings instance.</param>
 		/// <returns>The output stream object that was used to print the INI contents to.</returns>
 		friend std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings);
+
+		/// <summary>
+		/// Overloaded operator which returns a boolean that states whether an INI file is loaded in this INI settings instance or not.
+		/// </summary>
+		/// <returns>True if an INI file is loaded, if not, false.</returns>
+		operator bool() const;
 
 		/// <summary>
 		/// Returns a boolean that states whether the INI file was loaded succesfully or not.

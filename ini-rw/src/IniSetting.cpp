@@ -64,16 +64,16 @@ namespace IniRW
 		}
 	}
 
-	IniSetting::operator bool() const
-	{
-		return IsLoaded();
-	}
-
 	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
 	{
 		outputStream << iniSettings.ToString();
 
 		return outputStream;
+	}
+
+	IniSetting::operator bool() const
+	{
+		return IsLoaded();
 	}
 
 	bool IniSetting::IsLoaded() const
