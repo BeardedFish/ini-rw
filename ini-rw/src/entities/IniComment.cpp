@@ -8,7 +8,7 @@ namespace IniRW
 {
 	IniComment::IniComment() : IniComment(IniCommentPrefix::Semicolon, "")
 	{
-
+	
 	}
 
 	IniComment::IniComment(IniCommentPrefix prefix, const std::string& text) : IniEntity()
@@ -30,6 +30,11 @@ namespace IniRW
 	std::string IniComment::GetText() const
 	{
 		return text;
+	}
+
+	void IniComment::SetPrefix(const IniCommentPrefix& newPrefix)
+	{
+		prefix = newPrefix;
 	}
 
 	std::string IniComment::ToString() const

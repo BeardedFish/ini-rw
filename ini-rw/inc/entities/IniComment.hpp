@@ -46,7 +46,12 @@ namespace IniRW
 		/// </summary>
 		/// <returns>The text of this INI comment.</returns>
 		std::string GetText() const;
+
 		/// <summary>
+		/// Sets the prefix of this INI comment.
+		/// </summary>
+		/// <param name="newPrefix">The new prefix value.</param>
+		void SetPrefix(const IniCommentPrefix& newPrefix);
 
 		/// <summary>
 		/// Gets the string representation of this INI comment instance.
