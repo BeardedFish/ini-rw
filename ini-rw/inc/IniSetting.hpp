@@ -118,6 +118,14 @@ namespace IniRW
 		void Load(const std::string& iniFilePath);
 
 		/// <summary>
+		/// Writes a comment to the INI file at a specified index. If the specified index is out of bounds then an std::out_of_range exception is thrown.
+		/// </summary>
+		/// <param name="index">The index position where the INI comment should be inserted.</param>
+		/// <param name="prefix">The prefix of the comment.</param>
+		/// <param name="text">The text of the comment.</param>
+		void WriteComment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text);
+
+		/// <summary>
 		/// Updates a key under a specific section in the loaded INI file. If the key exists under the specified section then its value is updated. If the key does not exist under that
 		/// section then the key is inserted under that section.
 		/// </summary>

@@ -227,6 +227,17 @@ namespace IniRW
 		}
 	}
 
+	void IniSetting::WriteComment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text)
+	{
+		if (index > iniContents.size())
+		{
+			throw std::out_of_range("The index was out of range.");
+		}
+
+		std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + index;
+		iniContents.insert(insertPos, new IniComment(prefix, text));
+	}
+
 	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
 	{
 		IniKey* key = FindKey(iniContents, sectionName, keyName);
