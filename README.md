@@ -21,7 +21,7 @@ Once that is imported, you will then have access to the `IniRW::IniSetting` clas
 IniRW::IniSetting iniSettings(INI_FILE_PATH);
 ```
 
-To make sure the INI file was opened successfully, check to see if either the `IniSetting` instance or the `IsLoaded()` function returns true.
+To make sure the `.ini` file was opened successfully, check to see if either the `IniSetting` instance or the `IsLoaded()` function returns true.
 ```cpp
 if (iniSettings) // if (iniSettings.IsLoaded())
 {
@@ -34,7 +34,7 @@ else
 ```
 
 ### Reading A `.ini` File
-To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the INI file under that specified section, an `IniRW::IniKey` pointer is returned.
+To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the `.ini` file under that specified section, an `IniRW::IniKey` pointer is returned.
 
 To read the value of the key, you must dereference the pointer and use the `GetValue()` function which returns a string. If the key is not found, a null pointer is returned.
 ```cpp
@@ -50,12 +50,12 @@ else
 }
 ```
 
-### Creating An Empty `.ini` File:
+### Creating An Empty `.ini` File
 ```cpp
 IniRW::IniSetting iniSettings;
 ```
 
-### Writing An INI File
+### Writing A `.ini` File
 #### Writing A `.ini` Comment
 ```cpp
 iniSettings.WriteComment(INDEX, COMMENT_PREFIX, COMMENT_TEXT);
