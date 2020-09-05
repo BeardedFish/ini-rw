@@ -102,7 +102,7 @@ namespace IniRW
 		bool SaveChanges(const std::string& savePath);
 
 		/// <summary>
-		/// Clears all the INI contents for this IniSetting instance.
+		/// Clears all the INI contents for this INI settings instance.
 		/// </summary>
 		void Clear();
 
