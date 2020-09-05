@@ -20,7 +20,7 @@ namespace IniRW
 
 	/// <summary>
 	/// Searches a string for an INI comment and if it finds one, it extracts it and removes it from the INI value string. A valid INI comment begins with any character
-	/// defined in the "commentPrefixes" vector. Escaped comments (ex: \# or \;) are ignored.
+	/// defined in the "commentPrefixes" vector. Escaped comment prefixes (ex: \# or \;) are ignored.
 	/// </summary>
 	/// <param name="commentPrefixes">A vector of type char which contains all the valid INI comment prefixes.</param>
 	/// <param name="value">The string to be modified and parsed.</param>
