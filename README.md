@@ -1,27 +1,29 @@
-# ⚙️ Ini-Rw
-This is an INI reader/writer library programmed entirely in C++. This project is currently work in progress.
+# ini-rw
+This is a `.ini` reader/writer library programmed entirely in C++11.
+
+ ⚠ This project is currently work in progress.
 
 ## Current Features
-* Ability to open INI files for either:
+* Ability to open `.ini` files for either:
     * Reading
     * Writing
-* Ability to save changes to INI file if modified
+* Ability to save changes to a `.ini` file if modified
 
 ## How To Use
-### Opening An INI File
+### Opening A `.ini` File
 First, you will need to import the `IniSetting.hpp` file:
 ```cpp
 #include "IniSetting.hpp"
 ```
 
-Once that is imported, you will then have access to the `IniRW::IniSetting` class. To open an INI file, you must pass a string containing the INI file path to the constructor of the `IniRW::IniSetting` class instance that you want to create.
+Once that is imported, you will then have access to the `IniRW::IniSetting` class. To open a `.ini` file, use the `IniRW::IniSetting(INI_FILE_PATH)` constructor.
 ```cpp
-IniRW::IniSetting settings(INI_FILE_PATH);
+IniRW::IniSetting iniSettings(INI_FILE_PATH);
 ```
 
-To make sure the INI file was opened successfully, check to see if the `IsLoaded()` function returns true.
+To make sure the INI file was opened successfully, check to see if either the `IniSetting` instance or the `IsLoaded()` function returns true.
 ```cpp
-if (settings.IsLoaded())
+if (iniSettings) // if (iniSettings.IsLoaded())
 {
     // Successful open
 }
@@ -31,10 +33,12 @@ else
 }
 ```
 
-### Reading An INI File
-To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the INI file under that specified section, an `IniRW::IniKey` pointer is returned. To read the value of the key, you must dereference the pointer and use the `GetValue()` function which returns a string. If the key is not found, a null pointer is returned.
+### Reading A `.ini` File
+To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the INI file under that specified section, an `IniRW::IniKey` pointer is returned.
+
+To read the value of the key, you must dereference the pointer and use the `GetValue()` function which returns a string. If the key is not found, a null pointer is returned.
 ```cpp
-IniRW::IniKey* key = settings.GetKey(SECTION_NAME, KEY_NAME);
+IniRW::IniKey* key = iniSettings.GetKey(SECTION_NAME, KEY_NAME);
 
 if (key)
 {
@@ -42,15 +46,32 @@ if (key)
 }
 else
 {
-    std::cout << "Key was not found in the INI file!" << std::endl;
+    std::cout << "The key was not found in the INI file!" << std::endl;
 }
 ```
 
-### Writing An INI File
-After opening an INI file successfully, to write a value to it you must use the `WriteKeyValue()` function. This function takes three string parameters. The first parameter is the section name where the key is stored, the second parameter is the name of the key, and the third parameter is the value of the key.
+### Creating An Empty `.ini` File:
 ```cpp
-settings.WriteKeyValue(SECTION_NAME, KEY_NAME, KEY_VALUE);
+IniRW::IniSetting iniSettings;
 ```
+
+### Writing An INI File
+#### Writing A `.ini` Comment
+```cpp
+iniSettings.WriteComment(INDEX, COMMENT_PREFIX, COMMENT_TEXT);
+```
+
+The `WriteComment()` function will throw an exception if the index is out of bounds.
+
+#### Writing A `.ini` Key
+```cpp
+iniSettings.WriteKeyValue(SECTION_NAME, KEY_NAME, KEY_VALUE);
+```
+
+#### Saving Changes
+To save changes to the original file path that the `.ini` file was loaded from, use the `SaveChanges()` function. For saving changes to a custom file path, use the overloaded function `SaveChanges(CUSTOM_FILE_PATH)` where the `CUSTOM_FILE_PATH` is a string.
+
+Both of these functions return a boolean value that states whether the `.ini` file was saved succesfully or not.
 
 ## Screenshots
 Coming soon!
