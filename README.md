@@ -8,6 +8,7 @@ This is a `.ini` reader/writer library programmed entirely in C++11.
     * Reading
     * Writing
 * Ability to save changes to a `.ini` file if modified
+* Inline comment support for `.ini` keys
 
 ## How To Use
 ### Opening A `.ini` File
