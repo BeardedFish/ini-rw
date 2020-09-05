@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
     }
 
     IniRW::IniSetting iniSettings(argv[1]);
-
+    
     if (iniSettings) // Alternatively, you could do "iniSettings.IsLoaded()"
     {
         std::cout << "The INI file \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
@@ -141,6 +141,6 @@ int main(int argc, char* argv[])
     }
     else
     {
-        std::cout << "An error occured while trying to load the file \"" << argv[1] << "\". Program will now terminate..." << std::endl << std::endl;
+        std::cout << "An error occured while trying to load the file \"" << argv[1] << "\". Program will now terminate..." << std::endl;
     }
 }
