@@ -12,9 +12,14 @@
 
 namespace IniRW
 {
+	IniSetting::IniSetting() : IniSetting(true, "")
+	{
+
+	}
+
 	IniSetting::IniSetting(const std::string& iniFilePath) : IniSetting(false, iniFilePath)
 	{
-		LoadIniFile(iniFilePath);
+		Load(iniFilePath);
 	}
 
 	IniSetting::IniSetting(const bool loaded, const std::string& iniFilePath)
@@ -155,45 +160,21 @@ namespace IniRW
 		iniContents.clear();
 	}
 
-	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
+	void IniSetting::Unload()
 	{
-		IniKey* key = FindKey(iniContents, sectionName, keyName);
+		Clear();
 
-		if (key)
-		{
-			key->SetValue(keyValue);
-		}
-		else
-		{
-			size_t sectionIndex = GetSectionLocation(iniContents, sectionName);
-			key = new IniKey(sectionName, keyName, keyValue);
-
-			if (sectionIndex != SECTION_NOT_FOUND)
-			{
-				std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + sectionIndex;
-
-				iniContents.insert(insertPos, key);
-			}
-			else
-			{
-				if (!iniContents.empty())
-				{
-					iniContents.insert(iniContents.end(), new IniString("\n"));
-				}
-
-				iniContents.insert(iniContents.end(), new IniSection(sectionName));
-				iniContents.insert(iniContents.end(), key);
-			}
-		}
+		loaded = false;
+		iniFilePath = "";
 	}
 
-	IniKey* IniSetting::GetKey(const std::string& sectionName, const std::string& keyName)
+	void IniSetting::Load(const std::string& iniFilePath)
 	{
-		return FindKey(iniContents, sectionName, keyName);
-	}
+		if (IsLoaded())
+		{
+			Unload();
+		}
 
-	void IniSetting::LoadIniFile(const std::string& iniFilePath)
-	{
 		std::ifstream fileStream(iniFilePath);
 
 		if (fileStream)
@@ -246,5 +227,42 @@ namespace IniRW
 
 			loaded = true;
 		}
+	}
+
+	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
+	{
+		IniKey* key = FindKey(iniContents, sectionName, keyName);
+
+		if (key)
+		{
+			key->SetValue(keyValue);
+		}
+		else
+		{
+			size_t sectionIndex = GetSectionLocation(iniContents, sectionName);
+			key = new IniKey(sectionName, keyName, keyValue);
+
+			if (sectionIndex != SECTION_NOT_FOUND)
+			{
+				std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + sectionIndex;
+
+				iniContents.insert(insertPos, key);
+			}
+			else
+			{
+				if (!iniContents.empty())
+				{
+					iniContents.insert(iniContents.end(), new IniString("\n"));
+				}
+
+				iniContents.insert(iniContents.end(), new IniSection(sectionName));
+				iniContents.insert(iniContents.end(), key);
+			}
+		}
+	}
+
+	IniKey* IniSetting::GetKey(const std::string& sectionName, const std::string& keyName)
+	{
+		return FindKey(iniContents, sectionName, keyName);
 	}
 }

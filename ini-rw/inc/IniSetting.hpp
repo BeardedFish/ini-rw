@@ -21,6 +21,11 @@ namespace IniRW
 
 	public:
 		/// <summary>
+		/// Creates an INI settings instance with empty file contents.
+		/// </summary>
+		IniSetting();
+
+		/// <summary>
 		/// Constructor for creating the IniSetting class. By calling this constructor, the INI file passed in the parameters is loaded in the class.
 		/// </summary>
 		/// <param name="iniFilePath">The path to the INI file to be loaded in the IniSetting class.</param>
@@ -102,6 +107,17 @@ namespace IniRW
 		void Clear();
 
 		/// <summary>
+		/// Unloads the current INI file loaded in this INI settings instance from memory. If no INI file is loaded then this function does nothing.
+		/// </summary>
+		void Unload();
+
+		/// <summary>
+		/// Loads an INI file's contents into the current instance of this class.
+		/// </summary>
+		/// <param name="iniFilePath">The path to the INI file.</param>
+		void Load(const std::string& iniFilePath);
+
+		/// <summary>
 		/// Updates a key under a specific section in the loaded INI file. If the key exists under the specified section then its value is updated. If the key does not exist under that
 		/// section then the key is inserted under that section.
 		/// </summary>
@@ -117,12 +133,5 @@ namespace IniRW
 		/// <param name="keyName">The name of the key to be searched for in the section.</param>
 		/// <returns>If the key exists in the INI file, then the IniKey* is returned. If the key was not found, then a null pointer is returned.</returns>
 		IniKey* GetKey(const std::string& sectionName, const std::string& keyName);
-
-	private:
-		/// <summary>
-		/// Loads an INI file's contents into the current instance of the class.
-		/// </summary>
-		/// <param name="iniFilePath">The path to the INI file.</param>
-		void LoadIniFile(const std::string& iniFilePath);
 	};
 }
