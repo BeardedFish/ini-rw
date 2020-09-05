@@ -180,7 +180,6 @@ namespace IniRW
 		if (fileStream)
 		{
 			const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound) , static_cast<char>(IniCommentPrefix::Semicolon) };
-			bool sectionEncountered = false;
 			std::string currentLine, currentSectionName;
 
 			// Read every line from the INI file
@@ -188,12 +187,11 @@ namespace IniRW
 			{
 				if (IsValidIniSection(currentLine))
 				{
-					sectionEncountered = true;
 					currentSectionName = ExtractSectionName(currentLine);
 
 					iniContents.push_back(new IniSection(currentSectionName));
 				}
-				else if (sectionEncountered && IsValidIniKey(currentLine))
+				else if (IsValidIniKey(currentLine))
 				{
 					size_t equalSignIndex = currentLine.find_first_of('=');
 					std::string keyName = currentLine.substr(0, equalSignIndex);
