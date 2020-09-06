@@ -37,7 +37,8 @@ namespace IniRW
 		/// <returns>A string. The exact value will vary.</returns>
 		std::string ToString() const override;
 
-		std::string GetValue() const;
+		/// <summary>
+		std::string GetValueBeforeComment() const;
 
 		std::string GetComment() const;
 
@@ -45,7 +46,7 @@ namespace IniRW
 		/// 
 		/// </summary>
 		/// <param name="newValue"></param>
-		void SetValue(const std::string& newValue);
+		void SetValueBeforeComment(const std::string& newValue);
 
 		/// <summary>
 		/// 

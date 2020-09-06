@@ -33,10 +33,10 @@ namespace IniRW
 
 	std::string IniString::ToString() const
 	{
-		return GetValue() + GetComment();
+		return GetValueBeforeComment() + GetComment();
 	}
 
-	std::string IniString::GetValue() const
+	std::string IniString::GetValueBeforeComment() const
 	{
 		return valueBeforeComment;
 	}
@@ -46,7 +46,7 @@ namespace IniRW
 		return commentPrefix != '\0' ? std::string(1, commentPrefix) + commentText : "" ;
 	}
 
-	void IniString::SetValue(const std::string& newValue)
+	void IniString::SetValueBeforeComment(const std::string& newValue)
 	{
 		valueBeforeComment = newValue;
 	}
