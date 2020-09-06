@@ -189,15 +189,6 @@ namespace IniRW
 					
 					iniContents.push_back(new IniKey(currentSectionName, keyName, keyCommentValue));
 				}
-				{
-					IniCommentPrefix prefix = static_cast<IniCommentPrefix>(currentLine[0]);
-					std::string text = currentLine.substr(1, currentLine.length() - 1);
-
-					std::cout << currentLine << std::endl;
-
-
-					iniContents.push_back(new IniComment(prefix, text));
-				}*/
 				else // It's either an INI comment, a new line, or a garbage string value
 				{
 					iniContents.push_back(new IniString(currentLine));
