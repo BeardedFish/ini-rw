@@ -8,7 +8,6 @@ namespace IniRW
 {
 	enum class IniEntityType
 	{
-		Comment,
 		Key,
 		Section,
 		String
