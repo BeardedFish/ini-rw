@@ -1,4 +1,4 @@
-// File Name:     IniString.cpp
+// File Name:     IniValueCommentPair.cpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Friday, September 4, 2020
 
