@@ -7,7 +7,7 @@
 #include "../inc/algorithms/Search.hpp"
 #include "../inc/algorithms/Validation.hpp"
 #include "../inc/entities/IniSection.hpp"
-#include "../inc/entities/IniString.hpp"
+#include "../inc/entities/IniValueCommentPair.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -50,9 +50,9 @@ namespace IniRW
 							iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
 						}
 						break;
-					case IniEntityType::String:
+					case IniEntityType::ValueCommentPair:
 						{
-							iniContents.push_back(new IniString(*static_cast<IniString*>(entity)));
+							iniContents.push_back(new IniValueCommentPair(*static_cast<IniValueCommentPair*>(entity)));
 						}
 						break;
 				}
@@ -140,9 +140,9 @@ namespace IniRW
 						delete static_cast<IniSection*>(entity);
 					}
 					break;
-				case IniEntityType::String:
+				case IniEntityType::ValueCommentPair:
 					{
-						delete static_cast<IniString*>(entity);
+						delete static_cast<IniValueCommentPair*>(entity);
 					}
 					break;
 			}
@@ -191,7 +191,7 @@ namespace IniRW
 				}
 				else // It's either an INI comment, a new line, or a garbage string value
 				{
-					iniContents.push_back(new IniString(currentLine));
+					iniContents.push_back(new IniValueCommentPair(currentLine));
 				}
 			}
 
@@ -209,7 +209,7 @@ namespace IniRW
 		std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + index;
 		std::string comment = std::string(1, static_cast<char>(prefix)) + text;
 
-		iniContents.insert(insertPos, new IniString(comment));
+		iniContents.insert(insertPos, new IniValueCommentPair(comment));
 	}
 
 	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
@@ -235,7 +235,7 @@ namespace IniRW
 			{
 				if (!iniContents.empty())
 				{
-					iniContents.insert(iniContents.end(), new IniString("\n"));
+					iniContents.insert(iniContents.end(), new IniValueCommentPair("\n"));
 				}
 
 				iniContents.insert(iniContents.end(), new IniSection(sectionName));

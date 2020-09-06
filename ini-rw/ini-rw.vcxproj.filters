@@ -42,7 +42,7 @@
     <ClInclude Include="inc\enums\IniCommentPrefix.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\entities\IniString.hpp">
+    <ClInclude Include="inc\entities\IniValueCommentPair.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,7 +65,7 @@
     <ClCompile Include="src\IniSetting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\entities\IniString.cpp">
+    <ClCompile Include="src\entities\IniValueCommentPair.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

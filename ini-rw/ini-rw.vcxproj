@@ -143,7 +143,7 @@
     <ClCompile Include="src\algorithms\Search.cpp" />
     <ClCompile Include="src\algorithms\Validation.cpp" />
     <ClCompile Include="src\entities\IniKey.cpp" />
-    <ClCompile Include="src\entities\IniString.cpp" />
+    <ClCompile Include="src\entities\IniValueCommentPair.cpp" />
     <ClCompile Include="src\entities\IniSection.cpp" />
     <ClCompile Include="src\IniSetting.cpp" />
   </ItemGroup>
@@ -153,7 +153,7 @@
     <ClInclude Include="inc\algorithms\Validation.hpp" />
     <ClInclude Include="inc\entities\IniEntity.hpp" />
     <ClInclude Include="inc\entities\IniKey.hpp" />
-    <ClInclude Include="inc\entities\IniString.hpp" />
+    <ClInclude Include="inc\entities\IniValueCommentPair.hpp" />
     <ClInclude Include="inc\entities\IniSection.hpp" />
     <ClInclude Include="inc\enums\IniCommentPrefix.hpp" />
     <ClInclude Include="inc\enums\IniEntityType.hpp" />

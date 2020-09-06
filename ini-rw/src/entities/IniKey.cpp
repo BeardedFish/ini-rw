@@ -10,7 +10,7 @@ namespace IniRW
 	{
 		this->section = section;
 		this->name = name;
-		this->keyCommentPair = IniString(value);
+		this->keyCommentPair = IniValueCommentPair(value);
 	}
 
 	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value, const IniCommentPrefix& commentPrefix, const std::string& commentText) : IniKey(section, name, value)
@@ -49,7 +49,7 @@ namespace IniRW
 
 	std::string IniKey::GetValue() const
 	{
-		return keyCommentPair.GetValue();
+		return keyCommentPair.GetValueBeforeComment();
 	}
 
 	/*IniComment* IniKey::GetComment() const

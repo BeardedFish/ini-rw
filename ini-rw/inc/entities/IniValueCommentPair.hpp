@@ -9,7 +9,7 @@
 
 namespace IniRW
 {
-	class IniString : public IniEntity
+	class IniValueCommentPair : public IniEntity
 	{
 	private:
 		std::string valueBeforeComment;
@@ -20,13 +20,13 @@ namespace IniRW
 		/// <summary>
 		/// Creates an empty INI string.
 		/// </summary>
-		IniString();
+		IniValueCommentPair();
 
 		/// <summary>
 		/// Holds a string in an INI file.
 		/// </summary>
 		/// <param name="value">The value that this INI string will hold.</param>
-		IniString(const std::string& value);
+		IniValueCommentPair(const std::string& value);
 
 		/// <summary>
 		/// Gets the INI entity type of this class.
@@ -37,13 +37,13 @@ namespace IniRW
 		/// <summary>
 		/// Returns the string value that is held in this INI string instance.
 		/// </summary>
-		/// <returns>A string. The exact value will vary.</returns>
+		/// <returns>A string in the format: "[VALUE_BEFORE_COMMENT][INI_COMMENT]" (excluding quotes).</returns>
 		std::string ToString() const override;
 
 		/// <summary>
 		/// Gets the value before the INI comment prefix character.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>A string that holds the current value of this INI string instance..</returns>
 		std::string GetValueBeforeComment() const;
 
 		/// <summary>

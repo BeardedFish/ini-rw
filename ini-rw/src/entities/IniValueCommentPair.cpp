@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Friday, September 4, 2020
 
-#include "../../inc/entities/IniString.hpp"
+#include "../../inc/entities/IniValueCommentPair.hpp"
 #include "../../inc/algorithms/Parse.hpp"
 #include <iostream>
 
@@ -10,14 +10,14 @@ namespace IniRW
 {
 	// TODO: REFACTOR CONSTRUCTORS (USING PRIVATE CONSTRUCTOR)...
 
-	IniString::IniString()
+	IniValueCommentPair::IniValueCommentPair()
 	{
 		this->valueBeforeComment = "";
 		this->commentPrefix = '\0';
 		this->commentText = "";
 	}
 
-	IniString::IniString(const std::string& text)
+	IniValueCommentPair::IniValueCommentPair(const std::string& text)
 	{
 		const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound), static_cast<char>(IniCommentPrefix::Semicolon) };
 
@@ -26,32 +26,32 @@ namespace IniRW
 		this->commentText = GetCommentText(INI_COMMENT_PREFIXES, text);
 	}
 
-	IniEntityType IniString::GetType()
+	IniEntityType IniValueCommentPair::GetType()
 	{
-		return IniEntityType::String;
+		return IniEntityType::ValueCommentPair;
 	}
 
-	std::string IniString::ToString() const
+	std::string IniValueCommentPair::ToString() const
 	{
 		return GetValueBeforeComment() + GetComment();
 	}
 
-	std::string IniString::GetValueBeforeComment() const
+	std::string IniValueCommentPair::GetValueBeforeComment() const
 	{
 		return valueBeforeComment;
 	}
 
-	std::string IniString::GetComment() const
+	std::string IniValueCommentPair::GetComment() const
 	{
 		return commentPrefix != '\0' ? std::string(1, commentPrefix) + commentText : "" ;
 	}
 
-	void IniString::SetValueBeforeComment(const std::string& newValue)
+	void IniValueCommentPair::SetValueBeforeComment(const std::string& newValue)
 	{
 		valueBeforeComment = newValue;
 	}
 
-	void IniString::SetComment(const IniCommentPrefix& newPrefix, const std::string& newText)
+	void IniValueCommentPair::SetComment(const IniCommentPrefix& newPrefix, const std::string& newText)
 	{
 		commentPrefix = static_cast<char>(newPrefix);
 		commentText = newText;
