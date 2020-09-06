@@ -145,7 +145,6 @@
     <ClCompile Include="src\entities\IniKey.cpp" />
     <ClCompile Include="src\entities\IniString.cpp" />
     <ClCompile Include="src\entities\IniSection.cpp" />
-    <ClCompile Include="src\entities\IniComment.cpp" />
     <ClCompile Include="src\IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +155,6 @@
     <ClInclude Include="inc\entities\IniKey.hpp" />
     <ClInclude Include="inc\entities\IniString.hpp" />
     <ClInclude Include="inc\entities\IniSection.hpp" />
-    <ClInclude Include="inc\entities\IniComment.hpp" />
     <ClInclude Include="inc\enums\IniCommentPrefix.hpp" />
     <ClInclude Include="inc\enums\IniEntityType.hpp" />
     <ClInclude Include="inc\IniSetting.hpp" />

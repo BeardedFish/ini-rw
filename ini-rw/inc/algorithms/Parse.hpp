@@ -27,5 +27,12 @@ namespace IniRW
 	/// <returns>
 	/// If a comment exists in the value, then a string containing the extracted comment is returned. If no comment exists in the value, then an empty string is returned.
 	/// </returns>
-	std::string ExtractAndRemoveComment(const std::vector<char>& commentPrefixes, std::string& value);
+	std::string GetComment(const std::vector<char>& commentPrefixes, const std::string& value);
+
+	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str);
+
+	char GetCommentPrefix(const std::vector<char>& commentPrefixes, const std::string& str);
+
+
+	std::string GetCommentText(const std::vector<char>& commentPrefixes, const std::string& str);
 }

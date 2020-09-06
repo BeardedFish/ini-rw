@@ -10,21 +10,20 @@ namespace IniRW
 	{
 		this->section = section;
 		this->name = name;
-		this->value = value;
-		this->comment = nullptr;
+		this->keyCommentPair = new IniString(value);
 	}
 
 	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value, const IniCommentPrefix& commentPrefix, const std::string& commentText) : IniKey(section, name, value)
 	{
-		this->comment = new IniComment(commentPrefix, commentText);
+		//this->comment = new IniComment(commentPrefix, commentText);
 	}
 
 	IniKey::~IniKey()
 	{
-		if (HasComment())
+		/*if (HasComment())
 		{
 			delete comment;
-		}
+		}*/
 	}
 
 	IniEntityType IniKey::GetType()
@@ -36,19 +35,14 @@ namespace IniRW
 	{
 		std::string result;
 
-		result += GetName() + "=" + GetValue();
-
-		if (HasComment())
-		{
-			result += GetComment()->ToString();
-		}
+		result += GetName() + "=" + keyCommentPair->ToString();
 
 		return result;
 	}
 
 	bool IniKey::HasComment() const
 	{
-		return comment != nullptr;
+		return true; // comment != nullptr;
 	}
 
 	std::string IniKey::GetSection() const
@@ -63,16 +57,16 @@ namespace IniRW
 
 	std::string IniKey::GetValue() const
 	{
-		return value;
+		return keyCommentPair->GetValue();
 	}
 
-	IniComment* IniKey::GetComment() const
+	/*IniComment* IniKey::GetComment() const
 	{
 		return comment;
-	}
+	}*/
 
 	void IniKey::SetValue(const std::string& newValue)
 	{
-		value = newValue;
+		//value = newValue;
 	}
 }

@@ -9,6 +9,7 @@
 #include "../inc/entities/IniSection.hpp"
 #include "../inc/entities/IniString.hpp"
 #include <fstream>
+#include <iostream>
 
 namespace IniRW
 {
@@ -39,11 +40,11 @@ namespace IniRW
 			{
 				switch (entity->GetType())
 				{
-					case IniEntityType::Comment:
+					/*case IniEntityType::Comment:
 						{
 							iniContents.push_back(new IniComment(*static_cast<IniComment*>(entity)));
 						}
-						break;
+						break;*/
 					case IniEntityType::Key:
 						{
 							iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
@@ -134,11 +135,11 @@ namespace IniRW
 		{
 			switch (entity->GetType())
 			{
-				case IniEntityType::Comment:
+				/*case IniEntityType::Comment: // TODO: Delete later...
 					{
 						delete static_cast<IniComment*>(entity);
 					}
-					break;
+					break;*/
 				case IniEntityType::Key:
 					{
 						delete static_cast<IniKey*>(entity);
@@ -179,7 +180,6 @@ namespace IniRW
 
 		if (fileStream)
 		{
-			const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound) , static_cast<char>(IniCommentPrefix::Semicolon) };
 			std::string currentLine, currentSectionName;
 
 			// Read every line from the INI file
@@ -195,10 +195,9 @@ namespace IniRW
 				{
 					size_t equalSignIndex = currentLine.find_first_of('=');
 					std::string keyName = currentLine.substr(0, equalSignIndex);
-					std::string keyValue = currentLine.substr(equalSignIndex + 1, currentLine.length() - 1);
-					std::string keyComment = ExtractAndRemoveComment(INI_COMMENT_PREFIXES, keyValue);
+					std::string keyCommentValue = currentLine.substr(equalSignIndex + 1, currentLine.length() - 1);
 
-					if (!keyComment.empty())
+					/*if (!keyComment.empty())
 					{
 						IniCommentPrefix commentPrefix = static_cast<IniCommentPrefix>(keyComment[0]);
 						std::string commentText = keyComment.substr(1, keyComment.length() - 1);
@@ -206,19 +205,24 @@ namespace IniRW
 						iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, commentPrefix, commentText));
 					}
 					else
-					{
-						iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue));
-					}
+					{*/
+					
+					iniContents.push_back(new IniKey(currentSectionName, keyName, keyCommentValue));
 				}
-				else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
+				/*else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
 				{
 					IniCommentPrefix prefix = static_cast<IniCommentPrefix>(currentLine[0]);
 					std::string text = currentLine.substr(1, currentLine.length() - 1);
 
+					std::cout << currentLine << std::endl;
+
+
 					iniContents.push_back(new IniComment(prefix, text));
-				}
-				else // It's either a new line or some garbage string value
+				}*/
+				else // It's either an INI comment, a new line, or a garbage string value
 				{
+					//std::cout << currentLine << std::endl;
+
 					iniContents.push_back(new IniString(currentLine));
 				}
 			}
@@ -235,7 +239,7 @@ namespace IniRW
 		}
 
 		std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + index;
-		iniContents.insert(insertPos, new IniComment(prefix, text));
+		//iniContents.insert(insertPos, new IniComment(prefix, text));
 	}
 
 	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)

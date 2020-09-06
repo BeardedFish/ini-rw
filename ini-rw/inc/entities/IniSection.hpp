@@ -21,6 +21,8 @@ namespace IniRW
 		/// <param name="name">The name of the INI section. This value should exclude the "[" and "]" characters (excluding quotes).</param>
 		IniSection(const std::string& name);
 
+		~IniSection();
+
 		/// <summary>
 		/// Gets the INI entity type of this class.
 		/// </summary>

@@ -5,13 +5,16 @@
 #pragma once
 
 #include "IniEntity.hpp"
+#include "../enums/IniCommentPrefix.hpp"
 
 namespace IniRW
 {
 	class IniString : public IniEntity
 	{
 	private:
-		std::string value;
+		std::string valueBeforeComment;
+		char commentPrefix;
+		std::string commentText;
 
 	public:
 		/// <summary>
@@ -31,5 +34,9 @@ namespace IniRW
 		/// </summary>
 		/// <returns>A string. The exact value will vary.</returns>
 		std::string ToString() const override;
+
+		std::string GetValue() const;
+
+		std::string GetComment() const;
 	};
 }

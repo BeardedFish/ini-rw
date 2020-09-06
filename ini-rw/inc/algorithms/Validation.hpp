@@ -25,7 +25,7 @@ namespace IniRW
 	/// <param name="commentPrefixes">A vector of type char which contains all the valid INI comment prefixes.</param>
 	/// <param name="str">The string to be evaluated.</param>
 	/// <returns>True if the string is a valid INI comment, if not, false.</returns>
-	bool IsValidIniComment(const std::vector<char>& commentPrefixes, const std::string& str);
+	// bool IsValidIniComment(const std::vector<char>& commentPrefixes, const std::string& str);
 
 	/// <summary>
 	/// Checks whether a string is a valid INI key or not. A valid INI key has the format: "KEY_NAME=KEY_VALUE" (excluding quotes). A valid key must also be at minimum three

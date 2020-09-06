@@ -5,7 +5,8 @@
 #pragma once
 
 #include "IniEntity.hpp"
-#include "IniComment.hpp"
+#include "IniString.hpp"
+#include "../enums/IniCommentPrefix.hpp"
 #include <string>
 
 namespace IniRW
@@ -15,8 +16,7 @@ namespace IniRW
 	private:
 		std::string section;
 		std::string name;
-		std::string value;
-		IniComment* comment;
+		IniString* keyCommentPair;
 
 	public:
 		/// <summary>
@@ -83,7 +83,7 @@ namespace IniRW
 		/// Gets the comment attached to this key.
 		/// </summary>
 		/// <returns>A string which contains the comment attached to this key. If the string returned is empty, then that means that this key doesn't have a comment.</returns>
-		IniComment* GetComment() const;
+		//IniComment* GetComment() const;
 
 		/// <summary>
 		/// Sets the value for this key to the one specified in the function parameter.

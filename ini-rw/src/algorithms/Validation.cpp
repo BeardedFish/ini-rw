@@ -6,7 +6,7 @@
 
 namespace IniRW
 {
-	bool IsValidIniComment(const std::vector<char>& commentPrefixes, const std::string& str)
+	/*bool IsValidIniComment(const std::vector<char>& commentPrefixes, const std::string& str)
 	{
 		if (str.length() >= 1)
 		{
@@ -20,7 +20,7 @@ namespace IniRW
 		}
 
 		return false;
-	}
+	}*/
 
 	bool IsValidIniKey(const std::string& str)
 	{
