@@ -8,6 +8,15 @@
 
 namespace IniRW
 {
+	// TODO: REFACTOR CONSTRUCTORS (USING PRIVATE CONSTRUCTOR)...
+
+	IniString::IniString()
+	{
+		this->valueBeforeComment = "";
+		this->commentPrefix = '\0';
+		this->commentText = "";
+	}
+
 	IniString::IniString(const std::string& text)
 	{
 		const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound), static_cast<char>(IniCommentPrefix::Semicolon) };

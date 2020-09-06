@@ -17,6 +17,8 @@ namespace IniRW
 		std::string commentText;
 
 	public:
+		IniString();
+
 		/// <summary>
 		/// Holds a string in an INI file.
 		/// </summary>
