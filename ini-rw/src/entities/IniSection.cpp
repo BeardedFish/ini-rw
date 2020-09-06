@@ -12,11 +12,6 @@ namespace IniRW
 		this->name = name;
 	}
 
-	IniSection::~IniSection()
-	{
-		// TODO: Deallocate the right side data if it exists
-	}
-
 	IniEntityType IniSection::GetType()
 	{
 		return IniEntityType::Section;
