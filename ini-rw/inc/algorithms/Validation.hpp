@@ -12,12 +12,12 @@ namespace IniRW
 	/// <summary>
 	/// The character than an INI section name must starts with.
 	/// </summary>
-	constexpr const char SECTION_BEGINNING_CHAR = '[';
+	constexpr char SECTION_BEGINNING_CHAR = '[';
 
 	/// <summary>
 	/// The character that an INI section name must end with.
 	/// </summary>
-	constexpr const char SECTION_ENDING_CHAR = ']';
+	constexpr char SECTION_ENDING_CHAR = ']';
 
 	/// <summary>
 	/// Checks whether a string is a valid INI key or not. A valid INI key has the format: "KEY_NAME=KEY_VALUE" (excluding quotes). A valid key must also be at minimum three
