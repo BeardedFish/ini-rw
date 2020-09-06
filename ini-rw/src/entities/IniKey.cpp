@@ -32,11 +32,6 @@ namespace IniRW
 		return result;
 	}
 
-	bool IniKey::HasComment() const
-	{
-		return true; // comment != nullptr;
-	}
-
 	std::string IniKey::GetSection() const
 	{
 		return section;

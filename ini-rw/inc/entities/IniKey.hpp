@@ -27,8 +27,6 @@ namespace IniRW
 
 		std::string ToString() const override;
 
-		bool HasComment() const;
-
 		std::string GetSection() const;
 
 		std::string GetName() const;
