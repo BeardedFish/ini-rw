@@ -207,7 +207,9 @@ namespace IniRW
 		}
 
 		std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + index;
-		//iniContents.insert(insertPos, new IniComment(prefix, text));
+		std::string comment = std::string(1, static_cast<char>(prefix)) + text;
+
+		iniContents.insert(insertPos, new IniString(comment));
 	}
 
 	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
