@@ -38,12 +38,6 @@ namespace IniRW
 		IniKey(const std::string& section, const std::string& name, const std::string& value, const IniCommentPrefix& commentPrefix, const std::string& commentText);
 
 		/// <summary>
-		/// If an INI comment is attached to this key, then it is deallocated from the heap via this deconstructor. If no comment is attached then this deconstructor does
-		/// nothing.
-		/// </summary>
-		~IniKey();
-
-		/// <summary>
 		/// Gets the INI entity type of this class.
 		/// </summary>
 		/// <returns>The return value will always be IniEnityType::Key.</returns>

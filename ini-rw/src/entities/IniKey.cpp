@@ -18,14 +18,6 @@ namespace IniRW
 		//this->comment = new IniComment(commentPrefix, commentText);
 	}
 
-	IniKey::~IniKey()
-	{
-		/*if (HasComment())
-		{
-			delete comment;
-		}*/
-	}
-
 	IniEntityType IniKey::GetType()
 	{
 		return IniEntityType::Key;
