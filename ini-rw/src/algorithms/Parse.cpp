@@ -53,11 +53,6 @@ namespace IniRW
 	{
 		const std::string INI_COMMENT = GetComment(commentPrefixes, str);
 
-		if (str == "World")
-		{
-			std::cout << "hi";
-		}
-
 		if (str.length() > INI_COMMENT.length())
 		{
 			return str.substr(0, (str.length() - INI_COMMENT.length()));
