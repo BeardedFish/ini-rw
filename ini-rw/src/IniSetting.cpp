@@ -40,11 +40,6 @@ namespace IniRW
 			{
 				switch (entity->GetType())
 				{
-					/*case IniEntityType::Comment:
-						{
-							iniContents.push_back(new IniComment(*static_cast<IniComment*>(entity)));
-						}
-						break;*/
 					case IniEntityType::Key:
 						{
 							iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
@@ -135,11 +130,6 @@ namespace IniRW
 		{
 			switch (entity->GetType())
 			{
-				/*case IniEntityType::Comment: // TODO: Delete later...
-					{
-						delete static_cast<IniComment*>(entity);
-					}
-					break;*/
 				case IniEntityType::Key:
 					{
 						delete static_cast<IniKey*>(entity);
@@ -196,20 +186,9 @@ namespace IniRW
 					size_t equalSignIndex = currentLine.find_first_of('=');
 					std::string keyName = currentLine.substr(0, equalSignIndex);
 					std::string keyCommentValue = currentLine.substr(equalSignIndex + 1, currentLine.length() - 1);
-
-					/*if (!keyComment.empty())
-					{
-						IniCommentPrefix commentPrefix = static_cast<IniCommentPrefix>(keyComment[0]);
-						std::string commentText = keyComment.substr(1, keyComment.length() - 1);
-
-						iniContents.push_back(new IniKey(currentSectionName, keyName, keyValue, commentPrefix, commentText));
-					}
-					else
-					{*/
 					
 					iniContents.push_back(new IniKey(currentSectionName, keyName, keyCommentValue));
 				}
-				/*else if (IsValidIniComment(INI_COMMENT_PREFIXES, currentLine))
 				{
 					IniCommentPrefix prefix = static_cast<IniCommentPrefix>(currentLine[0]);
 					std::string text = currentLine.substr(1, currentLine.length() - 1);
@@ -221,8 +200,6 @@ namespace IniRW
 				}*/
 				else // It's either an INI comment, a new line, or a garbage string value
 				{
-					//std::cout << currentLine << std::endl;
-
 					iniContents.push_back(new IniString(currentLine));
 				}
 			}
