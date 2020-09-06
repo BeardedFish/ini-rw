@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
 
                             if (key)
                             {
-                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << key->GetValue() << "\".";
+                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << key->GetValueCommentPair().GetValueBeforeComment() << "\".";
                             }
                             else
                             {

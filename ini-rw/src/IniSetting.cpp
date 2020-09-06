@@ -218,7 +218,7 @@ namespace IniRW
 
 		if (key)
 		{
-			key->SetValue(keyValue);
+			key->GetValueCommentPair().SetValueBeforeComment(keyValue);
 		}
 		else
 		{

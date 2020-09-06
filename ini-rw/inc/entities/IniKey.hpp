@@ -16,7 +16,7 @@ namespace IniRW
 	private:
 		std::string section;
 		std::string name;
-		IniValueCommentPair keyCommentPair;
+		IniValueCommentPair valueCommentPair;
 
 	public:
 		/// <summary>
@@ -68,21 +68,9 @@ namespace IniRW
 		std::string GetName() const;
 
 		/// <summary>
-		/// Gets the value of this INI key.
+		/// 
 		/// </summary>
-		/// <returns>A string which contains the value of this key.</returns>
-		std::string GetValue() const;
-
-		/// <summary>
-		/// Gets the comment attached to this key.
-		/// </summary>
-		/// <returns>A string which contains the comment attached to this key. If the string returned is empty, then that means that this key doesn't have a comment.</returns>
-		//IniComment* GetComment() const;
-
-		/// <summary>
-		/// Sets the value for this key to the one specified in the function parameter.
-		/// </summary>
-		/// <param name="newValue">The new value this key should have.</param>
-		void SetValue(const std::string& newValue);
+		/// <returns></returns>
+		IniValueCommentPair GetValueCommentPair() const;
 	};
 }
