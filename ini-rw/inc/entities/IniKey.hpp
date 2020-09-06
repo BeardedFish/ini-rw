@@ -16,7 +16,7 @@ namespace IniRW
 	private:
 		std::string section;
 		std::string name;
-		IniString* keyCommentPair;
+		IniString keyCommentPair;
 
 	public:
 		/// <summary>
