@@ -6,22 +6,6 @@
 
 namespace IniRW
 {
-	/*bool IsValidIniComment(const std::vector<char>& commentPrefixes, const std::string& str)
-	{
-		if (str.length() >= 1)
-		{
-			for (const char& prefix : commentPrefixes)
-			{
-				if (str[0] == prefix)
-				{
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}*/
-
 	bool IsValidIniKey(const std::string& str)
 	{
 		return str.length() >= 3 && str.find_first_of('=') != std::string::npos;

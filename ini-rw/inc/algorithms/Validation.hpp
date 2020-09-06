@@ -20,14 +20,6 @@ namespace IniRW
 	constexpr const char SECTION_ENDING_CHAR = ']';
 
 	/// <summary>
-	/// Checks whether a string is a valid INI comment or not. A valid INI comment begins with any character defined in the "commentPrefixes" vector.
-	/// </summary>
-	/// <param name="commentPrefixes">A vector of type char which contains all the valid INI comment prefixes.</param>
-	/// <param name="str">The string to be evaluated.</param>
-	/// <returns>True if the string is a valid INI comment, if not, false.</returns>
-	// bool IsValidIniComment(const std::vector<char>& commentPrefixes, const std::string& str);
-
-	/// <summary>
 	/// Checks whether a string is a valid INI key or not. A valid INI key has the format: "KEY_NAME=KEY_VALUE" (excluding quotes). A valid key must also be at minimum three
 	/// characters in length.
 	/// </summary>
