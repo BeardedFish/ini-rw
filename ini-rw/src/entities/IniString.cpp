@@ -36,4 +36,15 @@ namespace IniRW
 	{
 		return commentPrefix != '\0' ? std::string(1, commentPrefix) + commentText : "" ;
 	}
+
+	void IniString::SetValue(const std::string& newValue)
+	{
+		valueBeforeComment = newValue;
+	}
+
+	void IniString::SetComment(const IniCommentPrefix& newPrefix, const std::string& newText)
+	{
+		commentPrefix = static_cast<char>(newPrefix);
+		commentText = newText;
+	}
 }

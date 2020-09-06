@@ -38,5 +38,18 @@ namespace IniRW
 		std::string GetValue() const;
 
 		std::string GetComment() const;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="newValue"></param>
+		void SetValue(const std::string& newValue);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="prefix"></param>
+		/// <param name="text"></param>
+		void SetComment(const IniCommentPrefix& prefix, const std::string& text);
 	};
 }
