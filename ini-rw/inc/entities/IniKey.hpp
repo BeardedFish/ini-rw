@@ -5,8 +5,8 @@
 #pragma once
 
 #include "IniEntity.hpp"
-#include "IniString.hpp"
 #include "../enums/IniCommentPrefix.hpp"
+#include "IniValueCommentPair.hpp"
 #include <string>
 
 namespace IniRW
