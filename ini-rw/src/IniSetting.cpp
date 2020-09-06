@@ -175,11 +175,15 @@ namespace IniRW
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				if (IsValidIniSection(currentLine))
-				{
-					currentSectionName = ExtractSectionName(currentLine);
+				std::vector<char> prefixes = { ';', '#' };
 
-					iniContents.push_back(new IniSection(currentSectionName));
+				if (IsValidIniSection(prefixes, currentLine))
+				{
+					IniSection* iniSection = new IniSection(currentLine);
+					iniContents.push_back(iniSection);
+
+					currentSectionName = iniSection->GetName();
+
 				}
 				else if (IsValidIniKey(currentLine))
 				{

@@ -19,58 +19,20 @@ namespace IniRW
 		IniValueCommentPair valueCommentPair;
 
 	public:
-		/// <summary>
-		/// Creates an INI key with a specified section name, key name, and key value.
-		/// </summary>
-		/// <param name="section">The name of the section that this key belongs too.</param>
-		/// <param name="name">The name of this key.</param>
-		/// <param name="value">The value of this key.</param>
 		IniKey(const std::string& section, const std::string& name, const std::string& value);
 
-		/// <summary>
-		/// Creates an INI key with a specified section name, key name, key value, and a comment.
-		/// </summary>
-		/// <param name="section">The name of the section that this key belongs too.</param>
-		/// <param name="name">The name of this key.</param>
-		/// <param name="value">The value of this key.</param>
-		/// <param name="commentPrefix">The prefix of the comment attached to this key.</param>
-		/// <param name="commentText">The text of the comment attached to this key.</param>
 		IniKey(const std::string& section, const std::string& name, const std::string& value, const IniCommentPrefix& commentPrefix, const std::string& commentText);
 
-		/// <summary>
-		/// Gets the INI entity type of this class.
-		/// </summary>
-		/// <returns>The return value will always be IniEnityType::Key.</returns>
 		IniEntityType GetType() override;
 
-		/// <summary>
-		/// Returns the string representation of this INI key.
-		/// </summary>
-		/// <returns>A string in the format: "KEY_NAME=KEY_VALUE INI_COMMENT" (excluding quotes).</returns>
 		std::string ToString() const override;
 
-		/// <summary>
-		/// States whether this INI key has a comment attached to it or not.
-		/// </summary>
-		/// <returns>True if this key has a comment attached to it, if not, false.</returns>
 		bool HasComment() const;
 
-		/// <summary>
-		/// Gets the section name that this key belongs too.
-		/// </summary>
-		/// <returns>A string which contains the section name that this key belongs too.</returns>
 		std::string GetSection() const;
 
-		/// <summary>
-		/// Gets the name of this key.
-		/// </summary>
-		/// <returns>A string which contains the name of this key.</returns>
 		std::string GetName() const;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		IniValueCommentPair GetValueCommentPair() const;
 	};
 }

@@ -7,9 +7,9 @@
 
 namespace IniRW
 {
-	IniSection::IniSection(const std::string& name) : IniEntity()
+	IniSection::IniSection(const std::string& iniLine) : IniEntity()
 	{
-		this->name = name;
+		this->name = iniLine;
 	}
 
 	IniEntityType IniSection::GetType()
@@ -19,7 +19,7 @@ namespace IniRW
 
 	std::string IniSection::ToString() const
 	{
-		return SECTION_BEGINNING_CHAR + GetName() + SECTION_ENDING_CHAR;
+		return SECTION_BEGINNING_CHAR + GetName() + SECTION_ENDING_CHAR + extraData.ToString();
 	}
 
 	std::string IniSection::GetName() const

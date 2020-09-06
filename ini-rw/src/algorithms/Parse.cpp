@@ -41,12 +41,7 @@ namespace IniRW
 
 	std::string ExtractSectionName(const std::string& section)
 	{
-		if (!IsValidIniSection(section))
-		{
-			return section;
-		}
-
-		return section.substr(1, section.length() - 2);
+		return "";
 	}
 
 	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str)

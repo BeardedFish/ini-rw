@@ -3,6 +3,8 @@
 // Date:          Wednesday, September 2, 2020
 
 #include "../../inc/algorithms/Validation.hpp"
+#include "../../inc/algorithms/Parse.hpp"
+#include <iostream>
 
 namespace IniRW
 {
@@ -11,9 +13,31 @@ namespace IniRW
 		return str.length() >= 3 && str.find_first_of('=') != std::string::npos;
 	}
 
-	bool IsValidIniSection(const std::string& str)
+	bool IsValidIniSection(const std::vector<char>& commentPrefixes, const std::string& str)
 	{
-		return str.length() >= 2 && str[0] == SECTION_BEGINNING_CHAR && str[str.length() - 1] == SECTION_ENDING_CHAR;
+		size_t leadingWhitespaceCount = 0;
+
+		for (const char& ch : str)
+		{
+			if (!iswspace(ch))
+			{
+				break;
+			}
+
+			leadingWhitespaceCount++;
+		}
+
+		if (str.length() > leadingWhitespaceCount)
+		{
+			if (str[leadingWhitespaceCount] == SECTION_BEGINNING_CHAR)
+			{
+				const std::string INI_COMMENT = GetComment(commentPrefixes, str);
+
+				return str.substr(0, str.length() - INI_COMMENT.length()).find_first_of(SECTION_ENDING_CHAR) != std::string::npos;
+			}
+		}
+
+		return false;
 	}
 
 	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2)
