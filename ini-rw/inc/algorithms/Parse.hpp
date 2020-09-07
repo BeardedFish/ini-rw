@@ -18,7 +18,5 @@ namespace IniRW
 
 	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str);
 
-	// EXPERIMENTAL:
-
 	IniSection* GetIniSection(const std::vector<char>& commentPrefixes, const std::string& iniLine);
 }
