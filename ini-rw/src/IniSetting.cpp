@@ -185,7 +185,6 @@ namespace IniRW
 					iniContents.push_back(static_cast<IniSection*>(entity));
 
 					currentSectionName = static_cast<IniSection*>(entity)->GetName();
-
 				}
 				else if ((entity = ParseIniKey(prefixes, currentSectionName, currentLine)))
 				{

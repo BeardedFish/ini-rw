@@ -11,6 +11,10 @@
 
 namespace IniRW
 {
+	constexpr char SECTION_BEGINNING_CHAR = '[';
+
+	constexpr char SECTION_ENDING_CHAR = ']';
+
 	std::string GetComment(const std::vector<char>& commentPrefixes, const std::string& value);
 
 	char GetCommentPrefix(const std::vector<char>& commentPrefixes, const std::string& str);
