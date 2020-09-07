@@ -5,6 +5,7 @@
 #include "../inc/IniSetting.hpp"
 #include "../inc/algorithms/Parse.hpp"
 #include "../inc/algorithms/Search.hpp"
+#include "../inc/algorithms/Sum.hpp"
 #include "../inc/algorithms/Validation.hpp"
 #include "../inc/entities/IniSection.hpp"
 #include "../inc/entities/IniValueCommentPair.hpp"
@@ -177,12 +178,13 @@ namespace IniRW
 			{
 				std::vector<char> prefixes = { ';', '#' };
 
-				if (IsValidIniSection(prefixes, currentLine))
-				{
-					IniSection* iniSection = new IniSection(currentLine);
-					iniContents.push_back(iniSection);
+				IniEntity* entity;
 
-					currentSectionName = iniSection->GetName();
+				if ((entity = GetIniSection(prefixes, currentLine)))
+				{
+					iniContents.push_back(static_cast<IniSection*>(entity));
+
+					currentSectionName = static_cast<IniSection*>(entity)->GetName();
 
 				}
 				else if (IsValidIniKey(currentLine))
@@ -242,7 +244,7 @@ namespace IniRW
 					iniContents.insert(iniContents.end(), new IniValueCommentPair("\n"));
 				}
 
-				iniContents.insert(iniContents.end(), new IniSection(sectionName));
+				iniContents.insert(iniContents.end(), new IniSection("", sectionName, IniValueCommentPair()));
 				iniContents.insert(iniContents.end(), key);
 			}
 		}

@@ -7,9 +7,11 @@
 
 namespace IniRW
 {
-	IniSection::IniSection(const std::string& iniLine) : IniEntity()
+	IniSection::IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData)
 	{
-		this->name = iniLine;
+		SetLeadingWhitespace(leadingWhitespace);
+		this->name = name;
+		this->extraData = extraData;
 	}
 
 	IniEntityType IniSection::GetType()
@@ -19,11 +21,34 @@ namespace IniRW
 
 	std::string IniSection::ToString() const
 	{
-		return SECTION_BEGINNING_CHAR + GetName() + SECTION_ENDING_CHAR + extraData.ToString();
+		return leadingWhitespace + SECTION_BEGINNING_CHAR + GetName() + SECTION_ENDING_CHAR + extraData.ToString();
 	}
 
 	std::string IniSection::GetName() const
 	{
 		return name;
+	}
+
+	void IniSection::SetLeadingWhitespace(const std::string& whitespace)
+	{
+		if (!IsWhitespace(whitespace))
+		{
+			throw std::exception("The string contains an illegal character!");
+		}
+
+		this->leadingWhitespace = whitespace;
+	}
+
+	bool IniSection::IsWhitespace(const std::string& str)
+	{
+		for (const char& ch : str)
+		{
+			if (!iswspace(ch))
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

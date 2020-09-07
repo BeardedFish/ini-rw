@@ -3,6 +3,7 @@
 // Date:          Wednesday, September 2, 2020
 
 #include "../../inc/algorithms/Parse.hpp"
+#include "../../inc/algorithms/Sum.hpp"
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/enums/IniCommentPrefix.hpp"
 #include <iostream>
@@ -37,11 +38,6 @@ namespace IniRW
 		}
 
 		return comment;
-	}
-
-	std::string ExtractSectionName(const std::string& section)
-	{
-		return "";
 	}
 
 	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str)
@@ -81,5 +77,31 @@ namespace IniRW
 		}
 
 		return str;
+	}
+
+	IniSection* GetIniSection(const std::vector<char>& commentPrefixes, const std::string& str)
+	{
+		const size_t LEADING_WHITESPACE_COUNT = CountLeadingWhitespace(str);
+		IniSection* section = nullptr;
+
+		if (str.length() > LEADING_WHITESPACE_COUNT)
+		{
+			if (str[LEADING_WHITESPACE_COUNT] == SECTION_BEGINNING_CHAR)
+			{
+				const std::string INI_COMMENT = GetComment(commentPrefixes, str);
+				const std::string WITHOUT_COMMENT = str.substr(0, str.length() - INI_COMMENT.length());
+
+				if (WITHOUT_COMMENT.find_first_of(SECTION_ENDING_CHAR) != std::string::npos) // It's a valid INI section
+				{
+					const std::string LEADING_WHITESPACE = str.substr(0, LEADING_WHITESPACE_COUNT);
+					const std::string SECTION_NAME = WITHOUT_COMMENT.substr(LEADING_WHITESPACE_COUNT + 1, WITHOUT_COMMENT.find_last_of(SECTION_ENDING_CHAR) - LEADING_WHITESPACE_COUNT - 1);
+					const IniValueCommentPair EXTRA_DATA = str.substr(LEADING_WHITESPACE.length() + SECTION_NAME.length() + 2);
+
+					section = new IniSection(LEADING_WHITESPACE, SECTION_NAME, EXTRA_DATA);
+				}
+			}
+		}
+
+		return section;
 	}
 }

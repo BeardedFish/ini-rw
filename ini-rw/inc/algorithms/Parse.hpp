@@ -4,13 +4,12 @@
 
 #pragma once
 
+#include "../entities/IniSection.hpp"
 #include <string>
 #include <vector>
 
 namespace IniRW
 {
-	std::string ExtractSectionName(const std::string& section);
-
 	std::string GetComment(const std::vector<char>& commentPrefixes, const std::string& value);
 
 	char GetCommentPrefix(const std::vector<char>& commentPrefixes, const std::string& str);
@@ -18,4 +17,8 @@ namespace IniRW
 	std::string GetCommentText(const std::vector<char>& commentPrefixes, const std::string& str);
 
 	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str);
+
+	// EXPERIMENTAL:
+
+	IniSection* GetIniSection(const std::vector<char>& commentPrefixes, const std::string& iniLine);
 }
