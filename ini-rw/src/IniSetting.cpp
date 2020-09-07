@@ -180,9 +180,9 @@ namespace IniRW
 
 				if ((entity = ParseIniSection(currentLine)))
 				{
-					iniContents.push_back(static_cast<IniSection*>(entity));
-
 					currentSectionName = static_cast<IniSection*>(entity)->GetName();
+
+					iniContents.push_back(static_cast<IniSection*>(entity));
 				}
 				else if ((entity = ParseIniKey(currentSectionName, currentLine)))
 				{
