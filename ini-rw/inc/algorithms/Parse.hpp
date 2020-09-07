@@ -15,15 +15,17 @@ namespace IniRW
 
 	constexpr char SECTION_ENDING_CHAR = ']';
 
-	std::string GetComment(const std::vector<char>& commentPrefixes, const std::string& value);
+	const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound), static_cast<char>(IniCommentPrefix::Semicolon) };
 
-	char GetCommentPrefix(const std::vector<char>& commentPrefixes, const std::string& str);
+	std::string GetComment(const std::string& value);
 
-	std::string GetCommentText(const std::vector<char>& commentPrefixes, const std::string& str);
+	char GetCommentPrefix(const std::string& str);
 
-	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str);
+	std::string GetCommentText(const std::string& str);
 
-	IniSection* ParseIniSection(const std::vector<char>& commentPrefixes, const std::string& iniLine);
+	std::string GetStringBeforeComment(const std::string& str);
 
-	IniKey* ParseIniKey(const std::vector<char>& commentPrefixes, const std::string& sectionName, const std::string& iniLine);
+	IniSection* ParseIniSection(const std::string& iniLine);
+
+	IniKey* ParseIniKey(const std::string& sectionName, const std::string& iniLine);
 }

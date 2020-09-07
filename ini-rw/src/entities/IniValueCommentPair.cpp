@@ -19,11 +19,9 @@ namespace IniRW
 
 	IniValueCommentPair::IniValueCommentPair(const std::string& text)
 	{
-		const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound), static_cast<char>(IniCommentPrefix::Semicolon) };
-
-		this->valueBeforeComment = GetStringBeforeComment(INI_COMMENT_PREFIXES, text);
-		this->commentPrefix = GetCommentPrefix(INI_COMMENT_PREFIXES, text);
-		this->commentText = GetCommentText(INI_COMMENT_PREFIXES, text);
+		this->valueBeforeComment = GetStringBeforeComment(text);
+		this->commentPrefix = GetCommentPrefix(text);
+		this->commentText = GetCommentText(text);
 	}
 
 	IniEntityType IniValueCommentPair::GetType()

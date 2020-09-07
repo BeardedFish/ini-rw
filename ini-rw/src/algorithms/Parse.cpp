@@ -10,7 +10,7 @@
 
 namespace IniRW
 {
-	std::string GetComment(const std::vector<char>& commentPrefixes, const std::string& value)
+	std::string GetComment(const std::string& value)
 	{
 		std::string comment;
 
@@ -18,9 +18,9 @@ namespace IniRW
 		{
 			for (size_t i = 0; i < value.length(); i++)
 			{
-				for (size_t j = 0; j < commentPrefixes.size(); j++)
+				for (size_t j = 0; j < INI_COMMENT_PREFIXES.size(); j++)
 				{
-					if (value[i] == commentPrefixes[j])
+					if (value[i] == INI_COMMENT_PREFIXES[j])
 					{
 						if (i > 0 && value[i - 1] == '\\')
 						{
@@ -40,9 +40,9 @@ namespace IniRW
 		return comment;
 	}
 
-	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str)
+	std::string GetStringBeforeComment(const std::string& str)
 	{
-		const std::string INI_COMMENT = GetComment(commentPrefixes, str);
+		const std::string INI_COMMENT = GetComment(str);
 
 		if (str.length() > INI_COMMENT.length())
 		{
@@ -52,9 +52,9 @@ namespace IniRW
 		return "";
 	}
 
-	char GetCommentPrefix(const std::vector<char>& commentPrefixes, const std::string& str)
+	char GetCommentPrefix(const std::string& str)
 	{
-		const std::string INI_COMMENT = GetComment(commentPrefixes, str);
+		const std::string INI_COMMENT = GetComment(str);
 
 		if (!INI_COMMENT.empty())
 		{
@@ -64,9 +64,9 @@ namespace IniRW
 		return '\0';
 	}
 
-	std::string GetCommentText(const std::vector<char>& commentPrefixes, const std::string& str)
+	std::string GetCommentText(const std::string& str)
 	{
-		const std::string INI_COMMENT = GetComment(commentPrefixes, str);
+		const std::string INI_COMMENT = GetComment(str);
 
 		if (!INI_COMMENT.empty())
 		{
@@ -79,7 +79,7 @@ namespace IniRW
 		return str;
 	}
 
-	IniSection* ParseIniSection(const std::vector<char>& commentPrefixes, const std::string& str)
+	IniSection* ParseIniSection(const std::string& str)
 	{
 		const size_t LEADING_WHITESPACE_COUNT = CountLeadingWhitespace(str);
 		IniSection* section = nullptr;
@@ -88,7 +88,7 @@ namespace IniRW
 		{
 			if (str[LEADING_WHITESPACE_COUNT] == SECTION_BEGINNING_CHAR)
 			{
-				const std::string INI_COMMENT = GetComment(commentPrefixes, str);
+				const std::string INI_COMMENT = GetComment(str);
 				const std::string WITHOUT_COMMENT = str.substr(0, str.length() - INI_COMMENT.length());
 
 				if (WITHOUT_COMMENT.find_first_of(SECTION_ENDING_CHAR) != std::string::npos) // It's a valid INI section
@@ -105,7 +105,7 @@ namespace IniRW
 		return section;
 	}
 
-	IniKey* ParseIniKey(const std::vector<char>& commentPrefixes, const std::string& sectionName, const std::string& iniLine)
+	IniKey* ParseIniKey(const std::string& sectionName, const std::string& iniLine)
 	{
 		IniKey* result = nullptr;
 

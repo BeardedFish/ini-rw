@@ -176,17 +176,15 @@ namespace IniRW
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				std::vector<char> prefixes = { ';', '#' };
-
 				IniEntity* entity;
 
-				if ((entity = ParseIniSection(prefixes, currentLine)))
+				if ((entity = ParseIniSection(currentLine)))
 				{
 					iniContents.push_back(static_cast<IniSection*>(entity));
 
 					currentSectionName = static_cast<IniSection*>(entity)->GetName();
 				}
-				else if ((entity = ParseIniKey(prefixes, currentSectionName, currentLine)))
+				else if ((entity = ParseIniKey(currentSectionName, currentLine)))
 				{
 					iniContents.push_back(static_cast<IniKey*>(entity));
 				}
