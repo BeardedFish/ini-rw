@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\entities\IniComment.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="inc\entities\IniEntity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,7 +42,10 @@
     <ClInclude Include="inc\enums\IniCommentPrefix.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\entities\IniString.hpp">
+    <ClInclude Include="inc\entities\IniValueCommentPair.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\algorithms\Sum.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -54,9 +54,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\IniKey.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\IniComment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\algorithms\Parse.cpp">
@@ -71,7 +68,10 @@
     <ClCompile Include="src\IniSetting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\entities\IniString.cpp">
+    <ClCompile Include="src\entities\IniValueCommentPair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algorithms\Sum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
