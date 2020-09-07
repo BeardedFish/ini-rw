@@ -14,23 +14,6 @@ namespace IniRW
 		return str.length() >= 3 && str.find_first_of('=') != std::string::npos;
 	}
 
-	bool IsValidIniSection(const std::vector<char>& commentPrefixes, const std::string& str)
-	{
-		size_t leadingWhitespaceCount = CountLeadingWhitespace(str);
-
-		if (str.length() > leadingWhitespaceCount)
-		{
-			if (str[leadingWhitespaceCount] == SECTION_BEGINNING_CHAR)
-			{
-				const std::string INI_COMMENT = GetComment(commentPrefixes, str);
-
-				return str.substr(0, str.length() - INI_COMMENT.length()).find_first_of(SECTION_ENDING_CHAR) != std::string::npos;
-			}
-		}
-
-		return false;
-	}
-
 	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2)
 	{
 		if (str1.length() == str2.length())
