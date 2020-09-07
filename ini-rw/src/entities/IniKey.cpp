@@ -13,11 +13,6 @@ namespace IniRW
 		this->valueCommentPair = IniValueCommentPair(value);
 	}
 
-	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value, const IniCommentPrefix& commentPrefix, const std::string& commentText) : IniKey(section, name, value)
-	{
-		//this->comment = new IniComment(commentPrefix, commentText);
-	}
-
 	IniEntityType IniKey::GetType()
 	{
 		return IniEntityType::Key;
