@@ -19,7 +19,7 @@ namespace IniRW
 
 	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str);
 
-	IniSection* GetIniSection(const std::vector<char>& commentPrefixes, const std::string& iniLine);
+	IniSection* ParseIniSection(const std::vector<char>& commentPrefixes, const std::string& iniLine);
 
 	IniKey* ParseIniKey(const std::vector<char>& commentPrefixes, const std::string& sectionName, const std::string& iniLine);
 }

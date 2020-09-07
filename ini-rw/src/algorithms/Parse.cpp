@@ -79,7 +79,7 @@ namespace IniRW
 		return str;
 	}
 
-	IniSection* GetIniSection(const std::vector<char>& commentPrefixes, const std::string& str)
+	IniSection* ParseIniSection(const std::vector<char>& commentPrefixes, const std::string& str)
 	{
 		const size_t LEADING_WHITESPACE_COUNT = CountLeadingWhitespace(str);
 		IniSection* section = nullptr;

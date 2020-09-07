@@ -180,7 +180,7 @@ namespace IniRW
 
 				IniEntity* entity;
 
-				if ((entity = GetIniSection(prefixes, currentLine)))
+				if ((entity = ParseIniSection(prefixes, currentLine)))
 				{
 					iniContents.push_back(static_cast<IniSection*>(entity));
 
