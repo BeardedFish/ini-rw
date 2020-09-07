@@ -9,11 +9,6 @@
 
 namespace IniRW
 {
-	bool IsValidIniKey(const std::string& str)
-	{
-		return str.length() >= 3 && str.find_first_of('=') != std::string::npos;
-	}
-
 	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2)
 	{
 		if (str1.length() == str2.length())

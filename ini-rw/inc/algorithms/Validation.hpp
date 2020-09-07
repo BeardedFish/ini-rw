@@ -13,7 +13,5 @@ namespace IniRW
 
 	constexpr char SECTION_ENDING_CHAR = ']';
 
-	bool IsValidIniKey(const std::string& str);
-
 	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2);
 }
