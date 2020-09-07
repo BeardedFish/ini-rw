@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "../entities/IniKey.hpp"
 #include "../entities/IniSection.hpp"
 #include <string>
 #include <vector>
@@ -19,4 +20,6 @@ namespace IniRW
 	std::string GetStringBeforeComment(const std::vector<char>& commentPrefixes, const std::string& str);
 
 	IniSection* GetIniSection(const std::vector<char>& commentPrefixes, const std::string& iniLine);
+
+	IniKey* ParseIniKey(const std::vector<char>& commentPrefixes, const std::string& sectionName, const std::string& iniLine);
 }

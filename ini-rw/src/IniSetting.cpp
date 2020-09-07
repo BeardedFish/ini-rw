@@ -187,13 +187,9 @@ namespace IniRW
 					currentSectionName = static_cast<IniSection*>(entity)->GetName();
 
 				}
-				else if (IsValidIniKey(currentLine))
+				else if ((entity = ParseIniKey(prefixes, currentSectionName, currentLine)))
 				{
-					size_t equalSignIndex = currentLine.find_first_of('=');
-					std::string keyName = currentLine.substr(0, equalSignIndex);
-					std::string keyCommentValue = currentLine.substr(equalSignIndex + 1, currentLine.length() - 1);
-					
-					iniContents.push_back(new IniKey(currentSectionName, keyName, keyCommentValue));
+					iniContents.push_back(static_cast<IniKey*>(entity));
 				}
 				else // It's either an INI comment, a new line, or a garbage string value
 				{

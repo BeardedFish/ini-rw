@@ -104,4 +104,24 @@ namespace IniRW
 
 		return section;
 	}
+
+	IniKey* ParseIniKey(const std::vector<char>& commentPrefixes, const std::string& sectionName, const std::string& iniLine)
+	{
+		IniKey* result = nullptr;
+
+		if (iniLine.length() >= 3)
+		{
+			const size_t EQUAL_SIGN_POS = iniLine.find_first_of('=');
+
+			if (EQUAL_SIGN_POS != std::string::npos)
+			{
+				std::string keyName = iniLine.substr(0, EQUAL_SIGN_POS);
+				std::string keyCommentValue = iniLine.substr(EQUAL_SIGN_POS + 1);
+
+				result = new IniKey(sectionName, keyName, keyCommentValue);
+			}
+		}
+
+		return result;
+	}
 }
