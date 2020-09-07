@@ -221,14 +221,14 @@ namespace IniRW
 		}
 		else
 		{
-			size_t sectionIndex = GetSectionLocation(iniContents, sectionName);
+			const size_t SECTION_POS = GetSectionLocation(iniContents, sectionName);
 			key = new IniKey(sectionName, keyName, keyValue);
 
-			if (sectionIndex != SECTION_NOT_FOUND)
+			if (SECTION_POS != SECTION_NOT_FOUND)
 			{
-				std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + sectionIndex;
+				const std::vector<IniEntity*>::iterator INSERT_POS = iniContents.begin() + SECTION_POS;
 
-				iniContents.insert(insertPos, key);
+				iniContents.insert(INSERT_POS, key);
 			}
 			else
 			{
