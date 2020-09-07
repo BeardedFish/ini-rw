@@ -4,6 +4,7 @@
 
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/algorithms/Parse.hpp"
+#include "../../inc/algorithms/Sum.hpp"
 #include <iostream>
 
 namespace IniRW
@@ -15,17 +16,7 @@ namespace IniRW
 
 	bool IsValidIniSection(const std::vector<char>& commentPrefixes, const std::string& str)
 	{
-		size_t leadingWhitespaceCount = 0;
-
-		for (const char& ch : str)
-		{
-			if (!iswspace(ch))
-			{
-				break;
-			}
-
-			leadingWhitespaceCount++;
-		}
+		size_t leadingWhitespaceCount = CountLeadingWhitespace(str);
 
 		if (str.length() > leadingWhitespaceCount)
 		{
