@@ -76,7 +76,6 @@ namespace IniRW
 	IniSection* ParseIniSection(const std::string& str)
 	{
 		const size_t LEADING_WHITESPACE_COUNT = CountLeadingWhitespace(str);
-		IniSection* section = nullptr;
 
 		if (str.length() > LEADING_WHITESPACE_COUNT)
 		{
@@ -91,18 +90,16 @@ namespace IniRW
 					const std::string SECTION_NAME = WITHOUT_COMMENT.substr(LEADING_WHITESPACE_COUNT + 1, WITHOUT_COMMENT.find_last_of(SECTION_ENDING_CHAR) - LEADING_WHITESPACE_COUNT - 1);
 					const IniValueCommentPair EXTRA_DATA = str.substr(LEADING_WHITESPACE.length() + SECTION_NAME.length() + 2);
 
-					section = new IniSection(LEADING_WHITESPACE, SECTION_NAME, EXTRA_DATA);
+					return new IniSection(LEADING_WHITESPACE, SECTION_NAME, EXTRA_DATA);
 				}
 			}
 		}
 
-		return section;
+		return nullptr;
 	}
 
 	IniKey* ParseIniKey(const std::string& sectionName, const std::string& iniLine)
 	{
-		IniKey* result = nullptr;
-
 		if (iniLine.length() >= 3)
 		{
 			const size_t EQUAL_SIGN_POS = iniLine.find_first_of(INI_KEY_VALUE_DELIMITER);
@@ -112,10 +109,10 @@ namespace IniRW
 				const std::string KEY_NAME = iniLine.substr(0, EQUAL_SIGN_POS);
 				const IniValueCommentPair VALUE_COMMENT_PAIR = iniLine.substr(EQUAL_SIGN_POS + 1);
 
-				result = new IniKey(sectionName, KEY_NAME, VALUE_COMMENT_PAIR);
+				return new IniKey(sectionName, KEY_NAME, VALUE_COMMENT_PAIR);
 			}
 		}
 
-		return result;
+		return nullptr;
 	}
 }
