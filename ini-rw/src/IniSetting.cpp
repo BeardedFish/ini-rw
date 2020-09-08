@@ -204,10 +204,10 @@ namespace IniRW
 			throw std::out_of_range("The index was out of range.");
 		}
 
-		std::vector<IniEntity*>::iterator insertPos = iniContents.begin() + index;
-		std::string comment = std::string(1, static_cast<char>(prefix)) + text;
+		const std::vector<IniEntity*>::iterator INSERT_POS = iniContents.begin() + index;
+		const std::string COMMENT = std::string(1, static_cast<char>(prefix)) + text;
 
-		iniContents.insert(insertPos, new IniValueCommentPair(comment));
+		iniContents.insert(INSERT_POS, new IniValueCommentPair(COMMENT));
 	}
 
 	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
