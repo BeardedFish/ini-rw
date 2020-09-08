@@ -236,7 +236,7 @@ namespace IniRW
 					iniContents.insert(iniContents.end(), new IniValueCommentPair("\n"));
 				}
 
-				iniContents.insert(iniContents.end(), new IniSection("", sectionName, IniValueCommentPair()));
+				iniContents.insert(iniContents.end(), new IniSection(sectionName));
 				iniContents.insert(iniContents.end(), key);
 			}
 		}

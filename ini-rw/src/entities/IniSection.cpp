@@ -7,6 +7,11 @@
 
 namespace IniRW
 {
+	IniSection::IniSection(const std::string& name) : IniSection("", name, IniValueCommentPair())
+	{
+
+	}
+
 	IniSection::IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData)
 	{
 		SetLeadingWhitespace(leadingWhitespace);
