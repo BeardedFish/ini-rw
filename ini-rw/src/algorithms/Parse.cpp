@@ -109,10 +109,10 @@ namespace IniRW
 
 			if (EQUAL_SIGN_POS != std::string::npos)
 			{
-				std::string keyName = iniLine.substr(0, EQUAL_SIGN_POS);
-				std::string keyCommentValue = iniLine.substr(EQUAL_SIGN_POS + 1);
+				const std::string KEY_NAME = iniLine.substr(0, EQUAL_SIGN_POS);
+				const IniValueCommentPair VALUE_COMMENT_PAIR = iniLine.substr(EQUAL_SIGN_POS + 1);
 
-				result = new IniKey(sectionName, keyName, keyCommentValue);
+				result = new IniKey(sectionName, KEY_NAME, VALUE_COMMENT_PAIR);
 			}
 		}
 
