@@ -6,23 +6,20 @@
 #include "../../inc/algorithms/Parse.hpp"
 #include "../../inc/algorithms/Sum.hpp"
 
-namespace IniRW
+bool IniRW::EqualsIgnoreCase(const std::string& str1, const std::string& str2)
 {
-	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2)
+	if (str1.length() == str2.length())
 	{
-		if (str1.length() == str2.length())
+		for (size_t i = 0; i < str1.length(); i++)
 		{
-			for (size_t i = 0; i < str1.length(); i++)
+			if (tolower(str1[i]) != tolower(str2[i]))
 			{
-				if (tolower(str1[i]) != tolower(str2[i]))
-				{
-					return false;
-				}
+				return false;
 			}
-
-			return true;
 		}
 
-		return false;
+		return true;
 	}
+
+	return false;
 }

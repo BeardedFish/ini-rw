@@ -4,22 +4,19 @@
 
 #include "../../inc/algorithms/Sum.hpp"
 
-namespace IniRW
+size_t IniRW::CountLeadingWhitespace(const std::string& str)
 {
-	size_t CountLeadingWhitespace(const std::string& str)
+	size_t total = 0;
+
+	for (const char& ch : str)
 	{
-		size_t total = 0;
-
-		for (const char& ch : str)
+		if (!iswspace(ch))
 		{
-			if (!iswspace(ch))
-			{
-				break;
-			}
-
-			total++;
+			break;
 		}
 
-		return total;
+		total++;
 	}
+
+	return total;
 }

@@ -6,41 +6,38 @@
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/entities/IniSection.hpp"
 
-namespace IniRW
+IniRW::IniKey* IniRW::FindKey(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName)
 {
-	IniKey* FindKey(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName)
+	for (size_t i = 0; i < iniContents.size(); i++)
 	{
-		for (size_t i = 0; i < iniContents.size(); i++)
+		if (iniContents[i]->GetType() != IniEntityType::Key)
 		{
-			if (iniContents[i]->GetType() != IniEntityType::Key)
-			{
-				continue;
-			}
-
-			IniKey* key = static_cast<IniKey*>(iniContents[i]);
-
-			if (EqualsIgnoreCase(key->GetSection(), sectionName) && EqualsIgnoreCase(key->GetName(), keyName))
-			{
-				return key;
-			}
+			continue;
 		}
 
-		return nullptr;
+		IniKey* key = static_cast<IniKey*>(iniContents[i]);
+
+		if (EqualsIgnoreCase(key->GetSection(), sectionName) && EqualsIgnoreCase(key->GetName(), keyName))
+		{
+			return key;
+		}
 	}
 
-	size_t GetSectionLocation(std::vector<IniEntity*>& iniContents, const std::string& sectionName)
+	return nullptr;
+}
+
+size_t IniRW::GetSectionLocation(std::vector<IniEntity*>& iniContents, const std::string& sectionName)
+{
+	for (size_t i = 0; i < iniContents.size(); i++)
 	{
-		for (size_t i = 0; i < iniContents.size(); i++)
+		if (iniContents[i]->GetType() == IniEntityType::Section)
 		{
-			if (iniContents[i]->GetType() == IniEntityType::Section)
+			if (static_cast<IniSection*>(iniContents[i])->GetName() == sectionName)
 			{
-				if (static_cast<IniSection*>(iniContents[i])->GetName() == sectionName)
-				{
-					return i;
-				}
+				return i;
 			}
 		}
-
-		return -1;
 	}
+
+	return -1;
 }
