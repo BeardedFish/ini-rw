@@ -8,20 +8,21 @@
 
 namespace IniRW
 {
-	// TODO: REFACTOR CONSTRUCTORS (USING PRIVATE CONSTRUCTOR)...
-
-	IniValueCommentPair::IniValueCommentPair()
+	IniValueCommentPair::IniValueCommentPair() : IniValueCommentPair("", '\0', "")
 	{
-		this->valueBeforeComment = "";
-		this->commentPrefix = '\0';
-		this->commentText = "";
+
 	}
 
-	IniValueCommentPair::IniValueCommentPair(const std::string& text)
+	IniValueCommentPair::IniValueCommentPair(const std::string& text) : IniValueCommentPair(GetStringBeforeComment(text), GetCommentPrefix(text), GetCommentText(text))
 	{
-		this->valueBeforeComment = GetStringBeforeComment(text);
-		this->commentPrefix = GetCommentPrefix(text);
-		this->commentText = GetCommentText(text);
+
+	}
+
+	IniValueCommentPair::IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText)
+	{
+		this->valueBeforeComment = valueBeforeComment;
+		this->commentPrefix = commentPrefix;
+		this->commentText = commentText;
 	}
 
 	IniEntityType IniValueCommentPair::GetType()

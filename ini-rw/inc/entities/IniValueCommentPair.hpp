@@ -21,6 +21,10 @@ namespace IniRW
 
 		IniValueCommentPair(const std::string& value);
 
+	private:
+		IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText);
+
+	public:
 		IniEntityType GetType() override;
 
 		std::string ToString() const override;
