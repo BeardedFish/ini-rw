@@ -175,22 +175,21 @@ namespace IniRW
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				IniEntity* entity;
+				IniEntity* entity = nullptr;
 
-				if ((entity = ParseIniSection(currentLine)))
+				if ((entity = ParseIniSection(currentLine)) || (entity = ParseIniKey(currentSectionName, currentLine)))
 				{
-					currentSectionName = static_cast<IniSection*>(entity)->GetName();
-
-					iniContents.push_back(static_cast<IniSection*>(entity));
-				}
-				else if ((entity = ParseIniKey(currentSectionName, currentLine)))
-				{
-					iniContents.push_back(static_cast<IniKey*>(entity));
+					if (entity->GetType() == IniEntityType::Section)
+					{
+						currentSectionName = static_cast<IniSection*>(entity)->GetName();
+					}
 				}
 				else // It's either an INI comment, a new line, or a garbage string value
 				{
-					iniContents.push_back(new IniValueCommentPair(currentLine));
+					entity = new IniValueCommentPair(currentLine);
 				}
+
+				iniContents.push_back(entity);
 			}
 
 			loaded = true;
