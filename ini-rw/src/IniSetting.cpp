@@ -225,7 +225,7 @@ namespace IniRW
 
 			if (SECTION_POS != SECTION_NOT_FOUND)
 			{
-				const std::vector<IniEntity*>::iterator INSERT_POS = iniContents.begin() + SECTION_POS;
+				const std::vector<IniEntity*>::iterator INSERT_POS = iniContents.begin() + SECTION_POS + 1;
 
 				iniContents.insert(INSERT_POS, key);
 			}
