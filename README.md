@@ -35,15 +35,15 @@ else
 ```
 
 ### Reading A `.ini` File
-To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the `.ini` file under that specified section, an `IniRW::IniKey` pointer is returned.
+To get a key under a specific section use the `GetKey()` function. This function takes two string parameters. The first parameter is the section name of where the key is stored and the second parameter is the name of the key. If the key is found in the `.ini` file under that specified section, an `IniRW::IniKey` pointer is returned. If the key is not found, a null pointer is returned.
 
-To read the value of the key, you must dereference the pointer and use the `GetValue()` function which returns a string. If the key is not found, a null pointer is returned.
+To read the value of the key, you must first dereference the pointer and call the `GetValueCommentPair()` function. This function returns a `IniRW::IniValueCommentPair`.  Once that is done, use the `GetValueBeforeComment()` function to read the string value of the INI key.
 ```cpp
 IniRW::IniKey* key = iniSettings.GetKey(SECTION_NAME, KEY_NAME);
 
 if (key)
 {
-    std::cout << "The value of the key is: " << key->GetValue() << std::endl;
+    std::cout << "The value of the key is: " << key->GetValueCommentPair().GetValueBeforeComment()  << std::endl;
 }
 else
 {
