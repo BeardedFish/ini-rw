@@ -12,15 +12,13 @@ namespace IniRW
 {
 	std::string GetComment(const std::string& value)
 	{
-		std::string comment;
-
 		if (value.length() > 0)
 		{
 			for (size_t i = 0; i < value.length(); i++)
 			{
-				for (size_t j = 0; j < INI_COMMENT_PREFIXES.size(); j++)
+				for (const char& prefix : INI_COMMENT_PREFIXES)
 				{
-					if (value[i] == INI_COMMENT_PREFIXES[j])
+					if (value[i] == prefix)
 					{
 						if (i > 0 && value[i - 1] == '\\')
 						{
@@ -28,16 +26,13 @@ namespace IniRW
 						}
 
 						// Extract the comment
-						comment = value.substr(i, value.length());
-
-						// Break out of the nested for loop
-						i = j = value.length();
+						return value.substr(i, value.length());
 					}
 				}
 			}
 		}
 
-		return comment;
+		return "";
 	}
 
 	std::string GetStringBeforeComment(const std::string& str)
