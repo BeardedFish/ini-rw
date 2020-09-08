@@ -177,16 +177,19 @@ namespace IniRW
 			{
 				IniEntity* entity = nullptr;
 
-				if ((entity = ParseIniSection(currentLine)) || (entity = ParseIniKey(currentSectionName, currentLine)))
+				if (entity = ParseIniSection(currentLine))
 				{
-					if (entity->GetType() == IniEntityType::Section)
-					{
-						currentSectionName = static_cast<IniSection*>(entity)->GetName();
-					}
+					currentSectionName = static_cast<IniSection*>(entity)->GetName();
 				}
-				else // It's either an INI comment, a new line, or a garbage string value
+				else
 				{
-					entity = new IniValueCommentPair(currentLine);
+					// The current line is not an INI section, try and parse it into an INI key:
+					entity = ParseIniKey(currentSectionName, currentLine);
+
+					if (!entity) // This will evaluate to true if the ParseIniKey() function failed (returns null pointer). This means that the current line is either a new line, an INI comment, or a garbage string value.
+					{
+						entity = new IniValueCommentPair(currentLine);
+					}
 				}
 
 				iniContents.push_back(entity);
