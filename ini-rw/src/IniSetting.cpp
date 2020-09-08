@@ -10,7 +10,6 @@
 #include "../inc/entities/IniSection.hpp"
 #include "../inc/entities/IniValueCommentPair.hpp"
 #include <fstream>
-#include <iostream>
 
 namespace IniRW
 {

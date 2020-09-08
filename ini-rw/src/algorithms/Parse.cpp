@@ -6,7 +6,6 @@
 #include "../../inc/algorithms/Sum.hpp"
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/enums/IniCommentPrefix.hpp"
-#include <iostream>
 
 namespace IniRW
 {

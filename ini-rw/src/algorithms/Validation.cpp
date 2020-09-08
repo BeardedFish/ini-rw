@@ -5,7 +5,6 @@
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/algorithms/Parse.hpp"
 #include "../../inc/algorithms/Sum.hpp"
-#include <iostream>
 
 namespace IniRW
 {
