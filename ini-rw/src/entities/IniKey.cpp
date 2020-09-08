@@ -22,7 +22,7 @@ namespace IniRW
 	{
 		std::string result;
 
-		result += GetName() + "=" + valueCommentPair.ToString();
+		result += GetName() + INI_KEY_VALUE_DELIMITER + valueCommentPair.ToString();
 
 		return result;
 	}

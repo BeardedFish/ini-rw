@@ -105,7 +105,7 @@ namespace IniRW
 
 		if (iniLine.length() >= 3)
 		{
-			const size_t EQUAL_SIGN_POS = iniLine.find_first_of('=');
+			const size_t EQUAL_SIGN_POS = iniLine.find_first_of(INI_KEY_VALUE_DELIMITER);
 
 			if (EQUAL_SIGN_POS != std::string::npos)
 			{

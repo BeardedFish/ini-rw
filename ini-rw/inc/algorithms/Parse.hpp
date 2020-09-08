@@ -15,6 +15,8 @@ namespace IniRW
 
 	constexpr char SECTION_ENDING_CHAR = ']';
 
+	constexpr char INI_KEY_VALUE_DELIMITER = '=';
+
 	const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound), static_cast<char>(IniCommentPrefix::Semicolon) };
 
 	std::string GetComment(const std::string& value);
