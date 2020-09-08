@@ -3,14 +3,15 @@
 // Date:          Monday, August 31, 2020
 
 #include "../../inc/entities/IniKey.hpp"
+#include "../../inc/algorithms/Parse.hpp"
 
 namespace IniRW
 {
-	IniKey::IniKey(const std::string& section, const std::string& name, const std::string& value)
+	IniKey::IniKey(const std::string& section, const std::string& name, const IniValueCommentPair& valueCommentPair)
 	{
 		this->section = section;
 		this->name = name;
-		this->valueCommentPair = IniValueCommentPair(value);
+		this->valueCommentPair = valueCommentPair;
 	}
 
 	IniEntityType IniKey::GetType()

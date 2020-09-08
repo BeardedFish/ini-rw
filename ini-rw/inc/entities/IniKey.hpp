@@ -19,7 +19,7 @@ namespace IniRW
 		IniValueCommentPair valueCommentPair;
 
 	public:
-		IniKey(const std::string& section, const std::string& name, const std::string& value);
+		IniKey(const std::string& section, const std::string& name, const IniValueCommentPair& valueCommentPair);
 
 		IniEntityType GetType() override;
 
