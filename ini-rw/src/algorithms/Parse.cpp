@@ -77,15 +77,15 @@ IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 
 	if (str.length() > LEADING_WHITESPACE_COUNT)
 	{
-		if (str[LEADING_WHITESPACE_COUNT] == SECTION_BEGINNING_CHAR)
+		if (str[LEADING_WHITESPACE_COUNT] == INI_BEGINNING_CHAR)
 		{
 			const std::string INI_COMMENT = GetComment(str);
 			const std::string WITHOUT_COMMENT = str.substr(0, str.length() - INI_COMMENT.length());
 
-			if (WITHOUT_COMMENT.find_first_of(SECTION_ENDING_CHAR) != std::string::npos) // It's a valid INI section
+			if (WITHOUT_COMMENT.find_first_of(INI_SECTION_ENDING) != std::string::npos) // It's a valid INI section
 			{
 				const std::string LEADING_WHITESPACE = str.substr(0, LEADING_WHITESPACE_COUNT);
-				const std::string SECTION_NAME = WITHOUT_COMMENT.substr(LEADING_WHITESPACE_COUNT + 1, WITHOUT_COMMENT.find_last_of(SECTION_ENDING_CHAR) - LEADING_WHITESPACE_COUNT - 1);
+				const std::string SECTION_NAME = WITHOUT_COMMENT.substr(LEADING_WHITESPACE_COUNT + 1, WITHOUT_COMMENT.find_last_of(INI_SECTION_ENDING) - LEADING_WHITESPACE_COUNT - 1);
 				const IniValueCommentPair EXTRA_DATA = str.substr(LEADING_WHITESPACE.length() + SECTION_NAME.length() + 2);
 
 				return new IniSection(LEADING_WHITESPACE, SECTION_NAME, EXTRA_DATA);

@@ -26,7 +26,7 @@ namespace IniRW
 
 	std::string IniSection::ToString() const
 	{
-		return leadingWhitespace + SECTION_BEGINNING_CHAR + GetName() + SECTION_ENDING_CHAR + extraData.ToString();
+		return leadingWhitespace + INI_BEGINNING_CHAR + GetName() + INI_SECTION_ENDING + extraData.ToString();
 	}
 
 	std::string IniSection::GetName() const
