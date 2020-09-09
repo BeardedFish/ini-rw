@@ -1,5 +1,4 @@
-# ini-rw
-This is a `.ini` reader/writer library programmed entirely in C++11.
+![Banner](images/Banner.png "ini-rw: A .ini reader/writer library programmed in C++11.")
 
  ⚠ This project is currently work in progress.
 
