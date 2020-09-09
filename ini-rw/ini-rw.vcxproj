@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="src\algorithms\Parse.cpp" />
     <ClCompile Include="src\algorithms\Search.cpp" />
-    <ClCompile Include="src\algorithms\Sum.cpp" />
     <ClCompile Include="src\algorithms\Validation.cpp" />
     <ClCompile Include="src\entities\IniKey.cpp" />
     <ClCompile Include="src\entities\IniValueCommentPair.cpp" />
@@ -151,7 +150,6 @@
   <ItemGroup>
     <ClInclude Include="inc\algorithms\Parse.hpp" />
     <ClInclude Include="inc\algorithms\Search.hpp" />
-    <ClInclude Include="inc\algorithms\Sum.hpp" />
     <ClInclude Include="inc\algorithms\Validation.hpp" />
     <ClInclude Include="inc\entities\IniEntity.hpp" />
     <ClInclude Include="inc\entities\IniKey.hpp" />

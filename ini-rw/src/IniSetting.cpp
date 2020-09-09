@@ -5,7 +5,6 @@
 #include "../inc/IniSetting.hpp"
 #include "../inc/algorithms/Parse.hpp"
 #include "../inc/algorithms/Search.hpp"
-#include "../inc/algorithms/Sum.hpp"
 #include "../inc/algorithms/Validation.hpp"
 #include "../inc/entities/IniSection.hpp"
 #include "../inc/entities/IniValueCommentPair.hpp"

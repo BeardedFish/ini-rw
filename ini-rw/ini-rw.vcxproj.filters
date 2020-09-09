@@ -45,9 +45,6 @@
     <ClInclude Include="inc\entities\IniValueCommentPair.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\algorithms\Sum.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\entities\IniSection.cpp">
@@ -69,9 +66,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\IniValueCommentPair.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\algorithms\Sum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

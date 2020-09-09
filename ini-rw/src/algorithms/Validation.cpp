@@ -4,7 +4,6 @@
 
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/algorithms/Parse.hpp"
-#include "../../inc/algorithms/Sum.hpp"
 
 bool IniRW::EqualsIgnoreCase(const std::string& str1, const std::string& str2)
 {

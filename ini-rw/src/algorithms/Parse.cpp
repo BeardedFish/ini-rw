@@ -3,7 +3,6 @@
 // Date:          Wednesday, September 2, 2020
 
 #include "../../inc/algorithms/Parse.hpp"
-#include "../../inc/algorithms/Sum.hpp"
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/enums/IniCommentPrefix.hpp"
 
@@ -73,7 +72,7 @@ std::string IniRW::GetCommentText(const std::string& str)
 
 IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 {
-	const size_t LEADING_WHITESPACE_COUNT = CountLeadingWhitespace(str);
+	const size_t LEADING_WHITESPACE_COUNT = str.find_first_not_of(WHITESPACE_CHARACTERS);
 
 	if (str.length() > LEADING_WHITESPACE_COUNT)
 	{
