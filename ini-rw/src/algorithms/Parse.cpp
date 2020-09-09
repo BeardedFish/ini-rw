@@ -112,3 +112,22 @@ IniRW::IniKey* IniRW::ParseIniKey(const std::string& sectionName, const std::str
 
 	return nullptr;
 }
+
+std::string IniRW::LeftTrim(const std::string& str)
+{
+	const size_t CUTOFF_INDEX = str.find_first_not_of(WHITESPACE_CHARACTERS);
+
+	return CUTOFF_INDEX != std::string::npos ? str.substr(CUTOFF_INDEX) : str;
+}
+
+std::string IniRW::RightTrim(const std::string& str)
+{
+	const size_t CUTOFF_INDEX = str.find_last_not_of(WHITESPACE_CHARACTERS);
+
+	return CUTOFF_INDEX != std::string::npos ? str.substr(0, CUTOFF_INDEX + 1) : str;
+}
+
+std::string IniRW::Trim(const std::string& str)
+{
+	return LeftTrim(RightTrim(str));
+}

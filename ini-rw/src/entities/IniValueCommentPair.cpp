@@ -37,7 +37,12 @@ namespace IniRW
 
 	std::string IniValueCommentPair::GetValueBeforeComment() const
 	{
-		return valueBeforeComment;
+		return GetValueBeforeComment(false);
+	}
+
+	std::string IniValueCommentPair::GetValueBeforeComment(const bool& trimWhitespace) const
+	{
+		return trimWhitespace ? Trim(valueBeforeComment) : valueBeforeComment;
 	}
 
 	std::string IniValueCommentPair::GetComment() const

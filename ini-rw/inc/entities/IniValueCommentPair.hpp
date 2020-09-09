@@ -31,6 +31,8 @@ namespace IniRW
 
 		std::string GetValueBeforeComment() const;
 
+		std::string GetValueBeforeComment(const bool& trimWhitespace) const;
+
 		std::string GetComment() const;
 
 		void SetValueBeforeComment(const std::string& newValue);
