@@ -37,7 +37,7 @@ IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 
 	if (str.length() > LEADING_WHITESPACE_COUNT)
 	{
-		if (str[LEADING_WHITESPACE_COUNT] == INI_BEGINNING_CHAR)
+		if (str[LEADING_WHITESPACE_COUNT] == INI_SECTION_BEGINNING)
 		{
 			const std::string INI_COMMENT = ExtractIniComment(str);
 			const std::string WITHOUT_COMMENT = str.substr(0, str.length() - INI_COMMENT.length());

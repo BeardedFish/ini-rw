@@ -11,7 +11,7 @@
 
 namespace IniRW
 {
-	constexpr char INI_BEGINNING_CHAR = '[';
+	constexpr char INI_SECTION_BEGINNING = '[';
 
 	constexpr char INI_SECTION_ENDING = ']';
 
