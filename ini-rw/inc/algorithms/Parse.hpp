@@ -21,21 +21,15 @@ namespace IniRW
 
 	const std::vector<char> INI_COMMENT_PREFIXES = { static_cast<char>(IniCommentPrefix::Pound), static_cast<char>(IniCommentPrefix::Semicolon) };
 
-	std::string GetComment(const std::string& value);
+	std::string LeftTrim(const std::string& str);
 
-	char GetCommentPrefix(const std::string& str);
+	std::string RightTrim(const std::string& str);
 
-	std::string GetCommentText(const std::string& str);
-
-	std::string GetStringBeforeComment(const std::string& str);
+	std::string ExtractIniComment(const std::string& value);
 
 	IniSection* ParseIniSection(const std::string& iniLine);
 
 	IniKey* ParseIniKey(const std::string& sectionName, const std::string& iniLine);
-
-	std::string LeftTrim(const std::string& str);
-
-	std::string RightTrim(const std::string& str);
 
 	std::string Trim(const std::string& str);
 }

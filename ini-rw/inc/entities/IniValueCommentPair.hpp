@@ -38,5 +38,12 @@ namespace IniRW
 		void SetValueBeforeComment(const std::string& newValue);
 
 		void SetComment(const IniCommentPrefix& prefix, const std::string& text);
+
+	private:
+		char ExtractCommentPrefix(const std::string& iniValue);
+
+		std::string ExtractCommentText(const std::string& iniValue);
+
+		std::string ExtractValueBeforeComment(const std::string& iniValue);
 	};
 }

@@ -6,7 +6,7 @@
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/enums/IniCommentPrefix.hpp"
 
-std::string IniRW::GetComment(const std::string& value)
+std::string IniRW::ExtractIniComment(const std::string& value)
 {
 	if (value.length() > 0)
 	{
@@ -31,45 +31,6 @@ std::string IniRW::GetComment(const std::string& value)
 	return "";
 }
 
-std::string IniRW::GetStringBeforeComment(const std::string& str)
-{
-	const std::string INI_COMMENT = GetComment(str);
-
-	if (str.length() > INI_COMMENT.length())
-	{
-		return str.substr(0, (str.length() - INI_COMMENT.length()));
-	}
-
-	return "";
-}
-
-char IniRW::GetCommentPrefix(const std::string& str)
-{
-	const std::string INI_COMMENT = GetComment(str);
-
-	if (!INI_COMMENT.empty())
-	{
-		return INI_COMMENT[0];
-	}
-
-	return '\0';
-}
-
-std::string IniRW::GetCommentText(const std::string& str)
-{
-	const std::string INI_COMMENT = GetComment(str);
-
-	if (!INI_COMMENT.empty())
-	{
-		if (INI_COMMENT.length() > 1)
-		{
-			return INI_COMMENT.substr(1, INI_COMMENT.length() - 1);
-		}
-	}
-
-	return str;
-}
-
 IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 {
 	const size_t LEADING_WHITESPACE_COUNT = str.find_first_not_of(WHITESPACE_CHARACTERS);
@@ -78,7 +39,7 @@ IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 	{
 		if (str[LEADING_WHITESPACE_COUNT] == INI_BEGINNING_CHAR)
 		{
-			const std::string INI_COMMENT = GetComment(str);
+			const std::string INI_COMMENT = ExtractIniComment(str);
 			const std::string WITHOUT_COMMENT = str.substr(0, str.length() - INI_COMMENT.length());
 
 			if (WITHOUT_COMMENT.find_first_of(INI_SECTION_ENDING) != std::string::npos) // It's a valid INI section

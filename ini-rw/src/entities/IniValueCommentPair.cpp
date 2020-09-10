@@ -13,7 +13,7 @@ namespace IniRW
 
 	}
 
-	IniValueCommentPair::IniValueCommentPair(const std::string& text) : IniValueCommentPair(GetStringBeforeComment(text), GetCommentPrefix(text), GetCommentText(text))
+	IniValueCommentPair::IniValueCommentPair(const std::string& text) : IniValueCommentPair(ExtractValueBeforeComment(text), ExtractCommentPrefix(text), ExtractCommentText(text))
 	{
 
 	}
@@ -59,5 +59,41 @@ namespace IniRW
 	{
 		commentPrefix = static_cast<char>(newPrefix);
 		commentText = newText;
+	}
+
+	std::string IniValueCommentPair::ExtractValueBeforeComment(const std::string& iniValue)
+	{
+		const std::string INI_COMMENT = ExtractIniComment(iniValue);
+
+		if (iniValue.length() > INI_COMMENT.length())
+		{
+			return iniValue.substr(0, (iniValue.length() - INI_COMMENT.length()));
+		}
+
+		return "";
+	}
+
+	char IniValueCommentPair::ExtractCommentPrefix(const std::string& iniValue)
+	{
+		const std::string INI_COMMENT = ExtractIniComment(iniValue);
+
+		if (!INI_COMMENT.empty())
+		{
+			return INI_COMMENT[0];
+		}
+
+		return '\0';
+	}
+
+	std::string IniValueCommentPair::ExtractCommentText(const std::string& iniValue)
+	{
+		const std::string INI_COMMENT = ExtractIniComment(iniValue);
+
+		if (INI_COMMENT.length() > 1)
+		{
+			return INI_COMMENT.substr(1, INI_COMMENT.length() - 1);
+		}
+
+		return iniValue;
 	}
 }
