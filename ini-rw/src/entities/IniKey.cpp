@@ -14,7 +14,7 @@ namespace IniRW
 		this->valueCommentPair = valueCommentPair;
 	}
 
-	IniEntityType IniKey::GetType()
+	IniEntityType IniKey::GetType() const
 	{
 		return IniEntityType::Key;
 	}

@@ -22,7 +22,7 @@ namespace IniRW
 
 		IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData);
 
-		IniEntityType GetType() override;
+		IniEntityType GetType() const override;
 
 		std::string ToString() const override;
 

@@ -19,7 +19,7 @@ namespace IniRW
 		this->extraData = extraData;
 	}
 
-	IniEntityType IniSection::GetType()
+	IniEntityType IniSection::GetType() const
 	{
 		return IniEntityType::Section;
 	}

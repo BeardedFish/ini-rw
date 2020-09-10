@@ -25,7 +25,7 @@ namespace IniRW
 		this->commentText = commentText;
 	}
 
-	IniEntityType IniValueCommentPair::GetType()
+	IniEntityType IniValueCommentPair::GetType() const
 	{
 		return IniEntityType::ValueCommentPair;
 	}

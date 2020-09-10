@@ -21,7 +21,7 @@ namespace IniRW
 	public:
 		IniKey(const std::string& section, const std::string& name, const IniValueCommentPair& valueCommentPair);
 
-		IniEntityType GetType() override;
+		IniEntityType GetType() const override;
 
 		std::string ToString() const override;
 
