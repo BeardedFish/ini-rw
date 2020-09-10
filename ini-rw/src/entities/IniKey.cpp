@@ -21,11 +21,7 @@ namespace IniRW
 
 	std::string IniKey::ToString() const
 	{
-		std::string result;
-
-		result += GetName() + INI_KEY_VALUE_DELIMITER + valueCommentPair.ToString();
-
-		return result;
+		return GetName() + INI_KEY_VALUE_DELIMITER + valueCommentPair.ToString();
 	}
 
 	std::string IniKey::GetSection() const
