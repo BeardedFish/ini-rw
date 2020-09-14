@@ -6,15 +6,16 @@
 
 #include "../entities/IniEntity.hpp"
 #include "../entities/IniKey.hpp"
+#include <limits>
 #include <string>
 #include <vector>
 
 namespace IniRW
 {
 	/// <summary>
-	/// The value the GetSectionLocation() function returns when it can't find the specified INI section. This value is overflowed on purpose.
+	/// The value the GetSectionLocation() function returns when it can't find the specified INI section.
 	/// </summary>
-	constexpr size_t SECTION_NOT_FOUND = -1;
+	constexpr size_t SECTION_NOT_FOUND = std::numeric_limits<size_t>::max();
 
 	/// <summary>
 	/// Searches for an INI key in a vector of type IniEntity* and returns a pointer to the object if found.
