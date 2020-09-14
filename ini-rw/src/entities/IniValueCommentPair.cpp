@@ -47,7 +47,7 @@ namespace IniRW
 
 	std::string IniValueCommentPair::GetComment() const
 	{
-		return commentPrefix != '\0' ? std::string(1, commentPrefix) + commentText : "" ;
+		return commentPrefix != '\0' ? std::string(1, commentPrefix) + commentText : "";
 	}
 
 	void IniValueCommentPair::SetValueBeforeComment(const std::string& newValue)
