@@ -20,6 +20,7 @@ namespace IniRW
 		IniValueCommentPair();
 
 		IniValueCommentPair(const std::string& value);
+		IniValueCommentPair(const std::string& data);
 
 	private:
 		IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText);

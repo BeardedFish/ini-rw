@@ -13,7 +13,7 @@ namespace IniRW
 
 	}
 
-	IniValueCommentPair::IniValueCommentPair(const std::string& text) : IniValueCommentPair(ExtractValueBeforeComment(text), ExtractCommentPrefix(text), ExtractCommentText(text))
+	IniValueCommentPair::IniValueCommentPair(const std::string& data) : IniValueCommentPair(ExtractValueBeforeComment(data), ExtractCommentPrefix(data), ExtractCommentText(data))
 	{
 
 	}
