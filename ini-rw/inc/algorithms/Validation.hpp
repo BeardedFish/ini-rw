@@ -10,7 +10,7 @@
 namespace IniRW
 {
 	/// <summary>
-	/// Compares two strings for equality, ignoring case.
+	/// Compares two strings for equality. Lowercase and uppercase characters are treated the same.
 	/// </summary>
 	/// <param name="str1">The string to be compared to the second string.</param>
 	/// <param name="str2">The string to be compared to the first string.</param>
