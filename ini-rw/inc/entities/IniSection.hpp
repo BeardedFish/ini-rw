@@ -27,9 +27,10 @@ namespace IniRW
 		/// <summary>
 		/// Creates an INI section object with leading whitespace, a custom name, and extra data.
 		/// </summary>
-		/// <param name="whitespace">The string which contains whitespace. If the string does not contain whitespace, an std::exception is thrown.</param>
+		/// <param name="whitespace">The string which contains whitespace.</param>
 		/// <param name="name">The name of the INI section.</param>
 		/// <param name="extraData">The extra data attached to the INI section. This can either be garbage data or an inline INI comment.</param>
+		/// <exception cref="std::exception">This exception will be thrown if the first parameter contains a non-whitespace character.</exception>
 		IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData);
 
 		/// <summary>
@@ -56,7 +57,8 @@ namespace IniRW
 		/// <summary>
 		/// Sets the leading whitespace for this INI section instance. Leading whitespace appears before the INI section name.
 		/// </summary>
-		/// <param name="whitespace">The string which contains whitespace. If the string does not contain whitespace, an std::exception is thrown.</param>
+		/// <param name="whitespace">The string which contains whitespace.</param>
+		/// <exception cref="std::exception">This exception will be thrown if the first parameter contains a non-whitespace character.</exception>
 		void SetLeadingWhitespace(const std::string& whitespace);
 
 	private:
