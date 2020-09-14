@@ -14,8 +14,8 @@ namespace IniRW
 	/// <summary>
 	/// The character that an INI section must begin with.
 	/// </summary>
-	constexpr char INI_BEGINNING_CHAR = '[';
-
+	constexpr char INI_SECTION_BEGINNING = '[';
+  
 	/// <summary>
 	/// The character that an INI section must end with.
 	/// </summary>

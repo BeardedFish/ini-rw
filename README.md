@@ -72,6 +72,3 @@ iniSettings.WriteKeyValue(SECTION_NAME, KEY_NAME, KEY_VALUE);
 To save changes to the original file path that the `.ini` file was loaded from, use the `SaveChanges()` function. For saving changes to a custom file path, use the overloaded function `SaveChanges(CUSTOM_FILE_PATH)` where the `CUSTOM_FILE_PATH` is a string.
 
 Both of these functions return a boolean value that states whether the `.ini` file was saved succesfully or not.
-
-## Screenshots
-Coming soon!
