@@ -58,10 +58,10 @@ IniRW::IniSetting iniSettings;
 ### Writing A `.ini` File
 #### Writing A `.ini` Comment
 ```cpp
-iniSettings.WriteComment(INDEX, COMMENT_PREFIX, COMMENT_TEXT);
+iniSettings.InsertComment(INDEX, COMMENT_PREFIX, COMMENT_TEXT);
 ```
 
-The `WriteComment()` function will throw an exception if the index is out of bounds.
+The `InsertComment()` function will throw an exception if the `INDEX` is out of bounds.
 
 #### Writing A `.ini` Key
 ```cpp
