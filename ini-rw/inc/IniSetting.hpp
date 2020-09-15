@@ -131,11 +131,12 @@ namespace IniRW
 		void InsertComment(const IniCommentPrefix& prefix, const std::string& text);
 
 		/// <summary>
-		/// Writes a comment to the INI file at a specified index. If the specified index is out of bounds then an std::out_of_range exception is thrown.
+		/// Writes a comment to the INI file at a specified index.
 		/// </summary>
 		/// <param name="index">The index position where the INI comment should be inserted.</param>
 		/// <param name="prefix">The prefix of the comment.</param>
 		/// <param name="text">The text of the comment.</param>
+		/// <exception cref="std::out_of_range">This exception will be thrown if the specified insert index is out of bounds.</exception>
 		void WriteComment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text);
 
 		/// <summary>
