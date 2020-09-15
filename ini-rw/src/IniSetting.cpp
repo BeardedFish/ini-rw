@@ -198,6 +198,18 @@ namespace IniRW
 		}
 	}
 
+	void IniSetting::AppendComment(const IniCommentPrefix& prefix, const std::string& text)
+	{
+		const size_t INSERT_POS = iniContents.size() > 0 ? iniContents.size() - 1 : 0; // Using ternary operator because the value will overflow if the size of the vector is 0
+
+		WriteComment(INSERT_POS, prefix, text);
+	}
+
+	void IniSetting::InsertComment(const IniCommentPrefix& prefix, const std::string& text)
+	{
+		WriteComment(0, prefix, text);
+	}
+
 	void IniSetting::WriteComment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text)
 	{
 		if (index > iniContents.size())

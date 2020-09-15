@@ -117,6 +117,20 @@ namespace IniRW
 		void Load(const std::string& iniFilePath);
 
 		/// <summary>
+		/// Appends an INI comment at the end of the loaded file.
+		/// </summary>
+		/// <param name="prefix">The prefix of the comment.</param>
+		/// <param name="text">The text of the comment.</param>
+		void AppendComment(const IniCommentPrefix& prefix, const std::string& text);
+
+		/// <summary>
+		/// Inserts an INI comment at the beginning of the loaded file.
+		/// </summary>
+		/// <param name="prefix">The prefix of the comment.</param>
+		/// <param name="text">The text of the comment.</param>
+		void InsertComment(const IniCommentPrefix& prefix, const std::string& text);
+
+		/// <summary>
 		/// Writes a comment to the INI file at a specified index. If the specified index is out of bounds then an std::out_of_range exception is thrown.
 		/// </summary>
 		/// <param name="index">The index position where the INI comment should be inserted.</param>
