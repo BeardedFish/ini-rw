@@ -7,16 +7,6 @@
 #include <iostream>
 #include <string>
 
-const char* INI_RW_ACSII_ART = " _            _                              \n"
-                               "|_|          |_|                             \n"
-                               " _   ______   _           ______   _       _ \n"
-                               "| | |  __  | | |         |  __  | | |     | |\n"
-                               "| | | |  | | | |  _____  | |  |_| | |  _  | |\n"
-                               "| | | |  | | | | |_____| | |      | | | | | |\n"
-                               "| | | |  | | | |         | |      | |_| |_| |\n"
-                               "|_| |_|  |_| |_|         |_|      |_________|\n\n"
-                               "=============================================";
-
 /// <summary>
 /// Main entry point of the program.
 /// </summary>
@@ -29,7 +19,15 @@ int main(int argc, char* argv[])
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 
-    std::cout << INI_RW_ACSII_ART << std::endl << std::endl;
+    std::cout << " _            _                              \n"
+                 "|_|          |_|                             \n"
+                 " _   ______   _           ______   _       _ \n"
+                 "| | |  __  | | |         |  __  | | |     | |\n"
+                 "| | | |  | | | |  _____  | |  |_| | |  _  | |\n"
+                 "| | | |  | | | | |_____| | |      | | | | | |\n"
+                 "| | | |  | | | |         | |      | |_| |_| |\n"
+                 "|_| |_|  |_| |_|         |_|      |_________|\n\n"
+                 "=============================================";
 
     if (argc <= 1)
     {
