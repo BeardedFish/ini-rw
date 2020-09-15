@@ -1,7 +1,5 @@
 ![Banner](images/Banner.png "ini-rw: A .ini reader/writer library programmed in C++11.")
 
- ⚠ This project is currently work in progress.
-
 ## Current Features
 * Ability to open `.ini` files for either:
     * Reading
