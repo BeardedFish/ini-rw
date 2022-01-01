@@ -74,18 +74,17 @@ int main(int argc, char* argv[])
                     }
                     else if (IniRW::equals_ignore_case(userInput, "iv") || IniRW::equals_ignore_case(userInput, "rs"))
                     {
+                        std::string sectionName, keyName, keyValue;
+
                         std::cout << "Section Name: ";
-                        std::string sectionName;
                         std::getline(std::cin, sectionName);
 
                         std::cout << "Key Name: ";
-                        std::string keyName;
                         std::getline(std::cin, keyName);
 
                         if (IniRW::equals_ignore_case(userInput, "iv")) // Insert value into INI file
                         {
                             std::cout << "Key Value: ";
-                            std::string keyValue;
                             std::getline(std::cin, keyValue);
 
                             iniSettings.write_key_value(sectionName, keyName, keyValue);
