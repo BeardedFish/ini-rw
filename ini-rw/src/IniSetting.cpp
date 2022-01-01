@@ -170,7 +170,7 @@ namespace IniRW
 		if (fileStream)
 		{
 			IniSection* currentIniSection = nullptr;
-			std::string currentLine; // currentSectionName;
+			std::string currentLine;
 
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
