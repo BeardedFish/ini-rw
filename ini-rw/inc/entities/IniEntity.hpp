@@ -12,16 +12,7 @@ namespace IniRW
 	class IniEntity
 	{
 	public:
-		/// <summary>
-		/// Abstract function to be implemented in a derived class. On implementation, this function is supposed to tell a user what kind of INI entity the subclass is.
-		/// </summary>
-		/// <returns>Return value will vary on the derived classes.</returns>
 		virtual IniEntityType GetType() const = 0;
-
-		/// <summary>
-		/// Abstract function to be implemented in a derived class. On implementation, this function is supposed to give a string representation of an INI entity.
-		/// </summary>
-		/// <returns>Return value will vary on the derived classes.</returns>
 		virtual std::string ToString() const = 0;
 	};
 }
