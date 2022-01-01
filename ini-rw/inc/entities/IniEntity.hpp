@@ -12,7 +12,7 @@ namespace IniRW
 	class IniEntity
 	{
 	public:
-		virtual IniEntityType GetType() const = 0;
-		virtual std::string ToString() const = 0;
+		virtual IniEntityType get_type() const = 0;
+		virtual std::string to_string() const = 0;
 	};
 }

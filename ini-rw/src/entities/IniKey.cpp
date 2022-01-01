@@ -14,22 +14,22 @@ namespace IniRW
 		ValueCommentPair = valueCommentPair;
 	}
 
-	IniEntityType IniKey::GetType() const
+	IniEntityType IniKey::get_type() const
 	{
 		return IniEntityType::Key;
 	}
 
-	std::string IniKey::ToString() const
+	std::string IniKey::to_string() const
 	{
-		return GetName() + INI_KEY_VALUE_DELIMITER + ValueCommentPair.ToString();
+		return get_name() + INI_KEY_VALUE_DELIMITER + ValueCommentPair.to_string();
 	}
 
-	IniSection* IniKey::GetSection() const
+	IniSection* IniKey::get_section() const
 	{
 		return m_iniSection;
 	}
 
-	std::string IniKey::GetName() const
+	std::string IniKey::get_name() const
 	{
 		return m_name;
 	}

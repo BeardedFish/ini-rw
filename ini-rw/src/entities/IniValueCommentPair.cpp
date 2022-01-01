@@ -13,7 +13,7 @@ namespace IniRW
 
 	}
 
-	IniValueCommentPair::IniValueCommentPair(const std::string& data) : IniValueCommentPair(ExtractValueBeforeComment(data), ExtractCommentPrefix(data), ExtractCommentText(data))
+	IniValueCommentPair::IniValueCommentPair(const std::string& data) : IniValueCommentPair(extract_value_before_comment(data), extract_comment_prefix(data), extract_comment_text(data))
 	{
 
 	}
@@ -25,45 +25,45 @@ namespace IniRW
 		m_commentText = commentText;
 	}
 
-	IniEntityType IniValueCommentPair::GetType() const
+	IniEntityType IniValueCommentPair::get_type() const
 	{
 		return IniEntityType::ValueCommentPair;
 	}
 
-	std::string IniValueCommentPair::ToString() const
+	std::string IniValueCommentPair::to_string() const
 	{
-		return GetValueBeforeComment() + GetComment();
+		return get_value_before_comment() + get_comment();
 	}
 
-	std::string IniValueCommentPair::GetValueBeforeComment() const
+	std::string IniValueCommentPair::get_value_before_comment() const
 	{
-		return GetValueBeforeComment(false);
+		return get_value_before_comment(false);
 	}
 
-	std::string IniValueCommentPair::GetValueBeforeComment(const bool& trimWhitespace) const
+	std::string IniValueCommentPair::get_value_before_comment(const bool& trimWhitespace) const
 	{
-		return trimWhitespace ? Trim(m_valueBeforeComment) : m_valueBeforeComment;
+		return trimWhitespace ? trim(m_valueBeforeComment) : m_valueBeforeComment;
 	}
 
-	std::string IniValueCommentPair::GetComment() const
+	std::string IniValueCommentPair::get_comment() const
 	{
 		return m_commentPrefix != '\0' ? std::string(1, m_commentPrefix) + m_commentText : "";
 	}
 
-	void IniValueCommentPair::SetValueBeforeComment(const std::string& newValue)
+	void IniValueCommentPair::set_value_before_comment(const std::string& newValue)
 	{
 		m_valueBeforeComment = newValue;
 	}
 
-	void IniValueCommentPair::SetComment(const IniCommentPrefix& newPrefix, const std::string& newText)
+	void IniValueCommentPair::set_comment(const IniCommentPrefix& newPrefix, const std::string& newText)
 	{
 		m_commentPrefix = static_cast<char>(newPrefix);
 		m_commentText = newText;
 	}
 
-	std::string IniValueCommentPair::ExtractValueBeforeComment(const std::string& iniValue)
+	std::string IniValueCommentPair::extract_value_before_comment(const std::string& iniValue)
 	{
-		const std::string INI_COMMENT = ExtractIniComment(iniValue);
+		const std::string INI_COMMENT = extract_ini_comment(iniValue);
 
 		if (iniValue.length() > INI_COMMENT.length())
 		{
@@ -73,9 +73,9 @@ namespace IniRW
 		return "";
 	}
 
-	char IniValueCommentPair::ExtractCommentPrefix(const std::string& iniValue)
+	char IniValueCommentPair::extract_comment_prefix(const std::string& iniValue)
 	{
-		const std::string INI_COMMENT = ExtractIniComment(iniValue);
+		const std::string INI_COMMENT = extract_ini_comment(iniValue);
 
 		if (!INI_COMMENT.empty())
 		{
@@ -85,9 +85,9 @@ namespace IniRW
 		return '\0';
 	}
 
-	std::string IniValueCommentPair::ExtractCommentText(const std::string& iniValue)
+	std::string IniValueCommentPair::extract_comment_text(const std::string& iniValue)
 	{
-		const std::string INI_COMMENT = ExtractIniComment(iniValue);
+		const std::string INI_COMMENT = extract_ini_comment(iniValue);
 
 		if (INI_COMMENT.length() > 1)
 		{

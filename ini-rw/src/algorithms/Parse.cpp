@@ -6,7 +6,7 @@
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/enums/IniCommentPrefix.hpp"
 
-std::string IniRW::ExtractIniComment(const std::string& value)
+std::string IniRW::extract_ini_comment(const std::string& value)
 {
 	if (value.length() > 0)
 	{
@@ -30,21 +30,21 @@ std::string IniRW::ExtractIniComment(const std::string& value)
 	return "";
 }
 
-std::string IniRW::LeftTrim(const std::string& str)
+std::string IniRW::left_trim(const std::string& str)
 {
 	const size_t CUTOFF_INDEX = str.find_first_not_of(WHITESPACE_CHARACTERS);
 
 	return CUTOFF_INDEX != std::string::npos ? str.substr(CUTOFF_INDEX) : str;
 }
 
-std::string IniRW::RightTrim(const std::string& str)
+std::string IniRW::right_trim(const std::string& str)
 {
 	const size_t CUTOFF_INDEX = str.find_last_not_of(WHITESPACE_CHARACTERS);
 
 	return CUTOFF_INDEX != std::string::npos ? str.substr(0, CUTOFF_INDEX + 1) : str;
 }
 
-IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
+IniRW::IniSection* IniRW::parse_ini_section(const std::string& str)
 {
 	const size_t LEADING_WHITESPACE_COUNT = str.find_first_not_of(WHITESPACE_CHARACTERS);
 
@@ -52,7 +52,7 @@ IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 	{
 		if (str[LEADING_WHITESPACE_COUNT] == INI_SECTION_BEGINNING)
 		{
-			const std::string INI_COMMENT = ExtractIniComment(str);
+			const std::string INI_COMMENT = extract_ini_comment(str);
 			const std::string WITHOUT_COMMENT = str.substr(0, str.length() - INI_COMMENT.length());
 
 			if (WITHOUT_COMMENT.find_first_of(INI_SECTION_ENDING) != std::string::npos) // It's a valid INI section
@@ -69,7 +69,7 @@ IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 	return nullptr;
 }
 
-IniRW::IniKey* IniRW::ParseIniKey(IniSection* iniSection, const std::string& iniLine)
+IniRW::IniKey* IniRW::parse_ini_key(IniSection* iniSection, const std::string& iniLine)
 {
 	if (iniLine.length() >= 3)
 	{
@@ -87,7 +87,7 @@ IniRW::IniKey* IniRW::ParseIniKey(IniSection* iniSection, const std::string& ini
 	return nullptr;
 }
 
-std::string IniRW::Trim(const std::string& str)
+std::string IniRW::trim(const std::string& str)
 {
-	return LeftTrim(RightTrim(str));
+	return left_trim(right_trim(str));
 }

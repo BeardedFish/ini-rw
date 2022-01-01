@@ -20,14 +20,14 @@ namespace IniRW
 		IniSection(const std::string& name);
 		IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData);
 
-		IniEntityType GetType() const override;
+		IniEntityType get_type() const override;
 
-		std::string ToString() const override;
+		std::string to_string() const override;
 
-		std::string GetName() const;
+		std::string get_name() const;
 
-		void SetLeadingWhitespace(const std::string& whitespace);
+		void set_leading_whitespace(const std::string& whitespace);
 	private:
-		bool IsWhitespace(const std::string& str);
+		bool is_whitespace(const std::string& str);
 	};
 }

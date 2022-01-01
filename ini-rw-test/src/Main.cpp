@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 
     IniRW::IniSetting iniSettings(argv[1]);
     
-    if (iniSettings) // Alternatively, you could do "iniSettings.IsLoaded()"
+    if (iniSettings) // Alternatively, you could do "iniSettings.is_loaded()"
     {
         std::cout << "The INI file \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
         std::cout << "Type \"help\" for a list of commands." << std::endl << std::endl;
@@ -47,23 +47,23 @@ int main(int argc, char* argv[])
 
             if (userInput.length() > 0)
             {
-                exitLoopFlag = IniRW::EqualsIgnoreCase(userInput, "quit");
+                exitLoopFlag = IniRW::equals_ignore_case(userInput, "quit");
 
                 if (!exitLoopFlag)
                 {
-                    if (IniRW::EqualsIgnoreCase(userInput, "clrini"))
+                    if (IniRW::equals_ignore_case(userInput, "clrini"))
                     {
-                        iniSettings.Clear();
+                        iniSettings.clear();
 
                         std::cout << "The INI file contents were cleared succesfully!";
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInput, "contents"))
+                    else if (IniRW::equals_ignore_case(userInput, "contents"))
                     {
-                        std::string iniContents = iniSettings.ToString();
+                        std::string iniContents = iniSettings.to_string();
 
                         std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInput, "help"))
+                    else if (IniRW::equals_ignore_case(userInput, "help"))
                     {
                         std::cout << "clrini - Clears the loaded INI file contents." << std::endl;
                         std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
                         std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
                         std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInput, "iv") || IniRW::EqualsIgnoreCase(userInput, "rs"))
+                    else if (IniRW::equals_ignore_case(userInput, "iv") || IniRW::equals_ignore_case(userInput, "rs"))
                     {
                         std::cout << "Section Name: ";
                         std::string sectionName;
@@ -82,25 +82,25 @@ int main(int argc, char* argv[])
                         std::string keyName;
                         std::getline(std::cin, keyName);
 
-                        if (IniRW::EqualsIgnoreCase(userInput, "iv")) // Insert value into INI file
+                        if (IniRW::equals_ignore_case(userInput, "iv")) // Insert value into INI file
                         {
                             std::cout << "Key Value: ";
                             std::string keyValue;
                             std::getline(std::cin, keyValue);
 
-                            iniSettings.WriteKeyValue(sectionName, keyName, keyValue);
+                            iniSettings.write_key_value(sectionName, keyName, keyValue);
 
                             std::cout << std::endl << "Value written succesfully!";
                         }
                         else // Read string value from INI file
                         {
-                            IniRW::IniKey* key = iniSettings.GetKey(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
+                            IniRW::IniKey* key = iniSettings.get_key(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
 
                             if (key)
                             {
                                 const IniRW::IniValueCommentPair VALUE_COMMENT_PAIR = key->ValueCommentPair;
 
-                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.GetValueBeforeComment(true) << "\" (\"" << VALUE_COMMENT_PAIR.GetValueBeforeComment() << "\" with leading and trailing whitespace)" << "."; 
+                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.get_value_before_comment(true) << "\" (\"" << VALUE_COMMENT_PAIR.get_value_before_comment() << "\" with leading and trailing whitespace)" << "."; 
                             }
                             else
                             {
@@ -108,9 +108,9 @@ int main(int argc, char* argv[])
                             }
                         }
                     }
-                    else if (IniRW::EqualsIgnoreCase(userInput, "save"))
+                    else if (IniRW::equals_ignore_case(userInput, "save"))
                     {
-                        bool success = iniSettings.SaveChanges();
+                        bool success = iniSettings.save_changes();
 
                         std::cout << (success ? "The INI file was saved succesfully!" : "An error occured while trying to save the INI file.");
                     }
@@ -129,8 +129,8 @@ int main(int argc, char* argv[])
             {
                 std::cout << std::endl << std::endl;
             }
-
-        } while (!exitLoopFlag);
+        }
+        while (!exitLoopFlag);
     }
     else
     {

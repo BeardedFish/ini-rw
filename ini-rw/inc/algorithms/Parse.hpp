@@ -22,15 +22,15 @@ namespace IniRW
 		static_cast<char>(IniCommentPrefix::Semicolon)
 	};
 
-	std::string ExtractIniComment(const std::string& str);
+	std::string extract_ini_comment(const std::string& str);
 
-	std::string LeftTrim(const std::string& str);
+	std::string left_trim(const std::string& str);
 
-	std::string RightTrim(const std::string& str);
+	std::string right_trim(const std::string& str);
 
-	IniSection* ParseIniSection(const std::string& iniLine);
+	IniSection* parse_ini_section(const std::string& iniLine);
 
-	IniKey* ParseIniKey(IniSection* iniSection, const std::string& iniLine);
+	IniKey* parse_ini_key(IniSection* iniSection, const std::string& iniLine);
 
-	std::string Trim(const std::string& str);
+	std::string trim(const std::string& str);
 }

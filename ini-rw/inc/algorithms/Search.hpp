@@ -14,7 +14,7 @@ namespace IniRW
 {
 	constexpr size_t INI_NOT_FOUND = std::numeric_limits<size_t>::max();
 
-	size_t FindKeyIndex(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName);
+	size_t find_key_index(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName);
 
-	size_t GetSectionLocation(std::vector<IniEntity*>& iniContents, const std::string& sectionName);
+	size_t get_section_location(std::vector<IniEntity*>& iniContents, const std::string& sectionName);
 }

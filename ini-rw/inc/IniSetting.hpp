@@ -37,28 +37,28 @@ namespace IniRW
 
 		IniKey* operator[](const std::pair<std::string, std::string>& keyPair);
 
-		bool IsLoaded() const;
+		bool is_loaded() const;
 
-		std::string ToString() const;
+		std::string to_string() const;
 
-		bool SaveChanges();
+		bool save_changes();
 
-		bool SaveChanges(const std::string& savePath);
+		bool save_changes(const std::string& savePath);
 
-		void Clear();
+		void clear();
 
-		void Unload();
+		void unload();
 
-		void Load(const std::string& iniFilePath);
+		void load(const std::string& iniFilePath);
 
-		void AppendComment(const IniCommentPrefix& prefix, const std::string& text);
+		void append_comment(const IniCommentPrefix& prefix, const std::string& text);
 
-		void InsertComment(const IniCommentPrefix& prefix, const std::string& text);
+		void insert_comment(const IniCommentPrefix& prefix, const std::string& text);
 
-		void InsertComment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text);
+		void insert_comment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text);
 
-		void WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue);
+		void write_key_value(const std::string& sectionName, const std::string& keyName, const std::string& keyValue);
 
-		IniKey* GetKey(const std::string& sectionName, const std::string& keyName);
+		IniKey* get_key(const std::string& sectionName, const std::string& keyName);
 	};
 }

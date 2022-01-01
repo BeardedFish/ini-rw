@@ -9,5 +9,5 @@
 
 namespace IniRW
 {
-	bool EqualsIgnoreCase(const std::string& str1, const std::string& str2);
+	bool equals_ignore_case(const std::string& str1, const std::string& str2);
 }

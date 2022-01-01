@@ -19,7 +19,7 @@ namespace IniRW
 
 	IniSetting::IniSetting(const std::string& iniFilePath) : IniSetting(false, iniFilePath)
 	{
-		Load(iniFilePath);
+		load(iniFilePath);
 	}
 
 	IniSetting::IniSetting(const bool loaded, const std::string& iniFilePath)
@@ -37,7 +37,7 @@ namespace IniRW
 
 			if (entity)
 			{
-				switch (entity->GetType())
+				switch (entity->get_type())
 				{
 					case IniEntityType::Key:
 						{
@@ -61,40 +61,40 @@ namespace IniRW
 
 	IniSetting::~IniSetting()
 	{
-		Clear();
+		clear();
 	}
 
 	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
 	{
-		outputStream << iniSettings.ToString();
+		outputStream << iniSettings.to_string();
 
 		return outputStream;
 	}
 
 	IniSetting::operator bool() const
 	{
-		return IsLoaded();
+		return is_loaded();
 	}
 
 	IniKey* IniSetting::operator[](const std::pair<std::string, std::string>& keyPair)
 	{
-		return GetKey(keyPair.first, keyPair.second);
+		return get_key(keyPair.first, keyPair.second);
 	}
 
-	bool IniSetting::IsLoaded() const
+	bool IniSetting::is_loaded() const
 	{
 		return m_loaded;
 	}
 
-	std::string IniSetting::ToString() const
+	std::string IniSetting::to_string() const
 	{
 		std::string contents;
 
 		for (size_t i = 0; i < m_iniContents.size(); i++)
 		{
-			contents += m_iniContents[i]->ToString();
+			contents += m_iniContents[i]->to_string();
 
-			if (i < m_iniContents.size() - 1 && m_iniContents[i]->ToString() != "\n")
+			if (i < m_iniContents.size() - 1 && m_iniContents[i]->to_string() != "\n")
 			{
 				contents += "\n";
 			}
@@ -103,12 +103,12 @@ namespace IniRW
 		return contents;
 	}
 
-	bool IniSetting::SaveChanges()
+	bool IniSetting::save_changes()
 	{
-		return SaveChanges(m_iniFilePath);
+		return save_changes(m_iniFilePath);
 	}
 
-	bool IniSetting::SaveChanges(const std::string& savePath)
+	bool IniSetting::save_changes(const std::string& savePath)
 	{
 		std::ofstream fileStream(savePath);
 
@@ -117,17 +117,17 @@ namespace IniRW
 			return false;
 		}
 
-		fileStream << ToString();
+		fileStream << to_string();
 
 		return true;
 	}
 
-	void IniSetting::Clear()
+	void IniSetting::clear()
 	{
 		// Delete all INI entities allocated to the heap
 		for (IniEntity*& entity : m_iniContents)
 		{
-			switch (entity->GetType())
+			switch (entity->get_type())
 			{
 				case IniEntityType::Key:
 					{
@@ -150,19 +150,19 @@ namespace IniRW
 		m_iniContents.clear();
 	}
 
-	void IniSetting::Unload()
+	void IniSetting::unload()
 	{
-		Clear();
+		clear();
 
 		m_loaded = false;
 		m_iniFilePath = "";
 	}
 
-	void IniSetting::Load(const std::string& iniFilePath)
+	void IniSetting::load(const std::string& iniFilePath)
 	{
-		if (IsLoaded())
+		if (is_loaded())
 		{
-			Unload();
+			unload();
 		}
 
 		std::ifstream fileStream(iniFilePath);
@@ -175,7 +175,7 @@ namespace IniRW
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				IniEntity* entity = ParseIniSection(currentLine);
+				IniEntity* entity = parse_ini_section(currentLine);
 
 				if (entity)
 				{
@@ -184,9 +184,9 @@ namespace IniRW
 				else
 				{
 					// The current line is not an INI section, try and parse it into an INI key:
-					entity = ParseIniKey(currentIniSection, currentLine);
+					entity = parse_ini_key(currentIniSection, currentLine);
 
-					if (!entity) // This will evaluate to true if the ParseIniKey() function failed (returns null pointer). This means that the current line is either a new line, an INI comment, or a garbage string value.
+					if (!entity) // This will evaluate to true if the parse_ini_key() function failed (returns null pointer). This means that the current line is either a new line, an INI comment, or a garbage string value.
 					{
 						entity = new IniValueCommentPair(currentLine);
 					}
@@ -199,19 +199,19 @@ namespace IniRW
 		}
 	}
 
-	void IniSetting::AppendComment(const IniCommentPrefix& prefix, const std::string& text)
+	void IniSetting::append_comment(const IniCommentPrefix& prefix, const std::string& text)
 	{
 		const size_t INSERT_POS = m_iniContents.size() > 0 ? m_iniContents.size() - 1 : 0; // Using ternary operator because the value will overflow if the size of the vector is 0
 
-		InsertComment(INSERT_POS, prefix, text);
+		insert_comment(INSERT_POS, prefix, text);
 	}
 
-	void IniSetting::InsertComment(const IniCommentPrefix& prefix, const std::string& text)
+	void IniSetting::insert_comment(const IniCommentPrefix& prefix, const std::string& text)
 	{
-		InsertComment(0, prefix, text);
+		insert_comment(0, prefix, text);
 	}
 
-	void IniSetting::InsertComment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text)
+	void IniSetting::insert_comment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text)
 	{
 		if (index > m_iniContents.size())
 		{
@@ -224,17 +224,17 @@ namespace IniRW
 		m_iniContents.insert(INSERT_POS, new IniValueCommentPair(COMMENT));
 	}
 
-	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
+	void IniSetting::write_key_value(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
 	{
-		size_t iniKeyIndex = FindKeyIndex(m_iniContents, sectionName, keyName);
+		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
 
 		if (iniKeyIndex != INI_NOT_FOUND)
 		{
-			static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.SetValueBeforeComment(keyValue);
+			static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.set_value_before_comment(keyValue);
 		}
 		else
 		{
-			size_t sectionIndex = GetSectionLocation(m_iniContents, sectionName);
+			size_t sectionIndex = get_section_location(m_iniContents, sectionName);
 
 			if (sectionIndex != INI_NOT_FOUND)
 			{
@@ -255,9 +255,9 @@ namespace IniRW
 		}
 	}
 
-	IniKey* IniSetting::GetKey(const std::string& sectionName, const std::string& keyName)
+	IniKey* IniSetting::get_key(const std::string& sectionName, const std::string& keyName)
 	{
-		size_t iniKeyIndex = FindKeyIndex(m_iniContents, sectionName, keyName);
+		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
 
 		if (iniKeyIndex != INI_NOT_FOUND)
 		{

@@ -21,24 +21,24 @@ namespace IniRW
 	private:
 		IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText);
 	public:
-		IniEntityType GetType() const override;
+		IniEntityType get_type() const override;
 
-		std::string ToString() const override;
+		std::string to_string() const override;
 
-		std::string GetValueBeforeComment() const;
+		std::string get_value_before_comment() const;
 
-		std::string GetValueBeforeComment(const bool& trimWhitespace) const;
+		std::string get_value_before_comment(const bool& trimWhitespace) const;
 
-		std::string GetComment() const;
+		std::string get_comment() const;
 
-		void SetValueBeforeComment(const std::string& newValue);
+		void set_value_before_comment(const std::string& newValue);
 
-		void SetComment(const IniCommentPrefix& prefix, const std::string& text);
+		void set_comment(const IniCommentPrefix& prefix, const std::string& text);
 	private:
-		char ExtractCommentPrefix(const std::string& iniValue);
+		char extract_comment_prefix(const std::string& iniValue);
 
-		std::string ExtractCommentText(const std::string& iniValue);
+		std::string extract_comment_text(const std::string& iniValue);
 
-		std::string ExtractValueBeforeComment(const std::string& iniValue);
+		std::string extract_value_before_comment(const std::string& iniValue);
 	};
 }

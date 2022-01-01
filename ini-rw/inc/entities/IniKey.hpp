@@ -22,12 +22,12 @@ namespace IniRW
 
 		IniKey(IniSection* iniSection, const std::string& name, const IniValueCommentPair& valueCommentPair);
 
-		IniEntityType GetType() const override;
+		IniEntityType get_type() const override;
 
-		std::string ToString() const override;
+		std::string to_string() const override;
 
-		IniSection* GetSection() const;
+		IniSection* get_section() const;
 
-		std::string GetName() const;
+		std::string get_name() const;
 	};
 }
