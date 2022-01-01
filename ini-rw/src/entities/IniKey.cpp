@@ -8,10 +8,9 @@
 namespace IniRW
 {
 	IniKey::IniKey(IniSection* iniSection, const std::string& name, const IniValueCommentPair& valueCommentPair)
+		: m_iniSection(iniSection), m_name(name), ValueCommentPair(valueCommentPair)
 	{
-		m_iniSection = iniSection;
-		m_name = name;
-		ValueCommentPair = valueCommentPair;
+
 	}
 
 	IniEntityType IniKey::get_type() const

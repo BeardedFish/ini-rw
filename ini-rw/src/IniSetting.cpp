@@ -22,10 +22,9 @@ namespace IniRW
 		load(iniFilePath);
 	}
 
-	IniSetting::IniSetting(const bool loaded, const std::string& iniFilePath)
+	IniSetting::IniSetting(const bool loaded, const std::string& iniFilePath) : m_loaded(loaded), m_iniFilePath(iniFilePath)
 	{
-		m_loaded = loaded;
-		m_iniFilePath = iniFilePath;
+
 	}
 
 	IniSetting::IniSetting(const IniSetting& iniSettings) : IniSetting(iniSettings.m_loaded, iniSettings.m_iniFilePath)

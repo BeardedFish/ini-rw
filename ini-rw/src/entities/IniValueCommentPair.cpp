@@ -13,16 +13,16 @@ namespace IniRW
 
 	}
 
-	IniValueCommentPair::IniValueCommentPair(const std::string& data) : IniValueCommentPair(extract_value_before_comment(data), extract_comment_prefix(data), extract_comment_text(data))
+	IniValueCommentPair::IniValueCommentPair(const std::string& data)
+		: IniValueCommentPair(extract_value_before_comment(data), extract_comment_prefix(data), extract_comment_text(data))
 	{
 
 	}
 
 	IniValueCommentPair::IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText)
+		: m_valueBeforeComment(valueBeforeComment), m_commentPrefix(commentPrefix), m_commentText(commentText)
 	{
-		m_valueBeforeComment = valueBeforeComment;
-		m_commentPrefix = commentPrefix;
-		m_commentText = commentText;
+
 	}
 
 	IniEntityType IniValueCommentPair::get_type() const

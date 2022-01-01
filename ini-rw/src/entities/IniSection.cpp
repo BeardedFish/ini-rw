@@ -13,11 +13,9 @@ namespace IniRW
 	}
 
 	IniSection::IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData)
+		: m_name(name), m_extraData(extraData)
 	{
 		set_leading_whitespace(leadingWhitespace);
-
-		m_name = name;
-		m_extraData = extraData;
 	}
 
 	IniEntityType IniSection::get_type() const
