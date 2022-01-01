@@ -20,9 +20,9 @@ namespace IniRW
 
 	IniValueCommentPair::IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText)
 	{
-		this->valueBeforeComment = valueBeforeComment;
-		this->commentPrefix = commentPrefix;
-		this->commentText = commentText;
+		m_valueBeforeComment = valueBeforeComment;
+		m_commentPrefix = commentPrefix;
+		m_commentText = commentText;
 	}
 
 	IniEntityType IniValueCommentPair::GetType() const
@@ -42,23 +42,23 @@ namespace IniRW
 
 	std::string IniValueCommentPair::GetValueBeforeComment(const bool& trimWhitespace) const
 	{
-		return trimWhitespace ? Trim(valueBeforeComment) : valueBeforeComment;
+		return trimWhitespace ? Trim(m_valueBeforeComment) : m_valueBeforeComment;
 	}
 
 	std::string IniValueCommentPair::GetComment() const
 	{
-		return commentPrefix != '\0' ? std::string(1, commentPrefix) + commentText : "";
+		return m_commentPrefix != '\0' ? std::string(1, m_commentPrefix) + m_commentText : "";
 	}
 
 	void IniValueCommentPair::SetValueBeforeComment(const std::string& newValue)
 	{
-		valueBeforeComment = newValue;
+		m_valueBeforeComment = newValue;
 	}
 
 	void IniValueCommentPair::SetComment(const IniCommentPrefix& newPrefix, const std::string& newText)
 	{
-		commentPrefix = static_cast<char>(newPrefix);
-		commentText = newText;
+		m_commentPrefix = static_cast<char>(newPrefix);
+		m_commentText = newText;
 	}
 
 	std::string IniValueCommentPair::ExtractValueBeforeComment(const std::string& iniValue)

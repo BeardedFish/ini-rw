@@ -21,7 +21,6 @@ std::string IniRW::ExtractIniComment(const std::string& value)
 						continue;
 					}
 
-					// Extract the comment
 					return value.substr(i, value.length());
 				}
 			}

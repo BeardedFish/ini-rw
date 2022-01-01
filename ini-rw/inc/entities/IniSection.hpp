@@ -13,9 +13,9 @@ namespace IniRW
 	class IniSection : public IniEntity
 	{
 	private:
-		std::string leadingWhitespace;
-		std::string name;
-		IniValueCommentPair extraData;
+		std::string m_leadingWhitespace;
+		std::string m_name;
+		IniValueCommentPair m_extraData;
 	public:
 		IniSection(const std::string& name);
 		IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData);

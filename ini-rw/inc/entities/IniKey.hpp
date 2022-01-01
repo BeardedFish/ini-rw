@@ -14,9 +14,9 @@ namespace IniRW
 	class IniKey : public IniEntity
 	{
 	private:
-		std::string section;
-		std::string name;
-		IniValueCommentPair valueCommentPair;
+		std::string m_section;
+		std::string m_name;
+		IniValueCommentPair m_valueCommentPair;
 	public:
 		IniKey(const std::string& section, const std::string& name, const IniValueCommentPair& valueCommentPair);
 

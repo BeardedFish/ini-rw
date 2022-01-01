@@ -12,12 +12,11 @@ namespace IniRW
 	class IniValueCommentPair : public IniEntity
 	{
 	private:
-		std::string valueBeforeComment;
-		char commentPrefix;
-		std::string commentText;
+		std::string m_valueBeforeComment;
+		char m_commentPrefix;
+		std::string m_commentText;
 	public:
 		IniValueCommentPair();
-
 		IniValueCommentPair(const std::string& data);
 	private:
 		IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText);

@@ -14,9 +14,9 @@ namespace IniRW
 	class IniSetting
 	{
 	private:
-		bool loaded;
-		std::string iniFilePath;
-		std::vector<IniEntity*> iniContents;
+		bool m_loaded;
+		std::string m_iniFilePath;
+		std::vector<IniEntity*> m_iniContents;
 
 	public:
 		IniSetting();
