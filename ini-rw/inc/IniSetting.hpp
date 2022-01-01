@@ -31,8 +31,6 @@ namespace inirw
 	public:
 		~IniSetting();
 
-		friend std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings);
-
 		operator bool() const;
 
 		IniKey* operator[](const std::pair<std::string, std::string>& keyPair);
@@ -61,4 +59,6 @@ namespace inirw
 
 		IniKey* get_key(const std::string& sectionName, const std::string& keyName);
 	};
+
+	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings);
 }

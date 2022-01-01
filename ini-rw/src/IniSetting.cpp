@@ -63,13 +63,6 @@ namespace inirw
 		clear();
 	}
 
-	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
-	{
-		outputStream << iniSettings.to_string();
-
-		return outputStream;
-	}
-
 	IniSetting::operator bool() const
 	{
 		return is_loaded();
@@ -264,5 +257,12 @@ namespace inirw
 		}
 
 		return nullptr;
+	}
+
+	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
+	{
+		outputStream << iniSettings.to_string();
+
+		return outputStream;
 	}
 }
