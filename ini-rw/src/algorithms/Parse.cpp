@@ -69,7 +69,7 @@ IniRW::IniSection* IniRW::ParseIniSection(const std::string& str)
 	return nullptr;
 }
 
-IniRW::IniKey* IniRW::ParseIniKey(const std::string& sectionName, const std::string& iniLine)
+IniRW::IniKey* IniRW::ParseIniKey(IniSection* iniSection, const std::string& iniLine)
 {
 	if (iniLine.length() >= 3)
 	{
@@ -80,7 +80,7 @@ IniRW::IniKey* IniRW::ParseIniKey(const std::string& sectionName, const std::str
 			const std::string KEY_NAME = iniLine.substr(0, EQUAL_SIGN_POS);
 			const IniValueCommentPair VALUE_COMMENT_PAIR = iniLine.substr(EQUAL_SIGN_POS + 1);
 
-			return new IniKey(sectionName, KEY_NAME, VALUE_COMMENT_PAIR);
+			return new IniKey(iniSection, KEY_NAME, VALUE_COMMENT_PAIR);
 		}
 	}
 

@@ -30,7 +30,7 @@ namespace IniRW
 
 	IniSection* ParseIniSection(const std::string& iniLine);
 
-	IniKey* ParseIniKey(const std::string& sectionName, const std::string& iniLine);
+	IniKey* ParseIniKey(IniSection* iniSection, const std::string& iniLine);
 
 	std::string Trim(const std::string& str);
 }

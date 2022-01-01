@@ -7,11 +7,11 @@
 
 namespace IniRW
 {
-	IniKey::IniKey(const std::string& section, const std::string& name, const IniValueCommentPair& valueCommentPair)
+	IniKey::IniKey(IniSection* iniSection, const std::string& name, const IniValueCommentPair& valueCommentPair)
 	{
-		m_section = section;
+		m_iniSection = iniSection;
 		m_name = name;
-		m_valueCommentPair = valueCommentPair;
+		ValueCommentPair = valueCommentPair;
 	}
 
 	IniEntityType IniKey::GetType() const
@@ -21,21 +21,16 @@ namespace IniRW
 
 	std::string IniKey::ToString() const
 	{
-		return GetName() + INI_KEY_VALUE_DELIMITER + m_valueCommentPair.ToString();
+		return GetName() + INI_KEY_VALUE_DELIMITER + ValueCommentPair.ToString();
 	}
 
-	std::string IniKey::GetSection() const
+	IniSection* IniKey::GetSection() const
 	{
-		return m_section;
+		return m_iniSection;
 	}
 
 	std::string IniKey::GetName() const
 	{
 		return m_name;
-	}
-
-	IniValueCommentPair IniKey::GetValueCommentPair() const
-	{
-		return m_valueCommentPair;
 	}
 }

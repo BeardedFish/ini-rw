@@ -6,6 +6,7 @@
 
 #include "../enums/IniCommentPrefix.hpp"
 #include "IniEntity.hpp"
+#include "IniSection.hpp"
 #include "IniValueCommentPair.hpp"
 #include <string>
 
@@ -14,20 +15,19 @@ namespace IniRW
 	class IniKey : public IniEntity
 	{
 	private:
-		std::string m_section;
+		IniSection* m_iniSection;
 		std::string m_name;
-		IniValueCommentPair m_valueCommentPair;
 	public:
-		IniKey(const std::string& section, const std::string& name, const IniValueCommentPair& valueCommentPair);
+		IniValueCommentPair ValueCommentPair;
+
+		IniKey(IniSection* iniSection, const std::string& name, const IniValueCommentPair& valueCommentPair);
 
 		IniEntityType GetType() const override;
 
 		std::string ToString() const override;
 
-		std::string GetSection() const;
+		IniSection* GetSection() const;
 
 		std::string GetName() const;
-
-		IniValueCommentPair GetValueCommentPair() const;
 	};
 }

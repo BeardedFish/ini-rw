@@ -169,21 +169,22 @@ namespace IniRW
 
 		if (fileStream)
 		{
-			std::string currentLine, currentSectionName;
+			IniSection* currentIniSection = nullptr;
+			std::string currentLine; // currentSectionName;
 
 			// Read every line from the INI file
 			while (std::getline(fileStream, currentLine))
 			{
-				IniEntity* entity = nullptr;
+				IniEntity* entity = ParseIniSection(currentLine);
 
-				if (entity = ParseIniSection(currentLine))
+				if (entity)
 				{
-					currentSectionName = static_cast<IniSection*>(entity)->GetName();
+					currentIniSection = static_cast<IniSection*>(entity);
 				}
 				else
 				{
 					// The current line is not an INI section, try and parse it into an INI key:
-					entity = ParseIniKey(currentSectionName, currentLine);
+					entity = ParseIniKey(currentIniSection, currentLine);
 
 					if (!entity) // This will evaluate to true if the ParseIniKey() function failed (returns null pointer). This means that the current line is either a new line, an INI comment, or a garbage string value.
 					{
@@ -225,22 +226,19 @@ namespace IniRW
 
 	void IniSetting::WriteKeyValue(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
 	{
-		IniKey* key = FindKey(m_iniContents, sectionName, keyName);
+		size_t iniKeyIndex = FindKeyIndex(m_iniContents, sectionName, keyName);
 
-		if (key)
+		if (iniKeyIndex != INI_NOT_FOUND)
 		{
-			key->GetValueCommentPair().SetValueBeforeComment(keyValue);
+			static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.SetValueBeforeComment(keyValue);
 		}
 		else
 		{
-			const size_t SECTION_POS = GetSectionLocation(m_iniContents, sectionName);
-			key = new IniKey(sectionName, keyName, keyValue);
+			size_t sectionIndex = GetSectionLocation(m_iniContents, sectionName);
 
-			if (SECTION_POS != SECTION_NOT_FOUND)
+			if (sectionIndex != INI_NOT_FOUND)
 			{
-				const std::vector<IniEntity*>::iterator INSERT_POS = m_iniContents.begin() + SECTION_POS + 1;
-
-				m_iniContents.insert(INSERT_POS, key);
+				m_iniContents.insert(m_iniContents.begin() + sectionIndex + 1, new IniKey(static_cast<IniSection*>(m_iniContents[sectionIndex]), keyName, keyValue));
 			}
 			else
 			{
@@ -249,14 +247,23 @@ namespace IniRW
 					m_iniContents.insert(m_iniContents.end(), new IniValueCommentPair("\n"));
 				}
 
-				m_iniContents.insert(m_iniContents.end(), new IniSection(sectionName));
-				m_iniContents.insert(m_iniContents.end(), key);
+				IniSection* iniSection = new IniSection(sectionName);
+
+				m_iniContents.insert(m_iniContents.end(), iniSection);
+				m_iniContents.insert(m_iniContents.end(), new IniKey(iniSection, keyName, keyValue));
 			}
 		}
 	}
 
 	IniKey* IniSetting::GetKey(const std::string& sectionName, const std::string& keyName)
 	{
-		return FindKey(m_iniContents, sectionName, keyName);
+		size_t iniKeyIndex = FindKeyIndex(m_iniContents, sectionName, keyName);
+
+		if (iniKeyIndex != INI_NOT_FOUND)
+		{
+			return static_cast<IniKey*>(m_iniContents[iniKeyIndex]);
+		}
+
+		return nullptr;
 	}
 }

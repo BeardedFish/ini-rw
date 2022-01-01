@@ -98,7 +98,7 @@ int main(int argc, char* argv[])
 
                             if (key)
                             {
-                                const IniRW::IniValueCommentPair VALUE_COMMENT_PAIR = key->GetValueCommentPair();
+                                const IniRW::IniValueCommentPair VALUE_COMMENT_PAIR = key->ValueCommentPair;
 
                                 std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.GetValueBeforeComment(true) << "\" (\"" << VALUE_COMMENT_PAIR.GetValueBeforeComment() << "\" with leading and trailing whitespace)" << "."; 
                             }
