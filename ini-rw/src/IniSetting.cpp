@@ -29,31 +29,26 @@ namespace inirw
 
 	IniSetting::IniSetting(const IniSetting& iniSettings) : IniSetting(iniSettings.m_loaded, iniSettings.m_iniFilePath)
 	{
-		// Copy all values that are allocated to the heap
 		for (size_t i = 0; i < iniSettings.m_iniContents.size(); i++)
 		{
 			IniEntity* entity = iniSettings.m_iniContents[i];
 
-			if (entity)
+			if (!entity)
 			{
-				switch (entity->get_type())
-				{
-					case IniEntityType::Key:
-						{
-							m_iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
-						}
-						break;
-					case IniEntityType::Section:
-						{
-							m_iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
-						}
-						break;
-					case IniEntityType::ValueCommentPair:
-						{
-							m_iniContents.push_back(new IniValueCommentPair(*static_cast<IniValueCommentPair*>(entity)));
-						}
-						break;
-				}
+				continue;
+			}
+
+			switch (entity->get_type())
+			{
+				case IniEntityType::Key:
+					m_iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
+					break;
+				case IniEntityType::Section:
+					m_iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
+					break;
+				case IniEntityType::ValueCommentPair:
+					m_iniContents.push_back(new IniValueCommentPair(*static_cast<IniValueCommentPair*>(entity)));
+					break;
 			}
 		}
 	}
@@ -116,25 +111,18 @@ namespace inirw
 
 	void IniSetting::clear()
 	{
-		// Delete all INI entities allocated to the heap
 		for (IniEntity*& entity : m_iniContents)
 		{
 			switch (entity->get_type())
 			{
 				case IniEntityType::Key:
-					{
-						delete static_cast<IniKey*>(entity);
-					}
+					delete static_cast<IniKey*>(entity);
 					break;
 				case IniEntityType::Section:
-					{
-						delete static_cast<IniSection*>(entity);
-					}
+					delete static_cast<IniSection*>(entity);
 					break;
 				case IniEntityType::ValueCommentPair:
-					{
-						delete static_cast<IniValueCommentPair*>(entity);
-					}
+					delete static_cast<IniValueCommentPair*>(entity);
 					break;
 			}
 		}
