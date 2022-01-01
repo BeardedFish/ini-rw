@@ -7,7 +7,7 @@
 #include "../enums/IniEntityType.hpp"
 #include <string>
 
-namespace IniRW
+namespace inirw
 {
 	class IniEntity
 	{

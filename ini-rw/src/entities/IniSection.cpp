@@ -5,7 +5,7 @@
 #include "../../inc/entities/IniSection.hpp"
 #include "../../inc/algorithms/Parse.hpp"
 
-namespace IniRW
+namespace inirw
 {
 	IniSection::IniSection(const std::string& name) : IniSection("", name, IniValueCommentPair())
 	{

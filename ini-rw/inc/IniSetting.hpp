@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-namespace IniRW
+namespace inirw
 {
 	class IniSetting
 	{

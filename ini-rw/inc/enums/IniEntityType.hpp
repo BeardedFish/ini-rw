@@ -4,7 +4,7 @@
 
 #pragma once
 
-namespace IniRW
+namespace inirw
 {
 	enum class IniEntityType
 	{

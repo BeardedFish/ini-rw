@@ -6,7 +6,7 @@
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/enums/IniCommentPrefix.hpp"
 
-std::string IniRW::extract_ini_comment(const std::string& value)
+std::string inirw::extract_ini_comment(const std::string& value)
 {
 	if (value.length() > 0)
 	{
@@ -30,21 +30,21 @@ std::string IniRW::extract_ini_comment(const std::string& value)
 	return "";
 }
 
-std::string IniRW::left_trim(const std::string& str)
+std::string inirw::left_trim(const std::string& str)
 {
 	const size_t CUTOFF_INDEX = str.find_first_not_of(WHITESPACE_CHARACTERS);
 
 	return CUTOFF_INDEX != std::string::npos ? str.substr(CUTOFF_INDEX) : str;
 }
 
-std::string IniRW::right_trim(const std::string& str)
+std::string inirw::right_trim(const std::string& str)
 {
 	const size_t CUTOFF_INDEX = str.find_last_not_of(WHITESPACE_CHARACTERS);
 
 	return CUTOFF_INDEX != std::string::npos ? str.substr(0, CUTOFF_INDEX + 1) : str;
 }
 
-IniRW::IniSection* IniRW::parse_ini_section(const std::string& str)
+inirw::IniSection* inirw::parse_ini_section(const std::string& str)
 {
 	const size_t LEADING_WHITESPACE_COUNT = str.find_first_not_of(WHITESPACE_CHARACTERS);
 
@@ -69,7 +69,7 @@ IniRW::IniSection* IniRW::parse_ini_section(const std::string& str)
 	return nullptr;
 }
 
-IniRW::IniKey* IniRW::parse_ini_key(IniSection* iniSection, const std::string& iniLine)
+inirw::IniKey* inirw::parse_ini_key(IniSection* iniSection, const std::string& iniLine)
 {
 	if (iniLine.length() >= 3)
 	{
@@ -87,7 +87,7 @@ IniRW::IniKey* IniRW::parse_ini_key(IniSection* iniSection, const std::string& i
 	return nullptr;
 }
 
-std::string IniRW::trim(const std::string& str)
+std::string inirw::trim(const std::string& str)
 {
 	return left_trim(right_trim(str));
 }

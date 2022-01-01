@@ -10,7 +10,7 @@
 #include "../inc/entities/IniValueCommentPair.hpp"
 #include <fstream>
 
-namespace IniRW
+namespace inirw
 {
 	IniSetting::IniSetting() : IniSetting(true, "")
 	{

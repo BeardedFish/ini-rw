@@ -5,7 +5,7 @@
 #include "../../inc/entities/IniKey.hpp"
 #include "../../inc/algorithms/Parse.hpp"
 
-namespace IniRW
+namespace inirw
 {
 	IniKey::IniKey(IniSection* iniSection, const std::string& name, const IniValueCommentPair& valueCommentPair)
 		: m_iniSection(iniSection), m_name(name), ValueCommentPair(valueCommentPair)

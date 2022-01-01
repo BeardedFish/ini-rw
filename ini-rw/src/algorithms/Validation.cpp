@@ -5,7 +5,7 @@
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/algorithms/Parse.hpp"
 
-bool IniRW::equals_ignore_case(const std::string& str1, const std::string& str2)
+bool inirw::equals_ignore_case(const std::string& str1, const std::string& str2)
 {
 	if (str1.length() == str2.length())
 	{

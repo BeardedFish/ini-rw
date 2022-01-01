@@ -6,7 +6,7 @@
 #include "../../inc/algorithms/Parse.hpp"
 #include <iostream>
 
-namespace IniRW
+namespace inirw
 {
 	IniValueCommentPair::IniValueCommentPair() : IniValueCommentPair("", '\0', "")
 	{

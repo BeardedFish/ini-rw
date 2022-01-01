@@ -7,7 +7,7 @@
 #include "IniEntity.hpp"
 #include "../enums/IniCommentPrefix.hpp"
 
-namespace IniRW
+namespace inirw
 {
 	class IniValueCommentPair : public IniEntity
 	{

@@ -6,7 +6,7 @@
 #include "../../inc/algorithms/Validation.hpp"
 #include "../../inc/entities/IniSection.hpp"
 
-size_t IniRW::find_key_index(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName)
+size_t inirw::find_key_index(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName)
 {
 	for (size_t i = 0; i < iniContents.size(); i++)
 	{
@@ -26,7 +26,7 @@ size_t IniRW::find_key_index(std::vector<IniEntity*>& iniContents, const std::st
 	return INI_NOT_FOUND;
 }
 
-size_t IniRW::get_section_location(std::vector<IniEntity*>& iniContents, const std::string& sectionName)
+size_t inirw::get_section_location(std::vector<IniEntity*>& iniContents, const std::string& sectionName)
 {
 	for (size_t i = 0; i < iniContents.size(); i++)
 	{

@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-namespace IniRW
+namespace inirw
 {
 	constexpr char INI_SECTION_BEGINNING = '[';
 	constexpr char INI_SECTION_ENDING = ']';

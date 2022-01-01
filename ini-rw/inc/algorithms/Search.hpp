@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace IniRW
+namespace inirw
 {
 	constexpr size_t INI_NOT_FOUND = std::numeric_limits<size_t>::max();
 

@@ -10,7 +10,7 @@
 #include "IniValueCommentPair.hpp"
 #include <string>
 
-namespace IniRW
+namespace inirw
 {
 	class IniKey : public IniEntity
 	{

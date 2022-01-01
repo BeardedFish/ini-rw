@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    IniRW::IniSetting iniSettings(argv[1]);
+    inirw::IniSetting iniSettings(argv[1]);
     
     if (iniSettings) // Alternatively, you could do "iniSettings.is_loaded()"
     {
@@ -47,23 +47,23 @@ int main(int argc, char* argv[])
 
             if (userInput.length() > 0)
             {
-                exitLoopFlag = IniRW::equals_ignore_case(userInput, "quit");
+                exitLoopFlag = inirw::equals_ignore_case(userInput, "quit");
 
                 if (!exitLoopFlag)
                 {
-                    if (IniRW::equals_ignore_case(userInput, "clrini"))
+                    if (inirw::equals_ignore_case(userInput, "clrini"))
                     {
                         iniSettings.clear();
 
                         std::cout << "The INI file contents were cleared succesfully!";
                     }
-                    else if (IniRW::equals_ignore_case(userInput, "contents"))
+                    else if (inirw::equals_ignore_case(userInput, "contents"))
                     {
                         std::string iniContents = iniSettings.to_string();
 
                         std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
                     }
-                    else if (IniRW::equals_ignore_case(userInput, "help"))
+                    else if (inirw::equals_ignore_case(userInput, "help"))
                     {
                         std::cout << "clrini - Clears the loaded INI file contents." << std::endl;
                         std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
                         std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
                         std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
-                    else if (IniRW::equals_ignore_case(userInput, "iv") || IniRW::equals_ignore_case(userInput, "rs"))
+                    else if (inirw::equals_ignore_case(userInput, "iv") || inirw::equals_ignore_case(userInput, "rs"))
                     {
                         std::string sectionName, keyName, keyValue;
 
@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
                         std::cout << "Key Name: ";
                         std::getline(std::cin, keyName);
 
-                        if (IniRW::equals_ignore_case(userInput, "iv")) // Insert value into INI file
+                        if (inirw::equals_ignore_case(userInput, "iv")) // Insert value into INI file
                         {
                             std::cout << "Key Value: ";
                             std::getline(std::cin, keyValue);
@@ -93,11 +93,11 @@ int main(int argc, char* argv[])
                         }
                         else // Read string value from INI file
                         {
-                            IniRW::IniKey* key = iniSettings.get_key(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
+                            inirw::IniKey* key = iniSettings.get_key(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
 
                             if (key)
                             {
-                                const IniRW::IniValueCommentPair VALUE_COMMENT_PAIR = key->ValueCommentPair;
+                                const inirw::IniValueCommentPair VALUE_COMMENT_PAIR = key->ValueCommentPair;
 
                                 std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.get_value_before_comment(true) << "\" (\"" << VALUE_COMMENT_PAIR.get_value_before_comment() << "\" with leading and trailing whitespace)" << "."; 
                             }
@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
                             }
                         }
                     }
-                    else if (IniRW::equals_ignore_case(userInput, "save"))
+                    else if (inirw::equals_ignore_case(userInput, "save"))
                     {
                         bool success = iniSettings.save_changes();
 
