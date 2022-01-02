@@ -17,17 +17,12 @@ namespace inirw
 		bool m_loaded;
 		std::string m_iniFilePath;
 		std::vector<IniEntity*> m_iniContents;
-
 	public:
 		IniSetting();
-
 		IniSetting(const std::string& iniFilePath);
-
 		IniSetting(const IniSetting& iniSettings);
-
 	private:
 		IniSetting(const bool loaded, const std::string& iniFilePath);
-
 	public:
 		~IniSetting();
 
