@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
                             {
                                 const inirw::IniValueCommentPair VALUE_COMMENT_PAIR = key->ValueCommentPair;
 
-                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.get_value_before_comment(true) << "\" (\"" << VALUE_COMMENT_PAIR.get_value_before_comment() << "\" with leading and trailing whitespace)" << "."; 
+                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.get_value(true) << "\" (\"" << VALUE_COMMENT_PAIR.get_value() << "\" with leading and trailing whitespace)" << "."; 
                             }
                             else
                             {

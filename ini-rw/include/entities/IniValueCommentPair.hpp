@@ -12,26 +12,26 @@ namespace inirw
 	class IniValueCommentPair : public IniEntity
 	{
 	private:
-		std::string m_valueBeforeComment;
+		std::string m_value;
 		char m_commentPrefix;
 		std::string m_commentText;
 	public:
 		IniValueCommentPair();
 		IniValueCommentPair(const std::string& data);
 	private:
-		IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText);
+		IniValueCommentPair(const std::string& value, const char& commentPrefix, const std::string& commentText);
 	public:
 		IniEntityType get_type() const override;
 
 		std::string to_string() const override;
 
-		std::string get_value_before_comment() const;
+		std::string get_value() const;
 
-		std::string get_value_before_comment(const bool& trimWhitespace) const;
+		std::string get_value(const bool& trimWhitespace) const;
 
 		std::string get_comment() const;
 
-		void set_value_before_comment(const std::string& newValue);
+		void set_value(const std::string& value);
 
 		void set_comment(const IniCommentPrefix& prefix, const std::string& text);
 	private:
@@ -39,6 +39,6 @@ namespace inirw
 
 		std::string extract_comment_text(const std::string& iniValue);
 
-		std::string extract_value_before_comment(const std::string& iniValue);
+		std::string extract_value(const std::string& iniValue);
 	};
 }

@@ -35,7 +35,7 @@ int main()
             std::cout << "INI key information:\n";
             std::cout << "====================\n";
             std::cout << "Section: " << iniKey->get_section()->get_name() << '\n';
-            std::cout << "Value: " << iniKey->ValueCommentPair.get_value_before_comment() << '\n';
+            std::cout << "Value: " << iniKey->ValueCommentPair.get_value() << '\n';
             std::cout << "Comment: " << iniKey->ValueCommentPair.get_comment() << '\n' << '\n';
         }
         else

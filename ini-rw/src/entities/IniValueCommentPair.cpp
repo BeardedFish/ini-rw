@@ -14,13 +14,13 @@ namespace inirw
 	}
 
 	IniValueCommentPair::IniValueCommentPair(const std::string& data)
-		: IniValueCommentPair(extract_value_before_comment(data), extract_comment_prefix(data), extract_comment_text(data))
+		: IniValueCommentPair(extract_value(data), extract_comment_prefix(data), extract_comment_text(data))
 	{
 
 	}
 
-	IniValueCommentPair::IniValueCommentPair(const std::string& valueBeforeComment, const char& commentPrefix, const std::string& commentText)
-		: m_valueBeforeComment(valueBeforeComment), m_commentPrefix(commentPrefix), m_commentText(commentText)
+	IniValueCommentPair::IniValueCommentPair(const std::string& value, const char& commentPrefix, const std::string& commentText)
+		: m_value(value), m_commentPrefix(commentPrefix), m_commentText(commentText)
 	{
 
 	}
@@ -32,17 +32,17 @@ namespace inirw
 
 	std::string IniValueCommentPair::to_string() const
 	{
-		return get_value_before_comment() + get_comment();
+		return get_value() + get_comment();
 	}
 
-	std::string IniValueCommentPair::get_value_before_comment() const
+	std::string IniValueCommentPair::get_value() const
 	{
-		return get_value_before_comment(false);
+		return get_value(false);
 	}
 
-	std::string IniValueCommentPair::get_value_before_comment(const bool& trimWhitespace) const
+	std::string IniValueCommentPair::get_value(const bool& trimWhitespace) const
 	{
-		return trimWhitespace ? trim(m_valueBeforeComment) : m_valueBeforeComment;
+		return trimWhitespace ? trim(m_value) : m_value;
 	}
 
 	std::string IniValueCommentPair::get_comment() const
@@ -50,9 +50,9 @@ namespace inirw
 		return m_commentPrefix != '\0' ? std::string(1, m_commentPrefix) + m_commentText : "";
 	}
 
-	void IniValueCommentPair::set_value_before_comment(const std::string& newValue)
+	void IniValueCommentPair::set_value(const std::string& value)
 	{
-		m_valueBeforeComment = newValue;
+		m_value = value;
 	}
 
 	void IniValueCommentPair::set_comment(const IniCommentPrefix& newPrefix, const std::string& newText)
@@ -61,7 +61,7 @@ namespace inirw
 		m_commentText = newText;
 	}
 
-	std::string IniValueCommentPair::extract_value_before_comment(const std::string& iniValue)
+	std::string IniValueCommentPair::extract_value(const std::string& iniValue)
 	{
 		const std::string INI_COMMENT = extract_ini_comment(iniValue);
 

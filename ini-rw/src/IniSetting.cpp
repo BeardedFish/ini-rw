@@ -210,7 +210,7 @@ namespace inirw
 
 		if (iniKeyIndex != INI_NOT_FOUND)
 		{
-			static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.set_value_before_comment(keyValue);
+			static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.set_value(keyValue);
 		}
 		else
 		{
