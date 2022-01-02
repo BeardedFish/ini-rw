@@ -2,8 +2,8 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Friday, September 4, 2020
 
-#include "../../inc/entities/IniValueCommentPair.hpp"
-#include "../../inc/algorithms/Parse.hpp"
+#include "../../include/entities/IniValueCommentPair.hpp"
+#include "../../include/algorithms/Parse.hpp"
 #include <iostream>
 
 namespace inirw

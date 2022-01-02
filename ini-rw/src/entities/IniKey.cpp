@@ -2,8 +2,8 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Monday, August 31, 2020
 
-#include "../../inc/entities/IniKey.hpp"
-#include "../../inc/algorithms/Parse.hpp"
+#include "../../include/entities/IniKey.hpp"
+#include "../../include/algorithms/Parse.hpp"
 
 namespace inirw
 {

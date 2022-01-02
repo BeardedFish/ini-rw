@@ -2,8 +2,8 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
-#include "ini-rw/inc/IniSetting.hpp"
-#include "ini-rw/inc/algorithms/Validation.hpp"
+#include "ini-rw/include/IniSetting.hpp"
+#include "ini-rw/include/algorithms/Validation.hpp"
 #include <iostream>
 #include <string>
 

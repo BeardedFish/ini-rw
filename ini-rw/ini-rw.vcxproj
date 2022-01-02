@@ -148,16 +148,16 @@
     <ClCompile Include="src\IniSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\algorithms\Parse.hpp" />
-    <ClInclude Include="inc\algorithms\Search.hpp" />
-    <ClInclude Include="inc\algorithms\Validation.hpp" />
-    <ClInclude Include="inc\entities\IniEntity.hpp" />
-    <ClInclude Include="inc\entities\IniKey.hpp" />
-    <ClInclude Include="inc\entities\IniValueCommentPair.hpp" />
-    <ClInclude Include="inc\entities\IniSection.hpp" />
-    <ClInclude Include="inc\enums\IniCommentPrefix.hpp" />
-    <ClInclude Include="inc\enums\IniEntityType.hpp" />
-    <ClInclude Include="inc\IniSetting.hpp" />
+    <ClInclude Include="include\algorithms\Parse.hpp" />
+    <ClInclude Include="include\algorithms\Search.hpp" />
+    <ClInclude Include="include\algorithms\Validation.hpp" />
+    <ClInclude Include="include\entities\IniEntity.hpp" />
+    <ClInclude Include="include\entities\IniKey.hpp" />
+    <ClInclude Include="include\entities\IniValueCommentPair.hpp" />
+    <ClInclude Include="include\entities\IniSection.hpp" />
+    <ClInclude Include="include\enums\IniCommentPrefix.hpp" />
+    <ClInclude Include="include\enums\IniEntityType.hpp" />
+    <ClInclude Include="include\IniSetting.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

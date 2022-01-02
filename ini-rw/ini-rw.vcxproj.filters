@@ -15,34 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\entities\IniEntity.hpp">
+    <ClInclude Include="include\entities\IniEntity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\entities\IniKey.hpp">
+    <ClInclude Include="include\entities\IniKey.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\entities\IniSection.hpp">
+    <ClInclude Include="include\entities\IniSection.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\algorithms\Parse.hpp">
+    <ClInclude Include="include\algorithms\Parse.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\algorithms\Search.hpp">
+    <ClInclude Include="include\algorithms\Search.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\algorithms\Validation.hpp">
+    <ClInclude Include="include\algorithms\Validation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\enums\IniEntityType.hpp">
+    <ClInclude Include="include\enums\IniEntityType.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\enums\IniCommentPrefix.hpp">
+    <ClInclude Include="include\enums\IniCommentPrefix.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\entities\IniValueCommentPair.hpp">
+    <ClInclude Include="include\entities\IniValueCommentPair.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\IniSetting.hpp">
+    <ClInclude Include="include\IniSetting.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
