@@ -12,6 +12,7 @@ namespace inirw
 	class IniEntity
 	{
 	public:
+		virtual ~IniEntity() {}
 		virtual IniEntityType get_type() const = 0;
 		virtual std::string to_string() const = 0;
 	};

@@ -18,6 +18,7 @@ namespace inirw
 	public:
 		IniValueCommentPair();
 		IniValueCommentPair(const std::string& data);
+		virtual ~IniValueCommentPair() {}
 	private:
 		IniValueCommentPair(const std::string& value, const char& commentPrefix, const std::string& commentText);
 	public:

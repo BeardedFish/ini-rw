@@ -22,6 +22,8 @@ namespace inirw
 
 		IniKey(IniSection* iniSection, const std::string& name, const IniValueCommentPair& valueCommentPair);
 
+		virtual ~IniKey() {}
+
 		IniEntityType get_type() const override;
 
 		std::string to_string() const override;

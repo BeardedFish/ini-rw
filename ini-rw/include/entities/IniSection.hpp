@@ -18,7 +18,10 @@ namespace inirw
 		IniValueCommentPair m_extraData;
 	public:
 		IniSection(const std::string& name);
+		
 		IniSection(const std::string& leadingWhitespace, const std::string& name, IniValueCommentPair extraData);
+
+		virtual ~IniSection() {}
 
 		IniEntityType get_type() const override;
 
