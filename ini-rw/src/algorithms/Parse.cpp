@@ -2,9 +2,9 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Wednesday, September 2, 2020
 
-#include "../../inc/algorithms/Parse.hpp"
-#include "../../inc/algorithms/Validation.hpp"
-#include "../../inc/enums/IniCommentPrefix.hpp"
+#include "../../include/algorithms/Parse.hpp"
+#include "../../include/algorithms/Validation.hpp"
+#include "../../include/enums/IniCommentPrefix.hpp"
 
 std::string inirw::extract_ini_comment(const std::string& value)
 {

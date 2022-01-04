@@ -2,9 +2,9 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Wednesday, September 2, 2020
 
-#include "../../inc/algorithms/Search.hpp"
-#include "../../inc/algorithms/Validation.hpp"
-#include "../../inc/entities/IniSection.hpp"
+#include "../../include/algorithms/Search.hpp"
+#include "../../include/algorithms/Validation.hpp"
+#include "../../include/entities/IniSection.hpp"
 
 size_t inirw::find_key_index(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName)
 {

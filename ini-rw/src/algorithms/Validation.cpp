@@ -2,8 +2,8 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Wednesday, September 2, 2020
 
-#include "../../inc/algorithms/Validation.hpp"
-#include "../../inc/algorithms/Parse.hpp"
+#include "../../include/algorithms/Validation.hpp"
+#include "../../include/algorithms/Parse.hpp"
 
 bool inirw::equals_ignore_case(const std::string& str1, const std::string& str2)
 {
