@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     
     if (iniFile) // Alternatively, you could do "iniFile.is_loaded()"
     {
-        std::cout << "The INI file \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
+        std::cout << "The INI file \"" << argv[1] << "\" was loaded successfully!" << std::endl << std::endl;
         std::cout << "Type \"help\" for a list of commands." << std::endl << std::endl;
 
         bool exitLoopFlag = false;
