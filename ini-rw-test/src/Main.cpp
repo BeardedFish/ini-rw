@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
                     {
                         iniFile.clear();
 
-                        std::cout << "The INI file contents were cleared succesfully!";
+                        std::cout << "The INI file contents were cleared successfully!";
                     }
                     else if (inirw::equals_ignore_case(userInput, "contents"))
                     {
@@ -111,7 +111,7 @@ int main(int argc, char* argv[])
                     {
                         bool success = iniFile.save_changes();
 
-                        std::cout << (success ? "The INI file was saved succesfully!" : "An error occured while trying to save the INI file.");
+                        std::cout << (success ? "The INI file was saved successfully!" : "An error occured while trying to save the INI file.");
                     }
                     else
                     {
