@@ -2,7 +2,7 @@
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
-#include "ini-rw/include/IniSetting.hpp"
+#include "ini-rw/include/IniFile.hpp"
 #include "ini-rw/include/algorithms/Validation.hpp"
 #include <iostream>
 #include <string>
@@ -30,9 +30,9 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    inirw::IniSetting iniSettings(argv[1]);
+    inirw::IniFile iniFile(argv[1]);
     
-    if (iniSettings) // Alternatively, you could do "iniSettings.is_loaded()"
+    if (iniFile) // Alternatively, you could do "iniFile.is_loaded()"
     {
         std::cout << "The INI file \"" << argv[1] << "\" was loaded succesfully!" << std::endl << std::endl;
         std::cout << "Type \"help\" for a list of commands." << std::endl << std::endl;
@@ -53,13 +53,13 @@ int main(int argc, char* argv[])
                 {
                     if (inirw::equals_ignore_case(userInput, "clrini"))
                     {
-                        iniSettings.clear();
+                        iniFile.clear();
 
                         std::cout << "The INI file contents were cleared succesfully!";
                     }
                     else if (inirw::equals_ignore_case(userInput, "contents"))
                     {
-                        std::string iniContents = iniSettings.to_string();
+                        std::string iniContents = iniFile.to_string();
 
                         std::cout << (iniContents.empty() ? "[!] FILE IS EMPTY" : iniContents);
                     }
@@ -87,13 +87,13 @@ int main(int argc, char* argv[])
                             std::cout << "Key Value: ";
                             std::getline(std::cin, keyValue);
 
-                            iniSettings.write_key_value(sectionName, keyName, keyValue);
+                            iniFile.write_key_value(sectionName, keyName, keyValue);
 
                             std::cout << std::endl << "Value written succesfully!";
                         }
                         else // Read string value from INI file
                         {
-                            inirw::IniKey* key = iniSettings.get_key(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
+                            inirw::IniKey* key = iniFile.get_key(sectionName, keyName); // Alternatively, you could do: "iniSettings[{sectionName, keyName}]"
 
                             if (key)
                             {
@@ -109,7 +109,7 @@ int main(int argc, char* argv[])
                     }
                     else if (inirw::equals_ignore_case(userInput, "save"))
                     {
-                        bool success = iniSettings.save_changes();
+                        bool success = iniFile.save_changes();
 
                         std::cout << (success ? "The INI file was saved succesfully!" : "An error occured while trying to save the INI file.");
                     }

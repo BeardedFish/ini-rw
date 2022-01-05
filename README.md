@@ -18,17 +18,17 @@
 ## Example
 
 ```cpp
-#include "IniSetting.hpp"
+#include "IniFile.hpp"
 #include <iostream>
 #include <string>
 
 int main()
 {
-    inirw::IniSetting iniSettings("path_to_ini_file");
+    inirw::IniFile iniFile("path_to_ini_file");
 
-    if (iniSettings) // You could also use iniSettings.is_loaded() instead
+    if (iniFile) // You could also use iniFile.is_loaded() instead
     {
-        inirw::IniKey* iniKey = iniSettings.get_key("section_name", "key_name");
+        inirw::IniKey* iniKey = iniFile.get_key("section_name", "key_name");
 
         if (iniKey)
         {
@@ -43,12 +43,12 @@ int main()
             std::cout << "The INI key was not found.\n";
         }
 
-        iniSettings.write_key_value("App", "library_name", "ini-rw");
+        iniFile.write_key_value("App", "library_name", "ini-rw");
 
         // Insert a pound symbol comment at the top of the loaded INI file
-        iniSettings.insert_comment(IniCommentPrefix::Pound, "Hello, World!");
+        iniFile.insert_comment(IniCommentPrefix::Pound, "Hello, World!");
 
-        if (iniSettings.save_changes())
+        if (iniFile.save_changes())
         {
             std::cout << "The INI file was saved succesfully!\n";
         }

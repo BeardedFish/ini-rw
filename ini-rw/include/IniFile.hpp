@@ -1,4 +1,4 @@
-// File Name:     IniSetting.hpp
+// File Name:     IniFile.hpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
@@ -11,20 +11,20 @@
 
 namespace inirw
 {
-	class IniSetting
+	class IniFile
 	{
 	private:
 		bool m_loaded;
 		std::string m_iniFilePath;
 		std::vector<IniEntity*> m_iniContents;
 	public:
-		IniSetting();
-		IniSetting(const std::string& iniFilePath);
-		IniSetting(const IniSetting& iniSettings);
+		IniFile();
+		IniFile(const std::string& filePath);
+		IniFile(const IniFile& iniFile);
 	private:
-		IniSetting(const bool loaded, const std::string& iniFilePath);
+		IniFile(const bool loaded, const std::string& filePath);
 	public:
-		~IniSetting();
+		~IniFile();
 
 		operator bool() const;
 
@@ -55,5 +55,5 @@ namespace inirw
 		IniKey* get_key(const std::string& sectionName, const std::string& keyName);
 	};
 
-	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings);
+	std::ostream& operator<<(std::ostream& outputStream, const IniFile& iniFile);
 }

@@ -1,8 +1,8 @@
-// File Name:     IniSetting.cpp
+// File Name:     IniFile.cpp
 // By:            Darian Benam (GitHub: https://github.com/BeardedFish/)
 // Date:          Sunday, August 30, 2020
 
-#include "../include/IniSetting.hpp"
+#include "../include/IniFile.hpp"
 #include "../include/algorithms/Parse.hpp"
 #include "../include/algorithms/Search.hpp"
 #include "../include/algorithms/Validation.hpp"
@@ -12,26 +12,26 @@
 
 namespace inirw
 {
-	IniSetting::IniSetting() : IniSetting(true, "")
+	IniFile::IniFile() : IniFile(true, "")
 	{
 
 	}
 
-	IniSetting::IniSetting(const std::string& iniFilePath) : IniSetting(false, iniFilePath)
+	IniFile::IniFile(const std::string& filePath) : IniFile(false, filePath)
 	{
-		load(iniFilePath);
+		load(filePath);
 	}
 
-	IniSetting::IniSetting(const bool loaded, const std::string& iniFilePath) : m_loaded(loaded), m_iniFilePath(iniFilePath)
+	IniFile::IniFile(const bool loaded, const std::string& filePath) : m_loaded(loaded), m_iniFilePath(filePath)
 	{
 
 	}
 
-	IniSetting::IniSetting(const IniSetting& iniSettings) : IniSetting(iniSettings.m_loaded, iniSettings.m_iniFilePath)
+	IniFile::IniFile(const IniFile& iniFile) : IniFile(iniFile.m_loaded, iniFile.m_iniFilePath)
 	{
-		for (size_t i = 0; i < iniSettings.m_iniContents.size(); i++)
+		for (size_t i = 0; i < iniFile.m_iniContents.size(); i++)
 		{
-			IniEntity* entity = iniSettings.m_iniContents[i];
+			IniEntity* entity = iniFile.m_iniContents[i];
 
 			if (!entity)
 			{
@@ -53,27 +53,27 @@ namespace inirw
 		}
 	}
 
-	IniSetting::~IniSetting()
+	IniFile::~IniFile()
 	{
 		clear();
 	}
 
-	IniSetting::operator bool() const
+	IniFile::operator bool() const
 	{
 		return is_loaded();
 	}
 
-	IniKey* IniSetting::operator[](const std::pair<std::string, std::string>& keyPair)
+	IniKey* IniFile::operator[](const std::pair<std::string, std::string>& keyPair)
 	{
 		return get_key(keyPair.first, keyPair.second);
 	}
 
-	bool IniSetting::is_loaded() const
+	bool IniFile::is_loaded() const
 	{
 		return m_loaded;
 	}
 
-	std::string IniSetting::to_string() const
+	std::string IniFile::to_string() const
 	{
 		std::string contents;
 
@@ -90,12 +90,12 @@ namespace inirw
 		return contents;
 	}
 
-	bool IniSetting::save_changes()
+	bool IniFile::save_changes()
 	{
 		return save_changes(m_iniFilePath);
 	}
 
-	bool IniSetting::save_changes(const std::string& savePath)
+	bool IniFile::save_changes(const std::string& savePath)
 	{
 		std::ofstream fileStream(savePath);
 
@@ -109,7 +109,7 @@ namespace inirw
 		return true;
 	}
 
-	void IniSetting::clear()
+	void IniFile::clear()
 	{
 		for (IniEntity*& entity : m_iniContents)
 		{
@@ -130,7 +130,7 @@ namespace inirw
 		m_iniContents.clear();
 	}
 
-	void IniSetting::unload()
+	void IniFile::unload()
 	{
 		clear();
 
@@ -138,7 +138,7 @@ namespace inirw
 		m_iniFilePath = "";
 	}
 
-	void IniSetting::load(const std::string& iniFilePath)
+	void IniFile::load(const std::string& iniFilePath)
 	{
 		if (is_loaded())
 		{
@@ -179,19 +179,19 @@ namespace inirw
 		}
 	}
 
-	void IniSetting::append_comment(const IniCommentPrefix& prefix, const std::string& text)
+	void IniFile::append_comment(const IniCommentPrefix& prefix, const std::string& text)
 	{
 		const size_t INSERT_POS = m_iniContents.size() > 0 ? m_iniContents.size() - 1 : 0; // Using ternary operator because the value will overflow if the size of the vector is 0
 
 		insert_comment(INSERT_POS, prefix, text);
 	}
 
-	void IniSetting::insert_comment(const IniCommentPrefix& prefix, const std::string& text)
+	void IniFile::insert_comment(const IniCommentPrefix& prefix, const std::string& text)
 	{
 		insert_comment(0, prefix, text);
 	}
 
-	void IniSetting::insert_comment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text)
+	void IniFile::insert_comment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text)
 	{
 		if (index > m_iniContents.size())
 		{
@@ -204,7 +204,7 @@ namespace inirw
 		m_iniContents.insert(INSERT_POS, new IniValueCommentPair(COMMENT));
 	}
 
-	void IniSetting::write_key_value(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
+	void IniFile::write_key_value(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
 	{
 		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
 
@@ -235,7 +235,7 @@ namespace inirw
 		}
 	}
 
-	IniKey* IniSetting::get_key(const std::string& sectionName, const std::string& keyName)
+	IniKey* IniFile::get_key(const std::string& sectionName, const std::string& keyName)
 	{
 		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
 
@@ -247,9 +247,9 @@ namespace inirw
 		return nullptr;
 	}
 
-	std::ostream& operator<<(std::ostream& outputStream, const IniSetting& iniSettings)
+	std::ostream& operator<<(std::ostream& outputStream, const IniFile& iniFile)
 	{
-		outputStream << iniSettings.to_string();
+		outputStream << iniFile.to_string();
 
 		return outputStream;
 	}

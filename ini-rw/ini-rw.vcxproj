@@ -145,7 +145,7 @@
     <ClCompile Include="src\entities\IniKey.cpp" />
     <ClCompile Include="src\entities\IniValueCommentPair.cpp" />
     <ClCompile Include="src\entities\IniSection.cpp" />
-    <ClCompile Include="src\IniSetting.cpp" />
+    <ClCompile Include="src\IniFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\algorithms\Parse.hpp" />
@@ -157,7 +157,7 @@
     <ClInclude Include="include\entities\IniSection.hpp" />
     <ClInclude Include="include\enums\IniCommentPrefix.hpp" />
     <ClInclude Include="include\enums\IniEntityType.hpp" />
-    <ClInclude Include="include\IniSetting.hpp" />
+    <ClInclude Include="include\IniFile.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

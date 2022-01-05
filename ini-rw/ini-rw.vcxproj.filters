@@ -42,7 +42,7 @@
     <ClInclude Include="include\entities\IniValueCommentPair.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\IniSetting.hpp">
+    <ClInclude Include="include\IniFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,7 +62,7 @@
     <ClCompile Include="src\algorithms\Search.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\IniSetting.cpp">
+    <ClCompile Include="src\IniFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\IniValueCommentPair.cpp">
