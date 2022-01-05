@@ -43,7 +43,9 @@ int main()
             std::cout << "The INI key was not found.\n";
         }
 
-        iniFile.write_key_value("App", "library_name", "ini-rw");
+        iniFile.write_key_value<std::string>("ini-rw", "name", "ini-rw");
+        iniFile.write_key_value<int>("ini-rw", "cpp_standard", 17);
+        iniFile.write_key_value<bool>("ini-rw", "is_open_source", true);
 
         // Insert a pound symbol comment at the top of the loaded INI file
         iniFile.insert_comment(inirw::IniCommentPrefix::Pound, "Hello, World!");
