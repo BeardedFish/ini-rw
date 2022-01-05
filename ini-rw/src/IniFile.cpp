@@ -40,15 +40,15 @@ namespace inirw
 
 			switch (entity->get_type())
 			{
-				case IniEntityType::Key:
-					m_iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
-					break;
-				case IniEntityType::Section:
-					m_iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
-					break;
-				case IniEntityType::ValueCommentPair:
-					m_iniContents.push_back(new IniValueCommentPair(*static_cast<IniValueCommentPair*>(entity)));
-					break;
+			case IniEntityType::Key:
+				m_iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
+				break;
+			case IniEntityType::Section:
+				m_iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
+				break;
+			case IniEntityType::ValueCommentPair:
+				m_iniContents.push_back(new IniValueCommentPair(*static_cast<IniValueCommentPair*>(entity)));
+				break;
 			}
 		}
 	}
@@ -115,15 +115,15 @@ namespace inirw
 		{
 			switch (entity->get_type())
 			{
-				case IniEntityType::Key:
-					delete static_cast<IniKey*>(entity);
-					break;
-				case IniEntityType::Section:
-					delete static_cast<IniSection*>(entity);
-					break;
-				case IniEntityType::ValueCommentPair:
-					delete static_cast<IniValueCommentPair*>(entity);
-					break;
+			case IniEntityType::Key:
+				delete static_cast<IniKey*>(entity);
+				break;
+			case IniEntityType::Section:
+				delete static_cast<IniSection*>(entity);
+				break;
+			case IniEntityType::ValueCommentPair:
+				delete static_cast<IniValueCommentPair*>(entity);
+				break;
 			}
 		}
 
@@ -202,37 +202,6 @@ namespace inirw
 		const std::string COMMENT = std::string(1, static_cast<char>(prefix)) + text;
 
 		m_iniContents.insert(INSERT_POS, new IniValueCommentPair(COMMENT));
-	}
-
-	void IniFile::write_key_value(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
-	{
-		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
-
-		if (iniKeyIndex != INI_NOT_FOUND)
-		{
-			static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.set_value(keyValue);
-		}
-		else
-		{
-			size_t sectionIndex = get_section_location(m_iniContents, sectionName);
-
-			if (sectionIndex != INI_NOT_FOUND)
-			{
-				m_iniContents.insert(m_iniContents.begin() + sectionIndex + 1, new IniKey(static_cast<IniSection*>(m_iniContents[sectionIndex]), keyName, keyValue));
-			}
-			else
-			{
-				if (!m_iniContents.empty())
-				{
-					m_iniContents.insert(m_iniContents.end(), new IniValueCommentPair("\n"));
-				}
-
-				IniSection* iniSection = new IniSection(sectionName);
-
-				m_iniContents.insert(m_iniContents.end(), iniSection);
-				m_iniContents.insert(m_iniContents.end(), new IniKey(iniSection, keyName, keyValue));
-			}
-		}
 	}
 
 	IniKey* IniFile::get_key(const std::string& sectionName, const std::string& keyName)

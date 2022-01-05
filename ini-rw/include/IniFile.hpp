@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "../include/algorithms/Search.hpp"
 #include "entities/IniEntity.hpp"
 #include "entities/IniKey.hpp"
 #include <string>
@@ -50,7 +51,51 @@ namespace inirw
 
 		void insert_comment(const size_t& index, const IniCommentPrefix& prefix, const std::string& text);
 
-		void write_key_value(const std::string& sectionName, const std::string& keyName, const std::string& keyValue);
+		template<typename KeyValueType>
+		void write_key_value(const std::string& sectionName, const std::string& keyName, const KeyValueType& keyValue)
+		{
+			size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
+			std::string keyValueString;
+
+			if constexpr (std::is_same<KeyValueType, std::string>::value)
+			{
+				keyValueString = keyValue;
+			}
+			else if constexpr (std::is_same<KeyValueType, char>::value)
+			{
+				keyValueString = std::string(1, keyValue);
+			}
+			else
+			{
+				keyValueString = std::to_string(keyValue);
+			}
+
+			if (iniKeyIndex != INI_NOT_FOUND)
+			{
+				static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.set_value(keyValueString);
+			}
+			else
+			{
+				size_t sectionIndex = get_section_location(m_iniContents, sectionName);
+
+				if (sectionIndex != INI_NOT_FOUND)
+				{
+					m_iniContents.insert(m_iniContents.begin() + sectionIndex + 1, new IniKey(static_cast<IniSection*>(m_iniContents[sectionIndex]), keyName, keyValueString));
+				}
+				else
+				{
+					if (!m_iniContents.empty())
+					{
+						m_iniContents.insert(m_iniContents.end(), new IniValueCommentPair("\n"));
+					}
+
+					IniSection* iniSection = new IniSection(sectionName);
+
+					m_iniContents.insert(m_iniContents.end(), iniSection);
+					m_iniContents.insert(m_iniContents.end(), new IniKey(iniSection, keyName, keyValueString));
+				}
+			}
+		}
 
 		IniKey* get_key(const std::string& sectionName, const std::string& keyName);
 	};
