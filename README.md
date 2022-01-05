@@ -46,7 +46,7 @@ int main()
         iniFile.write_key_value("App", "library_name", "ini-rw");
 
         // Insert a pound symbol comment at the top of the loaded INI file
-        iniFile.insert_comment(IniCommentPrefix::Pound, "Hello, World!");
+        iniFile.insert_comment(inirw::IniCommentPrefix::Pound, "Hello, World!");
 
         if (iniFile.save_changes())
         {
