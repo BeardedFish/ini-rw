@@ -29,6 +29,8 @@ namespace inirw
 
 		operator bool() const;
 
+		IniKey* operator[](const char globalKeyName[]);
+
 		IniKey* operator[](const std::pair<std::string, std::string>& keyPair);
 
 		bool is_loaded() const;

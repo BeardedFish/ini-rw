@@ -63,6 +63,16 @@ namespace inirw
 		return is_loaded();
 	}
 
+	IniKey* IniFile::operator[](const char globalKeyName[])
+	{
+		std::string globalKeyNameCppString = std::string(globalKeyName);
+		size_t keyIndex = find_ini_key_index(m_iniContents, globalKeyNameCppString, true);
+
+		return keyIndex != INI_NOT_FOUND
+			? static_cast<IniKey*>(m_iniContents[keyIndex])
+			: nullptr;
+	}
+
 	IniKey* IniFile::operator[](const std::pair<std::string, std::string>& keyPair)
 	{
 		return get_key(keyPair.first, keyPair.second);
