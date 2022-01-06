@@ -54,7 +54,7 @@ namespace inirw
 		template<typename KeyValueType>
 		void write_key_value(const std::string& sectionName, const std::string& keyName, const KeyValueType& keyValue)
 		{
-			size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
+			size_t iniKeyIndex = find_ini_key_index(m_iniContents, sectionName, keyName);
 			std::string keyValueString;
 
 			if constexpr (std::is_same<KeyValueType, std::string>::value)
@@ -76,7 +76,7 @@ namespace inirw
 			}
 			else
 			{
-				size_t sectionIndex = get_section_location(m_iniContents, sectionName);
+				size_t sectionIndex = find_ini_section_index(m_iniContents, sectionName);
 
 				if (sectionIndex != INI_NOT_FOUND)
 				{

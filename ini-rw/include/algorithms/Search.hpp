@@ -14,9 +14,9 @@ namespace inirw
 {
 	constexpr size_t INI_NOT_FOUND = std::numeric_limits<size_t>::max();
 
-	size_t find_key_index(std::vector<IniEntity*>& iniContents, const std::string& keyName, const bool& isKeyGlobal);
+	size_t find_ini_key_index(std::vector<IniEntity*>& iniContents, const std::string& keyName, const bool& isKeyGlobal);
 
-	size_t find_key_index(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName);
+	size_t find_ini_key_index(std::vector<IniEntity*>& iniContents, const std::string& sectionName, const std::string& keyName);
 
-	size_t get_section_location(std::vector<IniEntity*>& iniContents, const std::string& sectionName);
+	size_t find_ini_section_index(std::vector<IniEntity*>& iniContents, const std::string& sectionName);
 }

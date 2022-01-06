@@ -206,7 +206,7 @@ namespace inirw
 
 	IniKey* IniFile::get_key(const std::string& keyName, bool isKeyGlobal)
 	{
-		size_t iniKeyIndex = find_key_index(m_iniContents, keyName, isKeyGlobal);
+		size_t iniKeyIndex = find_ini_key_index(m_iniContents, keyName, isKeyGlobal);
 
 		return iniKeyIndex != INI_NOT_FOUND
 			? static_cast<IniKey*>(m_iniContents[iniKeyIndex])
@@ -215,7 +215,7 @@ namespace inirw
 
 	IniKey* IniFile::get_key(const std::string& sectionName, const std::string& keyName)
 	{
-		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
+		size_t iniKeyIndex = find_ini_key_index(m_iniContents, sectionName, keyName);
 
 		return iniKeyIndex != INI_NOT_FOUND
 			? static_cast<IniKey*>(m_iniContents[iniKeyIndex])
