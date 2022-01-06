@@ -40,15 +40,15 @@ namespace inirw
 
 			switch (entity->get_type())
 			{
-			case IniEntityType::Key:
-				m_iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
-				break;
-			case IniEntityType::Section:
-				m_iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
-				break;
-			case IniEntityType::ValueCommentPair:
-				m_iniContents.push_back(new IniValueCommentPair(*static_cast<IniValueCommentPair*>(entity)));
-				break;
+				case IniEntityType::Key:
+					m_iniContents.push_back(new IniKey(*static_cast<IniKey*>(entity)));
+					break;
+				case IniEntityType::Section:
+					m_iniContents.push_back(new IniSection(*static_cast<IniSection*>(entity)));
+					break;
+				case IniEntityType::ValueCommentPair:
+					m_iniContents.push_back(new IniValueCommentPair(*static_cast<IniValueCommentPair*>(entity)));
+					break;
 			}
 		}
 	}
@@ -115,15 +115,15 @@ namespace inirw
 		{
 			switch (entity->get_type())
 			{
-			case IniEntityType::Key:
-				delete static_cast<IniKey*>(entity);
-				break;
-			case IniEntityType::Section:
-				delete static_cast<IniSection*>(entity);
-				break;
-			case IniEntityType::ValueCommentPair:
-				delete static_cast<IniValueCommentPair*>(entity);
-				break;
+				case IniEntityType::Key:
+					delete static_cast<IniKey*>(entity);
+					break;
+				case IniEntityType::Section:
+					delete static_cast<IniSection*>(entity);
+					break;
+				case IniEntityType::ValueCommentPair:
+					delete static_cast<IniValueCommentPair*>(entity);
+					break;
 			}
 		}
 
