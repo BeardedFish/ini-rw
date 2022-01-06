@@ -1,11 +1,11 @@
 # ini-rw
 
-![Programming language](https://img.shields.io/badge/programming%20language-c%2B%2B11-blue)
+![Programming language](https://img.shields.io/badge/programming%20language-c%2B%2B17-blue)
 ![Licence](https://img.shields.io/github/license/BeardedFish/ini-rw)
 ![Code size](https://img.shields.io/github/languages/code-size/BeardedFish/ini-rw)
 ![Contributors](https://img.shields.io/github/contributors/BeardedFish/ini-rw)
 
-![ini-rw: A .ini reader/writer library programmed in C++11.](images/Banner.png "ini-rw: A .ini reader/writer library programmed in C++11.")
+![ini-rw: A .ini file reader and writer library programmed in C++17.](images/ini-rw-banner.png "ini-rw: A .ini file reader and writer library programmed in C++17.")
 
 ## Features
 
@@ -43,7 +43,9 @@ int main()
             std::cout << "The INI key was not found.\n";
         }
 
-        iniFile.write_key_value("App", "library_name", "ini-rw");
+        iniFile.write_key_value<std::string>("library", "name", "ini-rw");
+        iniFile.write_key_value<int>("library", "cpp_standard", 17);
+        iniFile.write_key_value<bool>("library", "is_open_source", true);
 
         // Insert a pound symbol comment at the top of the loaded INI file
         iniFile.insert_comment(inirw::IniCommentPrefix::Pound, "Hello, World!");

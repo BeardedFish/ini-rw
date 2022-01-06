@@ -29,6 +29,8 @@ namespace inirw
 
 		std::string get_name() const;
 
+		void set_name(const std::string& name);
+
 		void set_leading_whitespace(const std::string& whitespace);
 	private:
 		bool is_whitespace(const std::string& str);

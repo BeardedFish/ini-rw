@@ -24,8 +24,8 @@ int main(int argc, char* argv[])
 
     if (argc <= 1)
     {
-        std::cerr << "Invalid amount of parameters." << std::endl;
-        std::cerr << "Usage: " << (argc == 0 ? "[EXECUTABLE_NAME]" : argv[0]) << " [INI_FILE_PATH]" << std::endl;
+        std::cerr << "Invalid amount of parameters." << '\n';
+        std::cerr << "Usage: " << (argc == 0 ? "[EXECUTABLE_NAME]" : argv[0]) << " [INI_FILE_PATH]" << '\n';
 
         return EXIT_FAILURE;
     }
@@ -34,8 +34,8 @@ int main(int argc, char* argv[])
     
     if (iniFile) // Alternatively, you could do "iniFile.is_loaded()"
     {
-        std::cout << "The INI file \"" << argv[1] << "\" was loaded successfully!" << std::endl << std::endl;
-        std::cout << "Type \"help\" for a list of commands." << std::endl << std::endl;
+        std::cout << "The INI file \"" << argv[1] << "\" was loaded successfully!" << '\n' << '\n';
+        std::cout << "Type \"help\" for a list of commands." << '\n' << '\n';
 
         bool exitLoopFlag = false;
         std::string userInput;
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
                     {
                         iniFile.clear();
 
-                        std::cout << "The INI file contents were cleared succesfully!";
+                        std::cout << "The INI file contents were cleared successfully!";
                     }
                     else if (inirw::equals_ignore_case(userInput, "contents"))
                     {
@@ -65,11 +65,11 @@ int main(int argc, char* argv[])
                     }
                     else if (inirw::equals_ignore_case(userInput, "help"))
                     {
-                        std::cout << "clrini - Clears the loaded INI file contents." << std::endl;
-                        std::cout << "contents - Prints the contents of the loaded INI file." << std::endl;
-                        std::cout << "help - Prints a list of valid commands for this program." << std::endl;
-                        std::cout << "iv - Inserts a value to the INI file." << std::endl;
-                        std::cout << "rs - Reads a string from the loaded INI file." << std::endl;
+                        std::cout << "clrini - Clears the loaded INI file contents." << '\n';
+                        std::cout << "contents - Prints the contents of the loaded INI file." << '\n';
+                        std::cout << "help - Prints a list of valid commands for this program." << '\n';
+                        std::cout << "iv - Inserts a value to the INI file." << '\n';
+                        std::cout << "rs - Reads a string from the loaded INI file." << '\n';
                         std::cout << "save - Saves the contents of the INI file to the location it was loaded from.";
                     }
                     else if (inirw::equals_ignore_case(userInput, "iv") || inirw::equals_ignore_case(userInput, "rs"))
@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
 
                             iniFile.write_key_value(sectionName, keyName, keyValue);
 
-                            std::cout << std::endl << "Value written succesfully!";
+                            std::cout << '\n' << "Value written succesfully!";
                         }
                         else // Read string value from INI file
                         {
@@ -99,11 +99,11 @@ int main(int argc, char* argv[])
                             {
                                 const inirw::IniValueCommentPair VALUE_COMMENT_PAIR = key->ValueCommentPair;
 
-                                std::cout << std::endl << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.get_value(true) << "\" (\"" << VALUE_COMMENT_PAIR.get_value() << "\" with leading and trailing whitespace)" << "."; 
+                                std::cout << '\n' << "The extracted value for the key \"" << keyName << "\" under the section \"" << sectionName << "\" is: \"" << VALUE_COMMENT_PAIR.get_value(true) << "\" (\"" << VALUE_COMMENT_PAIR.get_value() << "\" with leading and trailing whitespace)" << ".";
                             }
                             else
                             {
-                                std::cout << std::endl << "The key \"" << keyName << "\" under the section \"" << sectionName << "\" was not found in the INI file!";
+                                std::cout << '\n' << "The key \"" << keyName << "\" under the section \"" << sectionName << "\" was not found in the INI file!";
                             }
                         }
                     }
@@ -111,7 +111,7 @@ int main(int argc, char* argv[])
                     {
                         bool success = iniFile.save_changes();
 
-                        std::cout << (success ? "The INI file was saved succesfully!" : "An error occured while trying to save the INI file.");
+                        std::cout << (success ? "The INI file was saved successfully!" : "An error occured while trying to save the INI file.");
                     }
                     else
                     {
@@ -126,13 +126,13 @@ int main(int argc, char* argv[])
 
             if (!exitLoopFlag)
             {
-                std::cout << std::endl << std::endl;
+                std::cout << '\n' << '\n';
             }
         }
         while (!exitLoopFlag);
     }
     else
     {
-        std::cout << "An error occured while trying to load the file \"" << argv[1] << "\". Program will now terminate..." << std::endl;
+        std::cout << "An error occured while trying to load the file \"" << argv[1] << "\". Program will now terminate..." << '\n';
     }
 }
