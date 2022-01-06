@@ -63,6 +63,16 @@ namespace inirw
 		return is_loaded();
 	}
 
+	IniKey* IniFile::operator[](const char globalKeyName[])
+	{
+		std::string globalKeyNameCppString = std::string(globalKeyName);
+		size_t keyIndex = find_ini_key_index(m_iniContents, globalKeyNameCppString, true);
+
+		return keyIndex != INI_NOT_FOUND
+			? static_cast<IniKey*>(m_iniContents[keyIndex])
+			: nullptr;
+	}
+
 	IniKey* IniFile::operator[](const std::pair<std::string, std::string>& keyPair)
 	{
 		return get_key(keyPair.first, keyPair.second);
@@ -204,47 +214,22 @@ namespace inirw
 		m_iniContents.insert(INSERT_POS, new IniValueCommentPair(COMMENT));
 	}
 
-	void IniFile::write_key_value(const std::string& sectionName, const std::string& keyName, const std::string& keyValue)
+	IniKey* IniFile::get_key(const std::string& keyName, bool isKeyGlobal)
 	{
-		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
+		size_t iniKeyIndex = find_ini_key_index(m_iniContents, keyName, isKeyGlobal);
 
-		if (iniKeyIndex != INI_NOT_FOUND)
-		{
-			static_cast<IniKey*>(m_iniContents[iniKeyIndex])->ValueCommentPair.set_value(keyValue);
-		}
-		else
-		{
-			size_t sectionIndex = get_section_location(m_iniContents, sectionName);
-
-			if (sectionIndex != INI_NOT_FOUND)
-			{
-				m_iniContents.insert(m_iniContents.begin() + sectionIndex + 1, new IniKey(static_cast<IniSection*>(m_iniContents[sectionIndex]), keyName, keyValue));
-			}
-			else
-			{
-				if (!m_iniContents.empty())
-				{
-					m_iniContents.insert(m_iniContents.end(), new IniValueCommentPair("\n"));
-				}
-
-				IniSection* iniSection = new IniSection(sectionName);
-
-				m_iniContents.insert(m_iniContents.end(), iniSection);
-				m_iniContents.insert(m_iniContents.end(), new IniKey(iniSection, keyName, keyValue));
-			}
-		}
+		return iniKeyIndex != INI_NOT_FOUND
+			? static_cast<IniKey*>(m_iniContents[iniKeyIndex])
+			: nullptr;
 	}
 
 	IniKey* IniFile::get_key(const std::string& sectionName, const std::string& keyName)
 	{
-		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
+		size_t iniKeyIndex = find_ini_key_index(m_iniContents, sectionName, keyName);
 
-		if (iniKeyIndex != INI_NOT_FOUND)
-		{
-			return static_cast<IniKey*>(m_iniContents[iniKeyIndex]);
-		}
-
-		return nullptr;
+		return iniKeyIndex != INI_NOT_FOUND
+			? static_cast<IniKey*>(m_iniContents[iniKeyIndex])
+			: nullptr;
 	}
 
 	std::ostream& operator<<(std::ostream& outputStream, const IniFile& iniFile)

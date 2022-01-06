@@ -33,6 +33,11 @@ namespace inirw
 		return m_name;
 	}
 
+	void IniSection::set_name(const std::string& name)
+	{
+		m_name = name;
+	}
+
 	void IniSection::set_leading_whitespace(const std::string& whitespace)
 	{
 		if (!is_whitespace(whitespace))
