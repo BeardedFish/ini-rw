@@ -217,12 +217,9 @@ namespace inirw
 	{
 		size_t iniKeyIndex = find_key_index(m_iniContents, sectionName, keyName);
 
-		if (iniKeyIndex != INI_NOT_FOUND)
-		{
-			return static_cast<IniKey*>(m_iniContents[iniKeyIndex]);
-		}
-
-		return nullptr;
+		return iniKeyIndex != INI_NOT_FOUND
+			? static_cast<IniKey*>(m_iniContents[iniKeyIndex])
+			: nullptr;
 	}
 
 	std::ostream& operator<<(std::ostream& outputStream, const IniFile& iniFile)
