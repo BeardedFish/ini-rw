@@ -97,6 +97,8 @@ namespace inirw
 			}
 		}
 
+		IniKey* get_key(const std::string& keyName, bool isKeyGlobal = true);
+
 		IniKey* get_key(const std::string& sectionName, const std::string& keyName);
 	};
 
