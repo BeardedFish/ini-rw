@@ -52,7 +52,7 @@ int main()
 
         if (iniFile.save_changes())
         {
-            std::cout << "The INI file was saved succesfully!\n";
+            std::cout << "The INI file was saved successfully!\n";
         }
     }
     else
